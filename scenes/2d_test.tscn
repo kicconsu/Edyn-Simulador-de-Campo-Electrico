@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://csfw2xqp1u66m"]
+
+[ext_resource type="PackedScene" uid="uid://d2ynwu8ssygta" path="res://scenes/subscenes/2d_arrow.tscn" id="1_j5pi4"]
+[ext_resource type="Script" path="res://res/scripts/2d_cam_control.gd" id="1_qj7e4"]
+[ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d_container.tscn" id="2_g718h"]
+
+[node name="2dTest" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_qj7e4")
+
+[node name="2dArrow" parent="." instance=ExtResource("1_j5pi4")]
+
+[node name="2dContainer" parent="." instance=ExtResource("2_g718h")]
