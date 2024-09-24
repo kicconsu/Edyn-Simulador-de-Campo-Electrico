@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Edyn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://res/img/icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [file_customization]
 
