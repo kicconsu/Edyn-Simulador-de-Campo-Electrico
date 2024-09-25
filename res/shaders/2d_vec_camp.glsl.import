@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://4nddic040spx"
+path="res://.godot/imported/2d_vec_camp.glsl-c29527e7819aa59296b772d7fbb21ca0.res"
+
+[deps]
+
+source_file="res://res/shaders/2d_vec_camp.glsl"
+dest_files=["res://.godot/imported/2d_vec_camp.glsl-c29527e7819aa59296b772d7fbb21ca0.res"]
+
+[params]
+

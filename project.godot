@@ -26,6 +26,7 @@ folder_colors={
 "res://res/classes/": "red",
 "res://res/img/": "orange",
 "res://res/scripts/": "yellow",
+"res://res/shaders/": "red",
 "res://res/sounds/": "green",
 "res://scenes/": "gray",
 "res://scenes/subscenes/": "teal"
