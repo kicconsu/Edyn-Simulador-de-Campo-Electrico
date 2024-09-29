@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func setupCompute():
+func setupCompute() -> void:
 	# Create shader from shadefile and create pipeline
 	var shader_file = load("res://res/shaders/2d_vec_camp.glsl")
 	shader = rd.shader_create_from_spirv(shader_file.get_spirv())
@@ -49,22 +49,29 @@ func setupCompute():
 	texFormat.height = img_height
 	texFormat.format = RenderingDevice.DATA_FORMAT_R32G32_SFLOAT #Matches the format in the 2d_container_handler
 	texFormat.usage_bits = RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT
+	#Texture and uniform setup:
 	var vecpos_uniform := _vecpos_uniform_update(texFormat)
 	
 	#electric camp image SSBO -------------------
 	# -- Reuse texformat --
+	#Texture and uniform setup:
 	var ecamp_uniform := _ecamp_uniform_update(texFormat)
+	
+	#charges SSBO
+	var charUniform := _charges_uniform_update()
+	print(charUniform.to_string())
 	
 	bindings = [
 		
 		vecpos_uniform,
-		ecamp_uniform
+		ecamp_uniform,
+		charUniform
 		
 	]
 	
 	uniform_set = rd.uniform_set_create(bindings, shader, 0)
 
-func render():
+func render() -> void:
 	# Start compute list to start recording our compute commands
 	var compute_list = rd.compute_list_begin()
 	
@@ -88,7 +95,7 @@ func render():
 	_check_pixels(ecamp)
 
 #Debug function that samples each pixel in the ecamp image and prints its color
-func _check_pixels(image:Image):
+func _check_pixels(image:Image) -> void:
 	for y in range(image.get_height()):
 		for x in range(image.get_width()):
 			#print("output sample at: ", Vector2(x, y))
@@ -115,3 +122,26 @@ func _ecamp_uniform_update(format:RDTextureFormat) -> RDUniform:
 	ecamp_uniform.binding = 1
 	ecamp_uniform.add_id(ecamp_rid)
 	return ecamp_uniform
+
+func _charges_uniform_update() -> RDUniform:
+	#gather charges in a list
+	var charges:Array[Node] = get_tree().get_nodes_in_group("2D_charges")
+	#init byte array
+	var chargeBytes := PackedByteArray()
+	#add each charge's data to the array
+	var c:int = 0
+	for charge in charges:
+		var chargeTransform:Transform2D = charge.get_global_transform()
+		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y]).to_byte_array())
+		chargeBytes.append_array(PackedFloat32Array([chargeTransform.get_rotation()]).to_byte_array())
+		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
+		chargeBytes.append_array(PackedInt32Array([charge.type, 0]).to_byte_array())
+		print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
+		c += 1
+	#Uniform setup
+	var charBuffer := rd.storage_buffer_create(chargeBytes.size(), chargeBytes)
+	var charUniform := RDUniform.new()
+	charUniform.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
+	charUniform.binding = 2
+	charUniform.add_id(charBuffer)
+	return charUniform

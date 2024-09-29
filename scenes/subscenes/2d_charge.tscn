@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cprdh6ll3hp4p"]
+
+[ext_resource type="Script" path="res://res/scripts/2d_charge.gd" id="1_exu8o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2tjkk"]
+size = Vector2(30, 30)
+
+[node name="2dCharge" type="Node2D" groups=["2D_charges"]]
+script = ExtResource("1_exu8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_2tjkk")

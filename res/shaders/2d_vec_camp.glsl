@@ -9,11 +9,13 @@ layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
 
 //--------------------------------------------------------- STRUCTS ---------------------------------------------------------
 
+//Charge struct that stores the data of a single charged object
 struct Charge{
 
-    int chargeType;
     vec2 pos;
     float rot;
+    float char;
+    int type;
 
 };
 
@@ -27,12 +29,12 @@ precision highp image2D;
 layout(rg32f, binding = 1) writeonly uniform image2D ecamp;
 
 //input SSBO for the charges array
-//layout(binding = 2, std430) restrict readonly buffer ChargBuffer{
+layout(binding = 2, std430) restrict readonly buffer ChargBuffer{
 
-    //Charge chargeList[];
+    Charge chargeList[];
 
-//}
-//charges;
+}
+charges;
 
 //--------------------------------------------------------- FUNCTIONS ---------------------------------------------------------
 
@@ -45,5 +47,5 @@ layout(rg32f, binding = 1) writeonly uniform image2D ecamp;
 void main(){
     ivec2 vecIndex = ivec2(gl_GlobalInvocationID.xy);
     vec4 vecCoord = imageLoad(vectors, vecIndex);
-    imageStore(ecamp, vecIndex, vec4(vecCoord.y, vecCoord.x, 0, 1));
+    imageStore(ecamp, vecIndex, vec4(charges.chargeList[0].char, charges.chargeList[1].char, 0, 1));
 }
