@@ -38,7 +38,30 @@ charges;
 
 //--------------------------------------------------------- FUNCTIONS ---------------------------------------------------------
 
-//Electric Camp functions
+float k = 9*pow(10, 9);
+
+vec2 pointCharge(float charge, vec2 position, vec2 point){
+    vec2 p = point - position;
+    float r = length(p);
+
+    if (r == 0){
+        return vec2(0,0);
+    }
+
+    vec2 dir = normalize(p);
+    return dir*(k*charge/(r*r));
+}
+
+vec2 calculateField(vec2 point){
+    vec2 field = vec2(0,0);
+    for(int i = 0; i < charges.chargeList.length(); i++){
+        Charge body = charges.chargeList[i];
+        if(body.type == 0){
+            field += pointCharge(body.char, body.pos, point);
+        }
+    }
+    return field;
+}
 
 //--------------------------------------------------------- MAIN --------------------------------------------------------------
 
@@ -47,5 +70,6 @@ charges;
 void main(){
     ivec2 vecIndex = ivec2(gl_GlobalInvocationID.xy);
     vec4 vecCoord = imageLoad(vectors, vecIndex);
-    imageStore(ecamp, vecIndex, vec4(charges.chargeList[0].char, charges.chargeList[1].char, 0, 1));
+    vec2 field = calculateField(vecCoord.xy);
+    imageStore(ecamp, vecIndex, vec4(field, 0, 1));
 }

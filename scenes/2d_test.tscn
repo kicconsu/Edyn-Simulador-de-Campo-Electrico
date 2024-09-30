@@ -15,9 +15,7 @@ script = ExtResource("1_qj7e4")
 
 [node name="2dCharge" parent="." instance=ExtResource("4_m5ufp")]
 position = Vector2(220, -99)
-type = 3
 char = 10.0
 
 [node name="2dCharge2" parent="." instance=ExtResource("4_m5ufp")]
 position = Vector2(-86, 117)
-type = 2
