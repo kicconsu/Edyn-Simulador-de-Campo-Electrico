@@ -25,8 +25,9 @@ func _ready() -> void:
 	posmat = $"2dContainer".posImg
 	img_width = posmat.get_width()
 	img_height = posmat.get_height()
-	setupCompute()
-	render()
+	setup_compute()
+	ecamp = render_ecamp()
+	$"2dContainer".offset_vectors(ecamp)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +35,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func setupCompute() -> void:
+func setup_compute() -> void:
 	# Create shader from shadefile and create pipeline
 	var shader_file = load("res://res/shaders/2d_vec_camp.glsl")
 	shader = rd.shader_create_from_spirv(shader_file.get_spirv())
@@ -59,7 +60,6 @@ func setupCompute() -> void:
 	
 	#charges SSBO
 	var charUniform := _charges_uniform_update()
-	print(charUniform.to_string())
 	
 	bindings = [
 		
@@ -71,7 +71,7 @@ func setupCompute() -> void:
 	
 	uniform_set = rd.uniform_set_create(bindings, shader, 0)
 
-func render() -> void:
+func render_ecamp() -> Image:
 	# Start compute list to start recording our compute commands
 	var compute_list = rd.compute_list_begin()
 	
@@ -92,7 +92,8 @@ func render() -> void:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGF, outputBytes)
-	_check_pixels(ecamp)
+	#_check_pixels(ecamp)
+	return ecamp
 
 #Debug function that samples each pixel in the ecamp image and prints its color
 func _check_pixels(image:Image) -> void:

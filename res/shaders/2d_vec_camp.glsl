@@ -38,7 +38,7 @@ charges;
 
 //--------------------------------------------------------- FUNCTIONS ---------------------------------------------------------
 
-float k = 9*pow(10, 9);
+const float k = 9*pow(10, 9);
 
 vec2 pointCharge(float charge, vec2 position, vec2 point){
     vec2 p = point - position;
@@ -49,7 +49,9 @@ vec2 pointCharge(float charge, vec2 position, vec2 point){
     }
 
     vec2 dir = normalize(p);
-    return dir*(k*charge/(r*r));
+    float mag = (k*charge/(r*r));
+    mag /= 1*pow(10, 6);
+    return dir*(mag);
 }
 
 vec2 calculateField(vec2 point){

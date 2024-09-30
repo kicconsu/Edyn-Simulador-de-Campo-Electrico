@@ -1,9 +1,10 @@
 extends Node2D
 
-@export var res:int = 2
+@export var res:int = 200
 @export var size:Vector2 = Vector2(1000.0, 500.0)
 @onready var vec_scene:PackedScene = load("res://scenes/subscenes/2d_arrow.tscn")
 var mat:Array = [] #Vector position matrix
+var vec_mat:Array = [] #Vector node matrix
 var debugTexture:ImageTexture #Texture to house resized positions RG image
 var posImg:Image #Texture to house positions RG image that is sent to the GPU (not resized)
 
@@ -12,12 +13,14 @@ func _ready():
 	var vec_interval:Vector2 = Vector2(size.x/res, size.y/(res/2))
 	for i in range(int(res/2)):
 		mat.append([])
+		vec_mat.append([])
 		for j in range(res):
 			var vec = vec_scene.instantiate()
 			add_child(vec)
 			vec.set_position(Vector2(vec_interval.x*j, vec_interval.y*i)-size/2+size/50)
 			#Save each vector in the vector matrix to generate the posTexture
 			mat[i].append(vec.get_position())
+			vec_mat[i].append(vec)
 		#print(mat[i])
 	posImg = mat_to_img(mat) #Generate positions image, where each position is an RG color.
 	
@@ -26,11 +29,7 @@ func _ready():
 	#Resize it to draw it on the bg for debug purposes
 	debugImg.resize(1000, 500)
 	debugTexture = ImageTexture.create_from_image(debugImg)
-	$bg.set_texture(debugTexture)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	#$bg.set_texture(debugTexture)
 
 
 # Code that takes a matrix of Vector2() and turns it into a RG32F texture
@@ -53,6 +52,14 @@ func mat_to_img(matrix:Array) -> Image:
 			var a = 1.0      # Alpha channel is fully opaque
 			var color = Color(r, g, b)
 			image.set_pixel(x, y, color)
-			print("input img color: ", image.get_pixel(x, y))
+			#print("input img color: ", image.get_pixel(x, y))
 	#return ImageTexture.new().create_from_image(image)
 	return image
+
+func offset_vectors(ecamp:Image) -> void:
+	for y in ecamp.get_height():
+		for x in ecamp.get_width():
+			var col:Color = ecamp.get_pixel(x, y)
+			var vector:Line2D = vec_mat[y][x]
+			vector.points = PackedVector2Array([vector.points[0], vector.points[0]+Vector2(col.r, col.g)])
+			

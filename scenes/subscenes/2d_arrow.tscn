@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2ynwu8ssygta"]
 
-[sub_resource type="Curve" id="Curve_cnmob"]
-_data = [Vector2(0, 0.604396), 0.0, 0.0, 0, 0, Vector2(0.968421, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_hryi1"]
+offsets = PackedFloat32Array(0, 0.3, 0.7, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.6, 0, 1, 0.916667, 1, 0, 1, 0, 1, 0, 1)
+metadata/_snap_enabled = true
 
-[node name="2dArrow" type="Node2D" groups=["vectors"]]
-
-[node name="Line2D" type="Line2D" parent="."]
+[node name="2DArrow" type="Line2D"]
 points = PackedVector2Array(0, 0, 0, -30)
-width_curve = SubResource("Curve_cnmob")
+width = 1.0
 default_color = Color(0.0666666, 1, 0, 1)
+gradient = SubResource("Gradient_hryi1")
