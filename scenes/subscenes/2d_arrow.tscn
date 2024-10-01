@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2ynwu8ssygta"]
 
 [sub_resource type="Gradient" id="Gradient_hryi1"]
+interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.3, 0.7, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.6, 0, 1, 0.916667, 1, 0, 1, 0, 1, 0, 1)
 metadata/_snap_enabled = true
