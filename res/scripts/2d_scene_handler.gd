@@ -32,8 +32,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	self.refresh_uniforms()
+	ecamp = render_ecamp()
+	$"2dContainer".offset_vectors(ecamp)
 
 func setup_compute() -> void:
 	# Create shader from shadefile and create pipeline
@@ -95,6 +96,16 @@ func render_ecamp() -> Image:
 	#_check_pixels(ecamp)
 	return ecamp
 
+func refresh_uniforms() -> void:
+	var char_uniform:RDUniform = self._charges_uniform_update()
+	self.bindings = [
+		bindings[0],
+		bindings[1],
+		char_uniform
+	]
+	uniform_set = rd.uniform_set_create(bindings, shader, 0)
+
+
 #Debug function that samples each pixel in the ecamp image and prints its color
 func _check_pixels(image:Image) -> void:
 	for y in range(image.get_height()):
@@ -137,7 +148,7 @@ func _charges_uniform_update() -> RDUniform:
 		chargeBytes.append_array(PackedFloat32Array([chargeTransform.get_rotation()]).to_byte_array())
 		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
 		chargeBytes.append_array(PackedInt32Array([charge.type, 0]).to_byte_array())
-		print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
+		#print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
 		c += 1
 	#Uniform setup
 	var charBuffer := rd.storage_buffer_create(chargeBytes.size(), chargeBytes)
