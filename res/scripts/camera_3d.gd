@@ -1,7 +1,7 @@
 extends Camera3D
 
 @export var acceleration = 25.0
-@export var moveSpeed = 50.0
+@export var moveSpeed = 5.0
 @export var mouseSpeed = 300.0
 
 var velocity = Vector3.ZERO
@@ -9,7 +9,6 @@ var lookAngles = Vector2.ZERO
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 
 func _process(delta):
 	lookAngles.y = clamp(lookAngles.y, PI / -2, PI / 2)
@@ -21,6 +20,8 @@ func _process(delta):
 		velocity = velocity.normalized() * moveSpeed
 		
 	translate(velocity  * delta)
+
+		
 
 func _input(event):
 	#Mouse Rotation

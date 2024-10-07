@@ -1,14 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://fswgfltm8d4p"]
+[gd_scene load_steps=5 format=3 uid="uid://fswgfltm8d4p"]
 
 [ext_resource type="Script" path="res://res/scripts/camera_3d.gd" id="1_3w1l0"]
 [ext_resource type="Script" path="res://res/scripts/free_3d_camera.gd" id="1_yjvhw"]
+[ext_resource type="Script" path="res://res/scripts/tabControl.gd" id="3_0ptyd"]
 
 [sub_resource type="Environment" id="Environment_hckor"]
 background_mode = 1
 background_color = Color(0.817954, 0.708278, 0.786659, 1)
 
 [node name="Free3dSpace" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_yjvhw")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_0ptyd")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 457.0
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0.389287, 0.389287, 0.389287, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 47.0
+offset_top = 471.0
+offset_right = 1064.0
+offset_bottom = 541.0
+text = "Example Text"
+tab_size = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hckor")
