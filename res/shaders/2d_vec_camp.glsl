@@ -40,7 +40,7 @@ charges;
 
 const float k = 9*pow(10, 9);
 
-vec2 chargedDisk(float charge, float radius, int n_radial, int n_angular, vec2 position, vec2 p) {
+vec2 chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 position, vec2 p) {
     vec2 field = vec2(0.0);
 
     // Discretizar dr y dtheta
@@ -73,23 +73,23 @@ vec2 chargedDisk(float charge, float radius, int n_radial, int n_angular, vec2 p
 
 vec2 chargedLine(float charge, float L, int n_segments, float theta, vec2 position, vec2 p){
 
-    float lambda = charge/length;
+    float lambda = charge/L;
 
     //Borde inicial de la varilla: posición del centro menos las proyecciones de L/2 en cada eje
-    vec2 ri = position - 0.5*length*vec2(cos(theta), sin(theta));
+    vec2 ri = position - 0.5*L*vec2(cos(theta), sin(theta));
 
     int lim = n_segments/2;
     vec2 field = vec2(0,0); 
     for(int i = -lim; i <= lim; i++){
 
         //Posición del segmento
-        float l = ((float)i / (float)n_segments) * L;
+        float l = (float(i) / float(n_segments)) * L;
         //Adaptada a coordenadas cartesianas:
         vec2 l_vec = ri + l*vec2(cos(theta), sin(theta));
    
         vec2 dist = p - l_vec;
 
-        vec2 r =  length(dist);
+        float r =  length(dist);
         
         if (r > 0){
             vec2 dir = normalize(dist);
