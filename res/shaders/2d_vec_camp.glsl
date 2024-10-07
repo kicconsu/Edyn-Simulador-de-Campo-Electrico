@@ -40,6 +40,67 @@ charges;
 
 const float k = 9*pow(10, 9);
 
+vec2 chargedDisk(float charge, float radius, int n_radial, int n_angular, vec2 position, vec2 p) {
+    vec2 field = vec2(0.0);
+
+    // Discretizar dr y dtheta
+    float dr = radius / float(n_radial);
+    float dtheta = 2.0 * 3.14159265 / float(n_angular);
+
+    for (int i = 0; i < n_radial; ++i) {
+        // Posición del radio en cada anillo (+0.5 para evaluar en el medio del intervalo)
+        float r = dr * (float(i) + 0.5); 
+        for (int j = 0; j < n_angular; ++j) {
+            float theta = dtheta * j;
+
+            // Posición del diferencial de área en coordenadas cartesianas
+            vec2 pos = position + vec2(r * cos(theta), r * sin(theta));
+
+            // Vector desde el elemento de carga hasta el punto P
+            vec2 dist = p - pos;
+            float dist_squared = dot(dist, dist);
+            
+            if (dist_squared > 0.0) {
+                vec2 dir = normalize(dist);
+                float dE = k * sigma * r * dr * dtheta / dist_squared;
+                field += dE * dir;
+            }
+        }
+    }
+
+    return field;
+}
+
+vec2 chargedLine(float charge, float L, int n_segments, float theta, vec2 position, vec2 p){
+
+    float lambda = charge/length;
+
+    //Borde inicial de la varilla: posición del centro menos las proyecciones de L/2 en cada eje
+    vec2 ri = position - 0.5*length*vec2(cos(theta), sin(theta));
+
+    int lim = n_segments/2;
+    vec2 field = vec2(0,0); 
+    for(int i = -lim; i <= lim; i++){
+
+        //Posición del segmento
+        float l = ((float)i / (float)n_segments) * L;
+        //Adaptada a coordenadas cartesianas:
+        vec2 l_vec = ri + l*vec2(cos(theta), sin(theta));
+   
+        vec2 dist = p - l_vec;
+
+        vec2 r =  length(dist);
+        
+        if (r > 0){
+            vec2 dir = normalize(dist);
+            float dE = k*lambda/(r*r);
+            field += dE*dir;
+        }
+    }
+
+    return field;
+}
+
 vec2 pointCharge(float charge, vec2 position, vec2 point){
     vec2 p = point - position;
     float r = length(p);
