@@ -24,6 +24,7 @@ window/stretch/aspect="keep_height"
 folder_colors={
 "res://res/": "gray",
 "res://res/classes/": "pink",
+"res://res/fonts/": "blue",
 "res://res/img/": "orange",
 "res://res/scripts/": "yellow",
 "res://res/shaders/": "red",
