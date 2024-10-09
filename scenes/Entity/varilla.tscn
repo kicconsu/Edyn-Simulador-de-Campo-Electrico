@@ -3,14 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_qhyvy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5pjr"]
-size = Vector2(530, 77)
+size = Vector2(305, 42)
 
 [node name="varilla" instance=ExtResource("1_qhyvy")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(26, -48.5)
+position = Vector2(18.5, -21)
 shape = SubResource("RectangleShape2D_h5pjr")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
-position = Vector2(0, 3)
+position = Vector2(3.00002, 7)
+scale = Vector2(0.55, 0.565)
 animation = &"varilla"

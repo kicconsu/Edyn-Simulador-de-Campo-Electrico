@@ -8,6 +8,7 @@ extends TextureRect
 func _ready():
 	connect("gui_input", _item_clicked)
 
+#Se envia la escena del item selecionado
 func _item_clicked(event):
 	if event is InputEvent:
 		if event.is_action_pressed("mb_left"):

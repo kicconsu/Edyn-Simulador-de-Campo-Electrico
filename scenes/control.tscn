@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://xejgaqbudtn1"]
 
 [ext_resource type="PackedScene" uid="uid://b3imda8g3dp16" path="res://scenes/Items/item_carga.tscn" id="1_piavd"]
-[ext_resource type="Script" path="res://res/scripts/tab_container.gd" id="1_tgata"]
+[ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
 [ext_resource type="PackedScene" uid="uid://ddkc207msyt1g" path="res://scenes/Items/item_varilla.tscn" id="3_dexg2"]
 
 [node name="Item_Select" type="Control"]
@@ -9,13 +9,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_qaeus")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
 offset_right = 353.0
 offset_bottom = 184.0
 current_tab = 0
-script = ExtResource("1_tgata")
 
 [node name="Cuerpos_2D" type="TabBar" parent="TabContainer"]
 layout_mode = 2
@@ -65,5 +65,9 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Otros(?)/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[connection signal="mouse_entered" from="TabContainer" to="TabContainer" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="TabContainer" to="TabContainer" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TabContainer" to="." method="_on_tab_container_mouse_entered"]
+[connection signal="mouse_exited" from="TabContainer" to="." method="_on_tab_container_mouse_exited"]
+[connection signal="mouse_entered" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_exited"]
+[connection signal="mouse_entered" from="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
