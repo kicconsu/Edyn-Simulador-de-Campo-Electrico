@@ -15,6 +15,21 @@ struct Charge{
     vec2 pos;
     float rot;
     float char;
+    vec4 info; 
+    /*
+
+    chargedLine:
+    info[0] = length
+    info[1] = rotation angle (radians)
+    info[2] = no. segments
+    info[3] = space filler (0)
+
+    chargedDisk OR chargedRing:
+    info[0] = minor radius (if not a ring, 0)
+    info[1] = radius
+    info[2] = no. radial segments
+    info[3] = no. angular segments
+    */
     int type;
 
 };
@@ -71,9 +86,7 @@ vec2 chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 po
     return field;
 }
 
-vec2 chargedLine(float charge, float L, int n_segments, float theta, vec2 position, vec2 p){
-
-    float lambda = charge/L;
+vec2 chargedLine(float lambda, float L, int n_segments, float theta, vec2 position, vec2 p){
 
     //Borde inicial de la varilla: posición del centro menos las proyecciones de L/2 en cada eje
     vec2 ri = position - 0.5*L*vec2(cos(theta), sin(theta));
@@ -120,7 +133,19 @@ vec2 calculateField(vec2 point){
     for(int i = 0; i < charges.chargeList.length(); i++){
         Charge body = charges.chargeList[i];
         if(body.type == 0){
+
+            //pointCharge(float charge, vec2 position, vec2 point)
             field += pointCharge(body.char, body.pos, point);
+
+        } else if (body.type == 1){
+
+            //chargedLine(float lambda, float L, int n_segments, float theta, vec2 position, vec2 p)
+            field += chargedLine(body.char, body.info[0], int(body.info[2]), body.info[1], body.pos, point);
+
+        } else if (body.type == 2){
+
+            //chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 position, vec2 p)
+            field += chargedDisk(body.char, body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
         }
     }
     return field;
