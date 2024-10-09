@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxljouu0qx7js"]
+
+[ext_resource type="Texture2D" uid="uid://c4fmqgou47iuk" path="res://res/img/carga_puntual.png" id="1_0680k"]
+[ext_resource type="Texture2D" uid="uid://bqc1j7h8wblrf" path="res://res/img/varilla.png" id="2_2pqhi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_legnp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0680k")
+}],
+"loop": true,
+"name": &"carga",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2pqhi")
+}],
+"loop": true,
+"name": &"varilla",
+"speed": 5.0
+}]
+
+[node name="Entity" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_legnp")
+animation = &"carga"

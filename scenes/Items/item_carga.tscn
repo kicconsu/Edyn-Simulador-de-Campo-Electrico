@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3imda8g3dp16"]
+
+[ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/Items/item_texture.tscn" id="1_2aq5y"]
+[ext_resource type="Texture2D" uid="uid://c4fmqgou47iuk" path="res://res/img/carga_puntual.png" id="2_ttyvw"]
+[ext_resource type="PackedScene" uid="uid://dyisxk2o7p0rk" path="res://scenes/Entity/carga.tscn" id="3_unjjw"]
+
+[node name="item_carga" instance=ExtResource("1_2aq5y")]
+offset_right = 136.0
+offset_bottom = 131.0
+texture = ExtResource("2_ttyvw")
+expand_mode = 3
+this_scene = ExtResource("3_unjjw")
