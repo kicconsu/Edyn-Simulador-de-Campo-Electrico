@@ -46,25 +46,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Otros(?)" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Otros(?)"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Otros(?)/ScrollContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Otros(?)/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
 [connection signal="mouse_entered" from="TabContainer" to="." method="_on_tab_container_mouse_entered"]
 [connection signal="mouse_exited" from="TabContainer" to="." method="_on_tab_container_mouse_exited"]
 [connection signal="mouse_entered" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_entered"]
