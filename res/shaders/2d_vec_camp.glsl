@@ -29,6 +29,12 @@ struct Charge{
     info[1] = radius
     info[2] = no. radial segments
     info[3] = no. angular segments
+
+    chargedRectangle:
+    info[0]: horizontal length (a)
+    info[1]: vertical length (b)
+    info[2]: no. segments
+    info[3]: rotation angle (radians)
     */
     int type;
 
@@ -54,6 +60,75 @@ charges;
 //--------------------------------------------------------- FUNCTIONS ---------------------------------------------------------
 
 const float k = 9*pow(10, 9);
+
+vec2 chargedRectangle(float sigma, float a, float b, int n_segments, float theta, vec2 ri, vec2 P) {
+
+    // Dimensiones de los segmentos
+    float du = a / float(n_segments);
+    float dv = b / float(n_segments);
+
+    vec2 field = vec2(0.0, 0.0);
+
+    //Iterar sobre los segmentos
+    for (int i = 0; i < n_segments; i++) {
+        for (int j = 0; j < n_segments; j++) {
+            // Coordenadas locales del centro del segmento
+            float u = -a / 2.0 + (i + 0.5) * du;
+            float v = -b / 2.0 + (j + 0.5) * dv;
+
+            // Conversión a coordenadas globales
+            vec2 p = ri + vec2(
+                u * cos(theta) - v * sin(theta),
+                u * sin(theta) + v * cos(theta)
+            );
+
+            // Vector distancia
+            vec2 r_dist = P - p;
+            float r = length(r_dist);
+
+            if (r > 0.0) {
+                vec2 dir = normalize(r_dist);
+                float dE = k * sigma * du * dv / (r * r);
+                field += dE * dir;
+            }
+        }
+    }
+
+    return field;
+}
+
+vec2 chargedRing(float sigma, float r, float R, int n_radial, 
+                        int n_angular, vec2 position, vec2 p) {
+    vec2 field = vec2(0.0);
+
+    // Discretizar drho y dtheta
+    float drho = (R - r) / float(n_radial);
+    float dtheta = 2.0 * 3.14159265 / float(n_angular);
+
+    for (int i = 0; i < n_radial; ++i) {
+        // Posicion del radio en cada anillo (+0.5 para evaluar 
+        //en el medio del intervalo)
+        float rho = r + drho * (float(i) + 0.5); 
+        for (int j = 0; j < n_angular; ++j) {
+            float theta = dtheta * j;
+
+            // Posicion del diferencial de area en coordenadas cartesianas
+            vec2 pos = position + vec2(rho * cos(theta), rho * sin(theta));
+
+            // Vector desde el elemento de carga hasta el punto P
+            vec2 dist = p - pos;
+            float r_squared = dot(dist, dist);
+            
+            if (r_squared > 0.0) {
+                vec2 dir = normalize(dist);
+                float dE = k * sigma * rho * drho * dtheta / r_squared;
+                field += dE * dir;
+            }
+        }
+    }
+
+    return field;
+}
 
 vec2 chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 position, vec2 p) {
     vec2 field = vec2(0.0);
@@ -146,6 +221,11 @@ vec2 calculateField(vec2 point){
 
             //chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 position, vec2 p)
             field += chargedDisk(body.char, body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
+
+        } else if (body.type == 3){
+
+            // chargedRectangle(float sigma, float a, float b, int n_segments, float theta, vec2 ri, vec2 P)
+            field += chargedRectangle(body.char, body.info[0], body.info[1], int(body.info[2]), body.info[3], body.pos, point);
         }
     }
     return field;
