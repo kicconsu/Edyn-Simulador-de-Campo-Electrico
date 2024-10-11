@@ -13,7 +13,7 @@ script = ExtResource("1_5wwuq")
 [node name="Sprite2D" type="Sprite2D" parent="Editor_Object"]
 
 [node name="Item_Select" parent="." instance=ExtResource("2_2vad0")]
-offset_left = 744.0
-offset_top = 7.0
-offset_right = 784.0
-offset_bottom = 47.0
+
+[node name="cam_container" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="cam_container"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4wfk542rs3hk"]
+[gd_scene load_steps=4 format=3 uid="uid://b4wfk542rs3hk"]
 
 [ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_qhyvy"]
+[ext_resource type="Script" path="res://scenes/Entity/varilla.gd" id="2_opj1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5pjr"]
 size = Vector2(305, 42)
 
 [node name="varilla" instance=ExtResource("1_qhyvy")]
+script = ExtResource("2_opj1j")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(18.5, -21)
