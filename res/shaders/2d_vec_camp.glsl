@@ -19,18 +19,21 @@ struct Charge{
     /*
 
     chargedLine:
+    char: lambda
     info[0] = length
     info[1] = rotation angle (radians)
     info[2] = no. segments
     info[3] = space filler (0)
 
     chargedDisk OR chargedRing:
+    char: sigma
     info[0] = minor radius (if not a ring, 0)
     info[1] = radius
     info[2] = no. radial segments
     info[3] = no. angular segments
 
     chargedRectangle:
+    char: sigma
     info[0]: horizontal length (a)
     info[1]: vertical length (b)
     info[2]: no. segments
@@ -199,7 +202,6 @@ vec2 pointCharge(float charge, vec2 position, vec2 point){
 
     vec2 dir = normalize(p);
     float mag = (k*charge/(r*r));
-    mag /= 1*pow(10, 6);
     return dir*(mag);
 }
 
@@ -222,7 +224,12 @@ vec2 calculateField(vec2 point){
             //chargedDisk(float sigma, float radius, int n_radial, int n_angular, vec2 position, vec2 p)
             field += chargedDisk(body.char, body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
 
-        } else if (body.type == 3){
+        } else if(body.type == 3){
+
+            //chargedRing(float sigma, float r, float R, int n_radial, int n_angular, vec2 position, vec2 p)
+            chargedRing(body.char, body.info[0], body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
+
+        } else if (body.type == 4){
 
             // chargedRectangle(float sigma, float a, float b, int n_segments, float theta, vec2 ri, vec2 P)
             field += chargedRectangle(body.char, body.info[0], body.info[1], int(body.info[2]), body.info[3], body.pos, point);
