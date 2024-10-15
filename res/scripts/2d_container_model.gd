@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var res:int = 100
+@export var res:int = 150
 @export var size:Vector2 = Vector2(1000.0, 500.0)
 var mat:Array = [] #Vector position matrix
 var debugTexture:ImageTexture #Texture to house resized positions RG image

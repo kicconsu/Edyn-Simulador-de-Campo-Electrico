@@ -48,11 +48,11 @@ struct Charge{
 //--------------------------------------------------------- BUFFERS ---------------------------------------------------------
 
 //input SSBO for the vector arroy. Image where each pixel stores the position of a vector in the R and G channels
-layout(rg32f, binding = 0) restrict readonly uniform image2D vectors;
+layout(rgba32f, binding = 0) restrict readonly uniform image2D vectors;
 
 //output image for the resulting magnitudes and directions
 precision highp image2D;
-layout(rg32f, binding = 1) writeonly uniform image2D ecamp;
+layout(rgba32f, binding = 1) writeonly uniform image2D ecamp;
 
 //input SSBO for the charges array
 layout(binding = 2, std430) restrict readonly buffer ChargBuffer{

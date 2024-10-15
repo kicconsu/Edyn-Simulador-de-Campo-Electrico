@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://daosd7lwlijyq"]
+
+[ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
+[ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
+
+[node name="3dTest" type="Node3D"]
+script = ExtResource("1_qepy6")
+
+[node name="3dContainer" parent="." instance=ExtResource("1_eried")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.790925, 0, 0.611914, 0, 1, 0, -0.611914, 0, 0.790925, 7.19117, 2.12111, 7.54167)

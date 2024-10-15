@@ -27,4 +27,4 @@ func _draw() -> void:
 			var length:float = clamp(displacement.length_squared(), 0, 1)
 			var vec_color := Color(lerp(0.0, 1.0, length), lerp(1.0, 0.0, length), 0) #Vector color
 			
-			draw_line(vecpos, dest+offset, vec_color, 1)
+			draw_line(vecpos, dest, vec_color, 1.5)

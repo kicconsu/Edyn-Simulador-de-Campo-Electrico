@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://182pf6mbx5mw"]
+
+[ext_resource type="Script" path="res://res/scripts/3d_container_model.gd" id="1_o5lpv"]
+
+[node name="3dContainer" type="Node3D"]
+script = ExtResource("1_o5lpv")
+resolution = 6
