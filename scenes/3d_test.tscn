@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=4 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
+[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
 
 [node name="3dTest" type="Node3D"]
 script = ExtResource("1_qepy6")
 
+[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16031, 2.10041, 3.09856)
+
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
+resolution = 2
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.790925, 0, 0.611914, 0, 1, 0, -0.611914, 0, 0.790925, 7.19117, 2.12111, 7.54167)

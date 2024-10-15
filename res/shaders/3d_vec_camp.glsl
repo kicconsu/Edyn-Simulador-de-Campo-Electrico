@@ -7,41 +7,41 @@ layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
 //Charge struct that stores the data of a single charged object
 struct Charge{
 
-    vec3 pos;
-    float rot;
-    float char;
-    vec4 info; 
-    int type;
+    vec3 pos; // 12 bytes + 4 padding = 16 bytes at 0
+    vec4 direc; // 16 bytes + 0 at 16
+    float char; //4 bytes + 0 at 32
+    int type; //4 bytes + 0 at 36
+    //Size: 40, add 4*2 padding at the end
 
     /*
 
     chargedSphere:
     char = charge Q
-    info[0] = radius R
-    info[1] = space filler (0)
-    info[2] = space filler (0)
-    info[3] = space filler (0)
+    direc[0] = radius R
+    direc[1] = space filler (0)
+    direc[2] = space filler (0)
+    direc[3] = space filler (0)
 
     infiniteLine:
     char: lambda
-    info[0] = x component of the axis's direction
-    info[1] = y component of the axis's direction
-    info[2] = z component of the axis's direction
-    info[3] = space filler (0)
+    direc[0] = x component of the axis's direction
+    direc[1] = y component of the axis's direction
+    direc[2] = z component of the axis's direction
+    direc[3] = space filler (0)
 
     infiniteCilinder:
     char: rho
-    info[0] = x component of the axis's direction
-    info[1] = y component of the axis's direction
-    info[2] = z component of the axis's direction
-    info[3] = radius R
+    direc[0] = x component of the axis's direction
+    direc[1] = y component of the axis's direction
+    direc[2] = z component of the axis's direction
+    direc[3] = radius R
 
     infinitePlane:
     char: sigma
-    info[0] = x component of the plane's normal vector
-    info[1] = y component of the plane's normal vector
-    info[2] = z component of the plane's normal vector
-    info[3] = space filler (0)
+    direc[0] = x component of the plane's normal vector
+    direc[1] = y component of the plane's normal vector
+    direc[2] = z component of the plane's normal vector
+    direc[3] = space filler (0)
     */
 };
 
@@ -157,22 +157,22 @@ vec3 calculateField(vec3 point){
         } else if (body.type == 1){
 
             //chargedSphere(float Q, float R, vec3 ri, vec3 p)
-            field += chargedSphere(body.char, body.info[0], body.pos, point);
+            field += chargedSphere(body.char, body.direc[0], body.pos, point);
 
         } else if (body.type == 2){
 
             //infiniteLine(float lambda, vec3 ri, vec3 d, vec3 p)
-            field += infiniteLine(body.char, body.pos, vec3(body.info[0], body.info[1], body.info[2]), point);
+            field += infiniteLine(body.char, body.pos, vec3(body.direc[0], body.direc[1], body.direc[2]), point);
 
         } else if (body.type == 3){
 
             // infiniteCilinder(float rho, float R, vec3 ri, vec3 d, vec3 p)
-            field += infiniteCilinder(body.char, body.info[3], body.pos, vec3(body.info[0], body.info[1], body.info[2]), point);
+            field += infiniteCilinder(body.char, body.direc[3], body.pos, vec3(body.direc[0], body.direc[1], body.direc[2]), point);
 
         } else if (body.type == 4){
 
             //infinitePlane(float sigma, vec3 n, vec3 ri, vec3 p)
-            field += infinitePlane(body.char, vec3(body.info[0], body.info[1], body.info[2]), body.pos, point);
+            field += infinitePlane(body.char, vec3(body.direc[0], body.direc[1], body.direc[2]), body.pos, point);
         }
     }
     return field;

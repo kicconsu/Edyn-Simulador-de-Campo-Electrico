@@ -12,10 +12,13 @@ layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
 //Charge struct that stores the data of a single charged object
 struct Charge{
 
-    vec2 pos;
-    float rot;
-    float char;
-    vec4 info; 
+    vec2 pos; //8 at 0
+    float rot; // 4 at 8
+    float char; // 4 at 12
+    int type; // 4 at 16
+    vec4 info; // cant be 16 at 20, add 4*3 bytes, 16 at 32
+    // size: 48, no padding needed
+
     /*
 
     chargedLine:
@@ -39,7 +42,6 @@ struct Charge{
     info[2]: no. segments
     info[3]: rotation angle (radians)
     */
-    int type;
 
 };
 
@@ -195,6 +197,8 @@ vec2 chargedLine(float lambda, float L, int n_segments, float theta, vec2 positi
 vec2 pointCharge(float charge, vec2 position, vec2 point){
     vec2 p = point - position;
     float r = length(p);
+    
+    charge = charge/pow(10, 6);
 
     if (r == 0){
         return vec2(0,0);

@@ -22,7 +22,6 @@ var img_height:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	return
 	posmat = $"3dContainer".pos_img
 	img_width = posmat.get_width()
 	img_height = posmat.get_height()
@@ -34,7 +33,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	return
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"3dContainer".offset_vectors(ecamp)
@@ -96,7 +94,7 @@ func render_ecamp() -> Image:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGBAF, outputBytes)
-	#_check_pixels(ecamp)
+	_check_pixels(ecamp)
 	return ecamp
 
 func refresh_uniforms() -> void:
@@ -146,11 +144,15 @@ func _charges_uniform_update() -> RDUniform:
 	#add each charge's data to the array
 	var c:int = 0
 	for charge in charges:
-		var chargeTransform:Transform2D = charge.get_global_transform()
-		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y]).to_byte_array())
-		chargeBytes.append_array(PackedFloat32Array([chargeTransform.get_rotation()]).to_byte_array())
+		var chargeTransform:Transform3D = charge.get_global_transform()
+		# 12 bytes + 4 packing = 16 - at 0
+		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y, chargeTransform.origin.z, -1]).to_byte_array())
+		# 16 bytes - at 16
+		chargeBytes.append_array(PackedFloat32Array([chargeTransform.basis.x, chargeTransform.basis.y, chargeTransform.basis.z, charge.radius]).to_byte_array())
+		# 4 bytes - at 32
 		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
-		chargeBytes.append_array(PackedInt32Array([charge.type, 0]).to_byte_array())
+		# 4 bytes - at 36 -> add 4*2 padding to end with a size of 48
+		chargeBytes.append_array(PackedInt32Array([charge.type, -1, -1]).to_byte_array())
 		#print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
 		c += 1
 	#Uniform setup

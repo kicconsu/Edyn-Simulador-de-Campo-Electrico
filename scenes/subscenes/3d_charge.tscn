@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x4t8qhmqu10e"]
+
+[ext_resource type="Script" path="res://res/scripts/3d_charge.gd" id="1_1me85"]
+
+[node name="3dCharge" type="Node3D" groups=["3D_charges"]]
+script = ExtResource("1_1me85")

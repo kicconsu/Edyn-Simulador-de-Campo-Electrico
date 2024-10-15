@@ -2,6 +2,7 @@ extends Node2D
 
 @export var type:int = 0
 @export var char:float = 5
+@export var info:= Vector4(1, 1, 1, 1)
 var hovered:bool = false
 var picked:bool = false
 var relative:Vector2 = Vector2(0,0)

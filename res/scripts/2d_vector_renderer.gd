@@ -24,7 +24,7 @@ func _draw() -> void:
 			var displacement:Vector2 = Vector2(col.r, col.g)
 			var dest:Vector2 = displacement + vecpos #Ending position
 			
-			var length:float = clamp(displacement.length_squared(), 0, 1)
-			var vec_color := Color(lerp(0.0, 1.0, length), lerp(1.0, 0.0, length), 0) #Vector color
+			var length:float = displacement.length_squared()
+			var vec_color := Color(lerp(0.0, 1.0, length/100), lerp(1.0, 0.0,length/100), 0, lerp(1.0, 0.0, length/100000)) #Vector color
 			
 			draw_line(vecpos, dest, vec_color, 1.5)

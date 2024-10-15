@@ -12,10 +12,22 @@ script = ExtResource("1_erwtw")
 script = ExtResource("1_qj7e4")
 
 [node name="2dContainer" parent="." instance=ExtResource("2_g718h")]
+res = 100
 
 [node name="2dCharge" parent="." instance=ExtResource("4_m5ufp")]
 position = Vector2(220, -99)
+info = Vector4(-3, 1, 4, 7)
 
 [node name="2dCharge2" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-80, 39)
-char = -6.0
+position = Vector2(-26, 100)
+info = Vector4(1, 2, -45, 8)
+
+[node name="2dCharge3" parent="." instance=ExtResource("4_m5ufp")]
+position = Vector2(-202, -142)
+char = 30.0
+info = Vector4(-3, 1, 4, 7)
+
+[node name="2dCharge4" parent="." instance=ExtResource("4_m5ufp")]
+position = Vector2(274, 96)
+char = -20.0
+info = Vector4(-3, 1, 4, 7)

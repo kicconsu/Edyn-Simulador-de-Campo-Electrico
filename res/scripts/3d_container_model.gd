@@ -1,4 +1,4 @@
-#@tool
+@tool
 extends Node3D
 
 @export var size := Vector3(5, 5, 5)
@@ -67,3 +67,6 @@ func mat_to_img(matrix:Array) -> Image:
 			image.set_pixel(x, y, color)
 			#print("input img color: ", image.get_pixel(x, y))
 	return image
+
+func offset_vectors(ecamp:Image) -> void:
+	self.offset_img = ecamp
