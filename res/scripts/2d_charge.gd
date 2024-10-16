@@ -8,6 +8,8 @@ var picked:bool = false
 var relative:Vector2 = Vector2(0,0)
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not hovered:
+		self.picked = false
 	if event is InputEventMouseButton and hovered:
 		self.picked = !self.picked
 	if event is InputEventMouseMotion and picked:

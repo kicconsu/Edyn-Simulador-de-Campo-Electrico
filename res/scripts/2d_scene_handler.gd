@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 #Script in charge of handling the 2D simulation.

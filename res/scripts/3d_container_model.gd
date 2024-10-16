@@ -4,8 +4,9 @@ extends Node3D
 @export var size := Vector3(5, 5, 5)
 @export var resolution:int = 10
 @export var box_color := Color(1, 0, 0)
-@export_range(0.00001, 0.05) var minthick:float =  0.0000001
-@export_range(0.00001, 0.05) var maxthick:float =  0.05
+@export_range(0.001, 0.05) var minthick:float =  0.001
+@export_range(0.001, 0.05) var maxthick:float =  0.05
+@export_range(0, 20) var alpha_sensitivity:float = 60
 
 var offset_img:Image
 var pos_mat:Array
@@ -46,9 +47,10 @@ func _process(delta: float) -> void:
 				var col := self.offset_img.get_pixel(x + (z*resolution), y)
 				var offset := Vector3(col.r, col.g, col.b)
 				var length:float = offset.length_squared()
+				var length_scale:float = lerp(1.0, 0.0, length*2)
 				#print(offset)
-				conf.set_thickness(clamp(lerp(maxthick, minthick,length/10), minthick, maxthick))
-				DebugDraw3D.draw_line(origin, origin+offset, Color(clamp(lerp(0.0, 1.0, length), 0.0, 1.0), clamp(lerp(1.0, 0.0, length), 0.0, 1.0), 0))
+				conf.set_thickness(clamp(lerp(self.maxthick, self.minthick,length/self.alpha_sensitivity), self.minthick, self.maxthick))
+				DebugDraw3D.draw_line(origin, origin+offset, Color(length_scale, 1/length_scale, 0))
 
 func mat_to_img(matrix:Array) -> Image:
 	var height = matrix.size()
