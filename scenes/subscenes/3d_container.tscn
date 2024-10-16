@@ -5,3 +5,5 @@
 [node name="3dContainer" type="Node3D"]
 script = ExtResource("1_o5lpv")
 resolution = 6
+minthick = null
+maxthick = null
