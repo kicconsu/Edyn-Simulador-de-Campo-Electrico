@@ -69,13 +69,16 @@ const float e_0 = 8.85*pow(10, -12);
 
 vec3 pointCharge(float charge, vec3 ri, vec3 p){
     vec3 r = p - ri;
-    float dist = length(p);
+    float dist = length(r);
+
+    charge = charge/pow(10, 6);
+    dist = dist*pow(10, 2);
 
     if (dist == 0){
         return vec3(0,0,0);
     }
 
-    vec3 dir = normalize(p);
+    vec3 dir = normalize(r);
     float mag = (k*charge/(dist*dist));
     return dir*(mag);
 }
@@ -185,5 +188,6 @@ void main(){
     ivec2 vecIndex = ivec2(gl_GlobalInvocationID.xy);
     vec4 vecCoord = imageLoad(vectors, vecIndex);
     vec3 field = calculateField(vecCoord.xyz);
-    imageStore(ecamp, vecIndex, vec4(field, 1));
+    //Charge charg = charges.chargeList[0];
+    imageStore(ecamp, vecIndex, vec4(field,1));
 }

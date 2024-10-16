@@ -38,12 +38,13 @@ func _process(delta: float) -> void:
 	DebugDraw3D.draw_box(self.global_position, Quaternion.IDENTITY, self.size, self.box_color, false)
 	var interval := Vector3(self.size.x/resolution, self.size.y/resolution, self.size.z/resolution)
 	for z in range(resolution):
-		conf.set_thickness(0.03)
+		conf.set_thickness(0.02)
 		for y in range(resolution):
 			for x in range(resolution):
 				var origin:Vector3 = self.pos_mat[y][x + (resolution*z)]
 				var col := self.offset_img.get_pixel(x + (z*resolution), y)
-				var offset := Vector3(col.r, col.g, col.b) + Vector3.ONE
+				var offset := Vector3(col.r, col.g, col.b)
+				#print(offset)
 				
 				DebugDraw3D.draw_line(origin, origin+offset, Color.CHARTREUSE)
 

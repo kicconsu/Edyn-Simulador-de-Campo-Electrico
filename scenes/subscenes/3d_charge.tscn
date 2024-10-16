@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://x4t8qhmqu10e"]
+[gd_scene load_steps=3 format=3 uid="uid://x4t8qhmqu10e"]
 
 [ext_resource type="Script" path="res://res/scripts/3d_charge.gd" id="1_1me85"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_ii6du"]
+radial_segments = 20
+rings = 6
+
 [node name="3dCharge" type="Node3D" groups=["3D_charges"]]
 script = ExtResource("1_1me85")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("SphereMesh_ii6du")
