@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://fswgfltm8d4p"]
+
+[ext_resource type="Script" path="res://res/scripts/camera_3d.gd" id="1_3w1l0"]
+[ext_resource type="Script" path="res://res/scripts/free_3d_camera.gd" id="1_yjvhw"]
+[ext_resource type="Script" path="res://res/scripts/tabControl.gd" id="3_0ptyd"]
+[ext_resource type="Theme" uid="uid://cfdvtr2g7cnwm" path="res://res/textures/default_GUI_theme.tres" id="3_kvier"]
+[ext_resource type="Theme" uid="uid://bu1p2dv3dv8hc" path="res://res/textures/default_GUI_theme2.tres" id="3_wlhkd"]
+
+[sub_resource type="Environment" id="Environment_hckor"]
+background_mode = 1
+background_color = Color(0.817954, 0.708278, 0.786659, 1)
+
+[node name="Free3dSpace" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_yjvhw")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_right = -0.32
+offset_bottom = -0.176003
+script = ExtResource("3_0ptyd")
+
+[node name="Panel2" type="Panel" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 84.0
+offset_top = 437.0
+offset_right = 397.0
+offset_bottom = 467.0
+theme = ExtResource("3_wlhkd")
+
+[node name="Panel" type="Panel" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = 458.0
+offset_right = 1151.0
+offset_bottom = 647.0
+theme = ExtResource("3_kvier")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 95.0
+offset_top = 477.0
+offset_right = 1112.0
+offset_bottom = 547.0
+text = "Sample Text"
+tab_size = 6
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+use_parent_material = true
+layout_mode = 0
+offset_left = 103.0
+offset_top = 439.0
+offset_right = 402.0
+offset_bottom = 470.0
+text = "TAB to close"
+tab_size = 6
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hckor")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247771, 0.659929, -3.15726)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39796, 0)
+script = ExtResource("1_3w1l0")
