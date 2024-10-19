@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b4wfk542rs3hk" path="res://scenes/Entity/varilla.tscn" id="3_73d7g"]
 
 [node name="item_varilla" instance=ExtResource("1_y5dp7")]
+offset_right = 69.0
+offset_bottom = 6.0
 texture = ExtResource("2_xcvr8")
 expand_mode = 3
-stretch_mode = 5
 this_scene = ExtResource("3_73d7g")

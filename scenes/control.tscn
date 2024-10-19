@@ -44,6 +44,8 @@ layout_mode = 2
 [node name="item_varilla" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
 layout_mode = 2
 size_flags_horizontal = 3
+expand_mode = 0
+stretch_mode = 3
 
 [connection signal="mouse_entered" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_exited"]
