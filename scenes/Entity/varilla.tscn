@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4wfk542rs3hk"]
+[gd_scene load_steps=4 format=3 uid="uid://b4wfk542rs3hk"]
 
 [ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_qhyvy"]
+[ext_resource type="Script" path="res://scenes/Entity/varilla.gd" id="2_opj1j"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssl1y"]
-size = Vector2(72, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5pjr"]
+size = Vector2(305, 42)
 
-[node name="Varilla" instance=ExtResource("1_qhyvy")]
+[node name="varilla" instance=ExtResource("1_qhyvy")]
+script = ExtResource("2_opj1j")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(1, -1.5)
-shape = SubResource("RectangleShape2D_ssl1y")
+position = Vector2(18.5, -21)
+shape = SubResource("RectangleShape2D_h5pjr")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
-position = Vector2(1, -1)
-scale = Vector2(0.47875, 0.3)
+position = Vector2(3.00002, 7)
+scale = Vector2(0.55, 0.565)
 animation = &"varilla"
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fmqgou47iuk"
-path="res://.godot/imported/carga_puntual.png-4cde7367c24a73f826f0f92df44b5583.ctex"
+uid="uid://dmrh8hw60uyoc"
+path="res://.godot/imported/Cuadricula.png-61492cb5a47eb167cf4089878d81ed64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/img/carga_puntual.png"
-dest_files=["res://.godot/imported/carga_puntual.png-4cde7367c24a73f826f0f92df44b5583.ctex"]
+source_file="res://res/img/Cuadricula.png"
+dest_files=["res://.godot/imported/Cuadricula.png-61492cb5a47eb167cf4089878d81ed64.ctex"]
 
 [params]
 

@@ -1,10 +1,9 @@
 extends CanvasLayer
 
 @onready var object_cursor = get_node("/root/main/Editor_Object")
-@onready var cursor_sprite = object_cursor.get_node("Sprite2D")
-func _process(_delta):
+
+func _process(delta):
 	if Input.is_action_just_pressed("toggle_editor"):
-		object_cursor.can_place = !object_cursor.can_place
 		Global.playing = !Global.playing
 		visible = !Global.playing
 
