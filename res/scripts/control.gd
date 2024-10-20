@@ -4,6 +4,7 @@ extends CanvasLayer
 
 func _process(delta):
 	if Input.is_action_just_pressed("toggle_editor"):
+		object_cursor.can_place = !object_cursor.can_place
 		Global.playing = !Global.playing
 		visible = !Global.playing
 
