@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxljouu0qx7js"]
+[gd_scene load_steps=7 format=3 uid="uid://cxljouu0qx7js"]
 
 [ext_resource type="Texture2D" uid="uid://c4fmqgou47iuk" path="res://res/img/carga_puntual.png" id="1_0680k"]
 [ext_resource type="Script" path="res://scenes/Entity/entity.gd" id="1_l631i"]
-[ext_resource type="Texture2D" uid="uid://bqc1j7h8wblrf" path="res://res/img/varilla.png" id="2_2pqhi"]
+[ext_resource type="Texture2D" uid="uid://ds2x1oki23xyb" path="res://res/img/varilla.png" id="2_2pqhi"]
+[ext_resource type="Texture2D" uid="uid://ddgmcaf5loj1" path="res://res/img/anillo.png" id="2_gx6j1"]
+[ext_resource type="Texture2D" uid="uid://d2hkihq4k6nqb" path="res://res/img/placa.png" id="3_nhi47"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_legnp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gx6j1")
+}],
+"loop": true,
+"name": &"anillo",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_0680k")
@@ -17,6 +27,14 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nhi47")
+}],
+"loop": true,
+"name": &"placa",
 "speed": 5.0
 }, {
 "frames": [{
@@ -35,7 +53,6 @@ script = ExtResource("1_l631i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_legnp")
-animation = &"carga"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

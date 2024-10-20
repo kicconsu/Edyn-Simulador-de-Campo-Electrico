@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://xejgaqbudtn1"]
+[gd_scene load_steps=7 format=3 uid="uid://xejgaqbudtn1"]
 
 [ext_resource type="PackedScene" uid="uid://b3imda8g3dp16" path="res://scenes/Items/item_carga.tscn" id="1_piavd"]
 [ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
 [ext_resource type="Script" path="res://scenes/scroll_container.gd" id="2_oxr0c"]
-[ext_resource type="PackedScene" uid="uid://ddkc207msyt1g" path="res://scenes/Items/item_varilla.tscn" id="3_dexg2"]
+[ext_resource type="PackedScene" uid="uid://ddkc207msyt1g" path="res://scenes/Items/item_placa.tscn" id="3_dexg2"]
+[ext_resource type="PackedScene" uid="uid://damct78o1ve6n" path="res://scenes/Items/item_varilla.tscn" id="5_uehln"]
+[ext_resource type="PackedScene" uid="uid://bokvhbebkndh1" path="res://scenes/Items/item_anillo.tscn" id="6_aat22"]
 
 [node name="Item_Select" type="CanvasLayer"]
 script = ExtResource("1_qaeus")
@@ -41,10 +43,16 @@ size_flags_vertical = 3
 [node name="item_carga" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_piavd")]
 layout_mode = 2
 
-[node name="item_varilla" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
+[node name="item_placa" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch_mode = 3
+
+[node name="item_varilla" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_uehln")]
+layout_mode = 2
+
+[node name="item_anillo" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_aat22")]
+layout_mode = 2
 
 [connection signal="mouse_entered" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_exited"]

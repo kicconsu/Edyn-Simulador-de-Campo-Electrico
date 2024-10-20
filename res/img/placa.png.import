@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds2x1oki23xyb"
-path="res://.godot/imported/varilla.png-21b60a2316e5cd3e6003ecb9e4a83539.ctex"
+uid="uid://d2hkihq4k6nqb"
+path="res://.godot/imported/placa.png-127a96d7f84f63252d6a529c3918aa98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/img/varilla.png"
-dest_files=["res://.godot/imported/varilla.png-21b60a2316e5cd3e6003ecb9e4a83539.ctex"]
+source_file="res://res/img/placa.png"
+dest_files=["res://.godot/imported/placa.png-127a96d7f84f63252d6a529c3918aa98.ctex"]
 
 [params]
 

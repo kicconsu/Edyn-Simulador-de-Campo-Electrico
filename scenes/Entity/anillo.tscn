@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cugq1hjveg3y7"]
+
+[ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_vsad1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qij4w"]
+radius = 50.9608
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70yn4"]
+radius = 41.2311
+
+[node name="Anillo" instance=ExtResource("1_vsad1")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_qij4w")
+debug_color = Color(3.1285e-07, 0.354656, 0.417199, 0.42)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+animation = &"anillo"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_70yn4")
+debug_color = Color(0, 0.6, 0.701961, 0)
