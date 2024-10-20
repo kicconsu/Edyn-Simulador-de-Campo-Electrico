@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dyisxk2o7p0rk" path="res://scenes/Entity/carga.tscn" id="3_unjjw"]
 
 [node name="item_carga" instance=ExtResource("1_2aq5y")]
-offset_right = 187.0
-offset_bottom = 140.0
+offset_right = 103.0
+offset_bottom = 77.0
 texture = ExtResource("2_ttyvw")
 expand_mode = 3
 stretch_mode = 5
