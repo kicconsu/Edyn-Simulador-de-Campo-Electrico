@@ -6,24 +6,36 @@ extends Camera3D
 
 var velocity = Vector3.ZERO
 var lookAngles = Vector2.ZERO
+var cursor_visible = true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
-	lookAngles.y = clamp(lookAngles.y, PI / -2, PI / 2)
-	set_rotation(Vector3(lookAngles.y, lookAngles.x, 0))
-	var direction = updateDirection()
-	if direction.length_squared() > 0:
-		velocity += direction * acceleration
-	if velocity.length() > moveSpeed:
-		velocity = velocity.normalized() * moveSpeed
-		
-	translate(velocity  * delta)
+
+	if Input.get_mouse_mode() == 2:
+		lookAngles.y = clamp(lookAngles.y, PI / -2, PI / 2)
+		set_rotation(Vector3(lookAngles.y, lookAngles.x, 0))
+		var direction = updateDirection()
+		if direction.length_squared() > 0:
+			velocity += direction * acceleration
+		if velocity.length() > moveSpeed:
+			velocity = velocity.normalized() * moveSpeed
+			
+		translate(velocity  * delta)
 
 		
 
 func _input(event):
+	
+	if Input.is_action_just_pressed("TAB"):
+		cursor_visible = !cursor_visible  # Alterna entre visible/invisible
+		if !cursor_visible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Muestra el cursor
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Oculta el cursor
+			
+	
 	#Mouse Rotation
 	if event is InputEventMouseMotion:
 		lookAngles -= event.relative / mouseSpeed
