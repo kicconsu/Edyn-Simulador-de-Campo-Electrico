@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://daosd7lwlijyq"]
+
+[ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
+[ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
+[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
+
+[sub_resource type="Environment" id="Environment_0mu3j"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
+reflected_light_source = 1
+
+[node name="3dTest" type="Node3D"]
+script = ExtResource("1_qepy6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0mu3j")
+
+[node name="3dCharge6" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(0.81187, -0.583839, 0, 0.583839, 0.81187, 0, 0, 0, 0.999999, 1.12411, 0.210501, 2.67793)
+type = 4
+char = 0.079
+radius = 1.0
+transparency = 70
+
+[node name="3dCharge7" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(0.978974, 0.203983, 0, -0.203983, 0.978974, 0, 0, 0, 0.999999, 0.3145, 4.15843, 2.67793)
+type = 4
+char = -0.134
+radius = 1.0
+transparency = 51
+
+[node name="3dCharge8" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.999999, 0, 0.999999, -4.37114e-08, 1.41047, 2.62043, 0.618198)
+type = 3
+char = -34.949
+radius = 0.075
+
+[node name="3dCharge9" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 3.03396, 2.62043, 3.83564)
+type = 3
+char = 22.209
+radius = 0.075
+
+[node name="3dContainer" parent="." instance=ExtResource("1_eried")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)
+resolution = 10
+box_color = Color(1, 0, 0.866667, 1)
+maxthick = 0.007
+alpha_sensitivity = 13.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)

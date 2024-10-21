@@ -23,6 +23,7 @@ window/stretch/aspect="keep_height"
 [file_customization]
 
 folder_colors={
+"res://addons/": "gray",
 "res://res/": "gray",
 "res://res/classes/": "pink",
 "res://res/fonts/": "blue",
