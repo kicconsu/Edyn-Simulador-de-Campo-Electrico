@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4wfk542rs3hk"]
+[gd_scene load_steps=3 format=3 uid="uid://c2lhuajjcrpex"]
 
-[ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_ytd8c"]
+[ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_hyle3"]
+[ext_resource type="Texture2D" uid="uid://d2hkihq4k6nqb" path="res://res/img/placa.png" id="2_bynd6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhnwl"]
-size = Vector2(238, 118)
+[node name="Placa" instance=ExtResource("1_hyle3")]
+type = 4
 
-[node name="Varilla" instance=ExtResource("1_ytd8c")]
-
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-9, 30)
-shape = SubResource("RectangleShape2D_fhnwl")
-
-[node name="AnimatedSprite2D" parent="." index="1"]
-position = Vector2(-8, 29.75)
-scale = Vector2(0.7, 1.085)
-animation = &"placa"
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bynd6")

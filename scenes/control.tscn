@@ -1,60 +1,189 @@
-[gd_scene load_steps=7 format=3 uid="uid://xejgaqbudtn1"]
+[gd_scene load_steps=16 format=3 uid="uid://xejgaqbudtn1"]
 
 [ext_resource type="PackedScene" uid="uid://b3imda8g3dp16" path="res://scenes/Items/item_carga.tscn" id="1_piavd"]
 [ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
+[ext_resource type="Texture2D" uid="uid://bgtp1jp51qh0x" path="res://res/img/TAB.png" id="2_b7ruj"]
 [ext_resource type="Script" path="res://scenes/scroll_container.gd" id="2_oxr0c"]
 [ext_resource type="PackedScene" uid="uid://ddkc207msyt1g" path="res://scenes/Items/item_placa.tscn" id="3_dexg2"]
+[ext_resource type="FontFile" uid="uid://cdrib51afqpq" path="res://res/fonts/ConcertOne-Regular.ttf" id="3_g404t"]
 [ext_resource type="PackedScene" uid="uid://damct78o1ve6n" path="res://scenes/Items/item_varilla.tscn" id="5_uehln"]
 [ext_resource type="PackedScene" uid="uid://bokvhbebkndh1" path="res://scenes/Items/item_anillo.tscn" id="6_aat22"]
+[ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="7_yjglu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkgbn"]
+font = ExtResource("3_g404t")
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhnwl"]
+size = Vector2(214, 116)
+
+[sub_resource type="PackedScene" id="PackedScene_v65g4"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Varilla", "AnimatedSprite2D", "position", "scale", "animation", "CollisionShape2D", "shape"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 0, 0, 2147483647, 262145, -1, 3, 2, 1, 3, 2, 4, 3, 0, 0, 0, 2147483647, 524293, -1, 2, 2, 4, 6, 5, 0),
+"variants": [ExtResource("7_yjglu"), Vector2(-10, 27.75), Vector2(0.686667, 1.045), &"placa", Vector2(-10, 27), SubResource("RectangleShape2D_fhnwl")],
+"version": 3
+}
+
+[sub_resource type="Animation" id="Animation_6udsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_66ys2"]
+resource_name = "upside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agarw"]
+_data = {
+"RESET": SubResource("Animation_6udsi"),
+"upside": SubResource("Animation_66ys2")
+}
 
 [node name="Item_Select" type="CanvasLayer"]
 script = ExtResource("1_qaeus")
 
-[node name="TabContainer" type="TabContainer" parent="."]
-offset_left = 797.0
-offset_top = 1.0
-offset_right = 1150.0
-offset_bottom = 185.0
-current_tab = 0
+[node name="TabMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
 
-[node name="Cuerpos_2D" type="TabBar" parent="TabContainer"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Cuerpos_2D"]
+[node name="Tab" type="TextureRect" parent="TabMenu"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.74
+anchor_right = 0.5
+anchor_bottom = 0.26
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_b7ruj")
+
+[node name="Label" type="Label" parent="TabMenu/Tab"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.528
+anchor_right = 0.5
+anchor_bottom = 0.538
+offset_left = -124.0
+offset_top = -30.264
+offset_right = 111.0
+offset_bottom = 30.856
+grow_horizontal = 2
+grow_vertical = 2
+text = "TAB"
+label_settings = SubResource("LabelSettings_xkgbn")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabMenu/Tab"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.005
+anchor_top = 0.583
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.24
+offset_top = -0.104004
+offset_right = -11.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_oxr0c")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Cuerpos_2D/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabMenu/Tab/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 235
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 3
-
-[node name="item_carga" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_piavd")]
+[node name="item_carga" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("1_piavd")]
 layout_mode = 2
 
-[node name="item_placa" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
+[node name="item_placa" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch_mode = 3
+this_scene = SubResource("PackedScene_v65g4")
 
-[node name="item_varilla" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_uehln")]
+[node name="item_varilla" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("5_uehln")]
 layout_mode = 2
 
-[node name="item_anillo" parent="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_aat22")]
+[node name="item_anillo" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("6_aat22")]
 layout_mode = 2
 
-[connection signal="mouse_entered" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_entered"]
-[connection signal="mouse_exited" from="TabContainer/Cuerpos_2D" to="." method="_on_cuerpos_2d_mouse_exited"]
-[connection signal="mouse_entered" from="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
-[connection signal="mouse_exited" from="TabContainer/Cuerpos_2D/ScrollContainer/VBoxContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
+[node name="Animation" type="AnimationPlayer" parent="TabMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_agarw")
+}
+
+[connection signal="mouse_entered" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_exited" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_exited"]
+[connection signal="mouse_entered" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]

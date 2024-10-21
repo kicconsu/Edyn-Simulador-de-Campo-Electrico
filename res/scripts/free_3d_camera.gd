@@ -9,7 +9,7 @@ func _ready():
 	camera_3d.set_current(true)
 	toggle = false
 
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func _input(event):

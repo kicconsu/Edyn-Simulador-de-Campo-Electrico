@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://cxljouu0qx7js" path="res://scenes/Entity/entity.tscn" id="1_ytkfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g586"]
-radius = 51.2445
+radius = 44.1022
 
 [node name="Carga" instance=ExtResource("1_ytkfq")]
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_0g586")
-
-[node name="AnimatedSprite2D" parent="." index="1"]
-position = Vector2(11, 7)
+[node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(0.41625, 0.406667)
 animation = &"carga"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-11, -12)
+shape = SubResource("CircleShape2D_0g586")

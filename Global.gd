@@ -1,3 +1,3 @@
 extends Node
 
-var playing = false
+var playing = true

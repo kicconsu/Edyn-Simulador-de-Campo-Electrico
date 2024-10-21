@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/Items/item_texture.tscn" id="1_y5dp7"]
 [ext_resource type="Texture2D" uid="uid://d2hkihq4k6nqb" path="res://res/img/placa.png" id="2_20xby"]
-[ext_resource type="PackedScene" uid="uid://b4wfk542rs3hk" path="res://scenes/Entity/Placa.tscn" id="3_73d7g"]
+[ext_resource type="PackedScene" uid="uid://c2lhuajjcrpex" path="res://scenes/Entity/placa.tscn" id="3_hfydw"]
 
 [node name="item_placa" instance=ExtResource("1_y5dp7")]
 offset_right = 87.0
@@ -10,4 +10,4 @@ offset_bottom = 18.0
 texture = ExtResource("2_20xby")
 expand_mode = 3
 stretch_mode = 5
-this_scene = ExtResource("3_73d7g")
+this_scene = ExtResource("3_hfydw")
