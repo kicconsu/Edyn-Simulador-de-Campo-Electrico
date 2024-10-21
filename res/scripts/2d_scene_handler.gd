@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 #Script in charge of handling the 2D simulation.
@@ -93,7 +94,7 @@ func render_ecamp() -> Image:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGF, outputBytes)
-	#_check_pixels(ecamp)
+	#self._check_pixels(ecamp)
 	return ecamp
 
 func refresh_uniforms() -> void:
@@ -144,10 +145,17 @@ func _charges_uniform_update() -> RDUniform:
 	var c:int = 0
 	for charge in charges:
 		var chargeTransform:Transform2D = charge.get_global_transform()
+		# 8 bytes at 0
 		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y]).to_byte_array())
+		# 4 bytes at 8
 		chargeBytes.append_array(PackedFloat32Array([chargeTransform.get_rotation()]).to_byte_array())
+		# 4 bytes at 12
 		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
-		chargeBytes.append_array(PackedInt32Array([charge.type, 0]).to_byte_array())
+		# 4 bytes at 16 + 4*3 bytes to align info
+		chargeBytes.append_array(PackedInt32Array([charge.type, -1, -1, -1]).to_byte_array())
+		# 16 bytes at 32
+		chargeBytes.append_array((PackedFloat32Array([charge.info.x, charge.info.y, charge.info.z, charge.info.w]).to_byte_array()))
+		#size:48, no padding
 		#print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
 		c += 1
 	#Uniform setup

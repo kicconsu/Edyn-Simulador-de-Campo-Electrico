@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://daosd7lwlijyq"]
+
+[ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
+[ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
+[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
+
+[sub_resource type="Environment" id="Environment_0mu3j"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="3dTest" type="Node3D"]
+script = ExtResource("1_qepy6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0mu3j")
+
+[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66777, 3.64151, 1.97261)
+rotation_edit_mode = 2
+type = 1
+char = 0.0
+radius = 2.515
+
+[node name="3dCharge4" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(0.664108, 0, 0.747635, 0, 1, 0, -0.747635, 0, 0.664108, 1.99249, 2.994, 4.36116)
+char = 0.0
+radius = 0.0
+
+[node name="3dCharge5" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(-0.103832, 0.875056, 0.472752, 0.379962, -0.40437, 0.831933, 0.919155, 0.266009, -0.290502, 4.05777, 1.82908, 1.68627)
+type = 4
+char = 0.1
+radius = 0.915
+
+[node name="3dContainer" parent="." instance=ExtResource("1_eried")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)
+resolution = 10
+box_color = Color(1, 0, 0.866667, 1)
+minthick = 0.012
+maxthick = 0.007
+alpha_sensitivity = 13.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)
