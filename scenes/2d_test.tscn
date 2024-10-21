@@ -14,45 +14,23 @@ script = ExtResource("1_qj7e4")
 [node name="2dContainer" parent="." instance=ExtResource("2_g718h")]
 res = 100
 
-[node name="2dCharge" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(465, 26)
-char = -1000.0
-info = Vector4(-3, 1, 4, 7)
-
 [node name="2dCharge2" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-321, -24)
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge5" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(192, -107)
+position = Vector2(-248, -198)
+char = 50.0
 info = Vector4(1, 2, -45, 8)
 
 [node name="2dCharge6" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-118, 4)
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge7" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(251, -163)
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge8" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-235, 223)
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge9" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(29, 147)
-info = Vector4(1, 2, -45, 8)
+position = Vector2(255, -79)
+type = 4
+char = -0.001
+info = Vector4(200, 500, 90, 5.055)
 
 [node name="2dCharge10" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-293, -205)
+position = Vector2(-330, 59)
+char = 20.0
 info = Vector4(1, 2, -45, 8)
 
-[node name="2dCharge3" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(341, 26)
-char = 1000.0
-info = Vector4(-3, 1, 4, 7)
-
 [node name="2dCharge4" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(79, 37)
+position = Vector2(33, 158)
 char = -20.0
 info = Vector4(-3, 1, 4, 7)

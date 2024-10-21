@@ -71,8 +71,7 @@ vec3 pointCharge(float charge, vec3 ri, vec3 p){
     vec3 r = p - ri;
     float dist = length(r);
 
-    charge = charge/pow(10, 6);
-    dist = dist*pow(10, 2);
+    //dist = dist*pow(10, 2);
 
     if (dist == 0){
         return vec3(0,0,0);
@@ -105,7 +104,7 @@ vec3 infinitePlane(float sigma, vec3 n, vec3 ri, vec3 p){
 vec3 infiniteCilinder(float rho, float R, vec3 ri, vec3 d, vec3 p){
     vec3 v = p - ri;
 
-    vec3 proj = v - dot(v, d)*d;
+    vec3 proj =dot(v, d)*d;
 
     //Distancia radial
     vec3 dist = v - proj;
@@ -123,7 +122,7 @@ vec3 infiniteLine(float lambda, vec3 ri, vec3 d, vec3 p){
 
     vec3 v = p - ri;
 
-    vec3 proj = v - dot(v, d)*d;
+    vec3 proj = (dot(v, d)*d);
 
     //Distancia radial
     vec3 dist = v - proj;
@@ -140,7 +139,7 @@ vec3 chargedSphere(float Q, float R, vec3 ri, vec3 p) {
 
     // Dentro de la esfera
     if (dist < R) {
-        return Q*dist/(R*R*R)*normalize(r);
+        return k*Q*dist/(R*R*R)*normalize(r);
     }
 
     // Fuera de la esfera, se resuelve para cargas puntuales
@@ -152,6 +151,7 @@ vec3 calculateField(vec3 point){
     vec3 field = vec3(0, 0, 0);
     for(int i = 0; i < charges.chargeList.length(); i++){
         Charge body = charges.chargeList[i];
+        body.char /= pow(10, 10);
         if(body.type == 0){
 
             //pointCharge(float charge, vec3 ri, vec3 p)
@@ -160,7 +160,7 @@ vec3 calculateField(vec3 point){
         } else if (body.type == 1){
 
             //chargedSphere(float Q, float R, vec3 ri, vec3 p)
-            field += chargedSphere(body.char, body.direc[0], body.pos, point);
+            field += chargedSphere(body.char, body.direc[3], body.pos, point);
 
         } else if (body.type == 2){
 
@@ -188,6 +188,6 @@ void main(){
     ivec2 vecIndex = ivec2(gl_GlobalInvocationID.xy);
     vec4 vecCoord = imageLoad(vectors, vecIndex);
     vec3 field = calculateField(vecCoord.xyz);
-    //Charge charg = charges.chargeList[0];
+    Charge charg = charges.chargeList[0];
     imageStore(ecamp, vecIndex, vec4(field,1));
 }

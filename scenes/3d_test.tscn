@@ -16,27 +16,30 @@ script = ExtResource("1_qepy6")
 environment = SubResource("Environment_0mu3j")
 
 [node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.310904, 0.139899, -0.940088, -0.0439272, 0.990166, 0.132824, 0.949425, 0, 0.313992, 2.60879, 6.69359, 2.53425)
-char = 20.0
-
-[node name="3dCharge5" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.310904, 0.139899, -0.940088, -0.0439272, 0.990166, 0.132824, 0.949425, 0, 0.313992, 1.78865, 5.59881, -2.21188)
-char = 20.0
-
-[node name="3dCharge6" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.310904, 0.139899, -0.940088, -0.0439272, 0.990166, 0.132824, 0.949425, 0, 0.313992, 1.78865, 6.10098, 6.94668)
-char = 20.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66777, 3.64151, 1.97261)
+rotation_edit_mode = 2
+type = 1
+char = 0.0
+radius = 2.515
 
 [node name="3dCharge4" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.310904, 0.139899, -0.940088, -0.0439272, 0.990166, 0.132824, 0.949425, 0, 0.313992, 2.60681, 4.41439, 2.48341)
-char = -7.0
+transform = Transform3D(0.664108, 0, 0.747635, 0, 1, 0, -0.747635, 0, 0.664108, 1.99249, 2.994, 4.36116)
+char = 0.0
+radius = 0.0
+
+[node name="3dCharge5" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(-0.103832, 0.875056, 0.472752, 0.379962, -0.40437, 0.831933, 0.919155, 0.266009, -0.290502, 4.05777, 1.82908, 1.68627)
+type = 4
+char = 0.1
+radius = 0.915
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
-resolution = 16
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)
+resolution = 10
 box_color = Color(1, 0, 0.866667, 1)
-minthick = 1e-05
-maxthick = 0.01301
-alpha_sensitivity = 13.5
+minthick = 0.012
+maxthick = 0.007
+alpha_sensitivity = 13.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)

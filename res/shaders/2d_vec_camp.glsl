@@ -170,7 +170,6 @@ vec2 chargedLine(float lambda, float L, int n_segments, float theta, vec2 positi
 
     //Borde inicial de la varilla: posición del centro menos las proyecciones de L/2 en cada eje
     vec2 ri = position - 0.5*L*vec2(cos(theta), sin(theta));
-
     int lim = n_segments/2;
     vec2 field = vec2(0,0); 
     for(int i = -lim; i <= lim; i++){
@@ -198,8 +197,6 @@ vec2 pointCharge(float charge, vec2 position, vec2 point){
     vec2 p = point - position;
     float r = length(p);
     
-    charge = charge/pow(10, 6);
-
     if (r == 0){
         return vec2(0,0);
     }
@@ -213,6 +210,7 @@ vec2 calculateField(vec2 point){
     vec2 field = vec2(0,0);
     for(int i = 0; i < charges.chargeList.length(); i++){
         Charge body = charges.chargeList[i];
+        body.char /= pow(10, 6);
         if(body.type == 0){
 
             //pointCharge(float charge, vec2 position, vec2 point)
@@ -231,7 +229,7 @@ vec2 calculateField(vec2 point){
         } else if(body.type == 3){
 
             //chargedRing(float sigma, float r, float R, int n_radial, int n_angular, vec2 position, vec2 p)
-            chargedRing(body.char, body.info[0], body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
+            field += chargedRing(body.char, body.info[0], body.info[1], int(body.info[2]), int(body.info[3]), body.pos, point);
 
         } else if (body.type == 4){
 
