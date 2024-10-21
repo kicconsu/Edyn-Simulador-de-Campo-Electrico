@@ -149,7 +149,7 @@ func _charges_uniform_update() -> RDUniform:
 		# 12 bytes + 4 packing = 16 - at 0
 		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y, chargeTransform.origin.z, -1]).to_byte_array())
 		# 16 bytes - at 16
-		chargeBytes.append_array(PackedFloat32Array([chargeTransform.basis.z.x, chargeTransform.basis.z.y, chargeTransform.basis.z.z, charge.radius]).to_byte_array())
+		chargeBytes.append_array(PackedFloat32Array([chargeTransform.basis.y.x, chargeTransform.basis.y.y, chargeTransform.basis.y.z, charge.radius]).to_byte_array())
 		# 4 bytes - at 32
 		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
 		# 4 bytes - at 36 -> add 4*2 padding to end with a size of 48

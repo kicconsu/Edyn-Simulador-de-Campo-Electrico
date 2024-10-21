@@ -7,7 +7,8 @@
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
+reflected_light_source = 1
 
 [node name="3dTest" type="Node3D"]
 script = ExtResource("1_qepy6")
@@ -16,28 +17,32 @@ script = ExtResource("1_qepy6")
 environment = SubResource("Environment_0mu3j")
 
 [node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66777, 3.64151, 1.97261)
+transform = Transform3D(0.93075, 0.365477, 0.0114473, 0, 0.0313061, -0.99951, -0.365657, 0.930294, 0.0291382, 4.88965, 2.39627, 2.62597)
 rotation_edit_mode = 2
-type = 1
-char = 0.0
-radius = 2.515
+type = 2
+char = -0.61
+radius = 2.145
 
 [node name="3dCharge4" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.664108, 0, 0.747635, 0, 1, 0, -0.747635, 0, 0.664108, 1.99249, 2.994, 4.36116)
-char = 0.0
-radius = 0.0
+transform = Transform3D(0.802681, -0.596407, 0, 0.596406, 0.802682, 0, 0, 0, 0.999999, 2.94681, 3.90592, 3.30215)
+radius = 0.14
 
 [node name="3dCharge5" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(-0.103832, 0.875056, 0.472752, 0.379962, -0.40437, 0.831933, 0.919155, 0.266009, -0.290502, 4.05777, 1.82908, 1.68627)
+transform = Transform3D(0.0147815, 0.157842, -0.987353, -0.379302, -0.912769, -0.151596, -0.925154, 0.376747, 0.0463777, 3.12387, 3.36694, 4.85366)
+type = 1
+char = -1.418
+radius = 1.0
+
+[node name="3dCharge6" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(-0.834333, 0.5295, -0.153355, 0.50971, 0.84695, 0.151228, 0.20996, 0.0480089, -0.97653, 0.517716, 1.40105, 3.2071)
 type = 4
-char = 0.1
-radius = 0.915
+char = 0.129
+radius = 1.0
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)
 resolution = 10
 box_color = Color(1, 0, 0.866667, 1)
-minthick = 0.012
 maxthick = 0.007
 alpha_sensitivity = 13.0
 
