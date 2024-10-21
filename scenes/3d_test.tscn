@@ -16,28 +16,31 @@ script = ExtResource("1_qepy6")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0mu3j")
 
-[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.93075, 0.365477, 0.0114473, 0, 0.0313061, -0.99951, -0.365657, 0.930294, 0.0291382, 4.88965, 2.39627, 2.62597)
-rotation_edit_mode = 2
-type = 2
-char = -0.61
-radius = 2.145
-
-[node name="3dCharge4" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.802681, -0.596407, 0, 0.596406, 0.802682, 0, 0, 0, 0.999999, 2.94681, 3.90592, 3.30215)
-radius = 0.14
-
-[node name="3dCharge5" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.0147815, 0.157842, -0.987353, -0.379302, -0.912769, -0.151596, -0.925154, 0.376747, 0.0463777, 3.12387, 3.36694, 4.85366)
-type = 1
-char = -1.418
-radius = 1.0
-
 [node name="3dCharge6" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(-0.834333, 0.5295, -0.153355, 0.50971, 0.84695, 0.151228, 0.20996, 0.0480089, -0.97653, 0.517716, 1.40105, 3.2071)
+transform = Transform3D(0.81187, -0.583839, 0, 0.583839, 0.81187, 0, 0, 0, 0.999999, 1.12411, 0.210501, 2.67793)
 type = 4
-char = 0.129
+char = 0.079
 radius = 1.0
+transparency = 70
+
+[node name="3dCharge7" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(0.978974, 0.203983, 0, -0.203983, 0.978974, 0, 0, 0, 0.999999, 0.3145, 4.15843, 2.67793)
+type = 4
+char = -0.134
+radius = 1.0
+transparency = 51
+
+[node name="3dCharge8" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.999999, 0, 0.999999, -4.37114e-08, 1.41047, 2.62043, 0.618198)
+type = 3
+char = -34.949
+radius = 0.075
+
+[node name="3dCharge9" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 3.03396, 2.62043, 3.83564)
+type = 3
+char = 22.209
+radius = 0.075
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)

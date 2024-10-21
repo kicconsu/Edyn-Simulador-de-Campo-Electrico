@@ -1,29 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://x4t8qhmqu10e"]
+[gd_scene load_steps=4 format=3 uid="uid://x4t8qhmqu10e"]
 
 [ext_resource type="Script" path="res://res/scripts/3d_charge.gd" id="1_1me85"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_brgkq"]
+[sub_resource type="SphereMesh" id="SphereMesh_q1bsm"]
 radius = 0.3
 height = 0.6
 radial_segments = 10
 rings = 5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2i7o"]
-shading_mode = 2
-diffuse_mode = 3
-specular_mode = 2
-disable_fog = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nto0f"]
+transparency = 1
+depth_draw_mode = 1
 albedo_color = Color(1, 0.129412, 0.396078, 1)
-
-[sub_resource type="Shader" id="Shader_cao2d"]
-code = "shader_type spatial;
-render_mode cull_disabled;
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ap403"]
-render_priority = 0
-next_pass = SubResource("StandardMaterial3D_q2i7o")
-shader = SubResource("Shader_cao2d")
 
 [node name="3dCharge" type="Node3D" groups=["3D_charges"]]
 script = ExtResource("1_1me85")
@@ -31,5 +19,5 @@ script = ExtResource("1_1me85")
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00472283, 0)
 calculate_tangents = false
-mesh = SubResource("SphereMesh_brgkq")
-material = SubResource("ShaderMaterial_ap403")
+mesh = SubResource("SphereMesh_q1bsm")
+material = SubResource("StandardMaterial3D_nto0f")
