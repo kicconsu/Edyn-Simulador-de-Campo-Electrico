@@ -8,7 +8,7 @@ height = 0.6
 radial_segments = 10
 rings = 5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nto0f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51p71"]
 transparency = 1
 depth_draw_mode = 1
 albedo_color = Color(1, 0.129412, 0.396078, 1)
@@ -20,4 +20,4 @@ script = ExtResource("1_1me85")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00472283, 0)
 calculate_tangents = false
 mesh = SubResource("SphereMesh_q1bsm")
-material = SubResource("StandardMaterial3D_nto0f")
+material = SubResource("StandardMaterial3D_51p71")

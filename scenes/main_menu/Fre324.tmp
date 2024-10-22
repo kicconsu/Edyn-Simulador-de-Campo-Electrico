@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fswgfltm8d4p"]
+[gd_scene load_steps=16 format=3 uid="uid://fswgfltm8d4p"]
 
 [ext_resource type="Script" path="res://res/scripts/free_3d_camera.gd" id="1_83ua7"]
 [ext_resource type="Script" path="res://res/scripts/camera_3d.gd" id="2_pf3u3"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="8_lywrv"]
 [ext_resource type="Texture2D" uid="uid://qk2mhvupqdij" path="res://res/img/4.png" id="9_pm3uv"]
 [ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="10_bj1tg"]
+
+[sub_resource type="Environment" id="Environment_hckor"]
+background_mode = 1
+background_color = Color(0.817954, 0.708278, 0.786659, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xhna"]
 font = ExtResource("4_wns4b")
@@ -80,15 +84,15 @@ _data = {
 process_mode = 3
 script = ExtResource("1_83ua7")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hckor")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247771, 0.659929, -3.15726)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39796, 0)
 script = ExtResource("2_pf3u3")
-
-[node name="Interaction" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -4)
-
-[node name="Hand" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20193)
 
 [node name="TabMenu" type="Control" parent="."]
 layout_mode = 3
@@ -166,7 +170,7 @@ placeholder = ExtResource("8_lywrv")
 layout_mode = 2
 placeholder = ExtResource("9_pm3uv")
 
-[node name="placa" parent="TabMenu/Tab/HBoxContainer" instance=ExtResource("5_o3eh4")]
+[node name="cilindroInfinito" parent="TabMenu/Tab/HBoxContainer" instance=ExtResource("5_o3eh4")]
 layout_mode = 2
 placeholder = ExtResource("10_bj1tg")
 
@@ -175,14 +179,13 @@ libraries = {
 "": SubResource("AnimationLibrary_agarw")
 }
 
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cilindroInfinito/Button" to="." method="_on_button_pressed"]
 
 [editable path="TabMenu/Tab/HBoxContainer/cargas"]
 [editable path="TabMenu/Tab/HBoxContainer/varilla"]
 [editable path="TabMenu/Tab/HBoxContainer/esfera"]
 [editable path="TabMenu/Tab/HBoxContainer/cilindro"]
-[editable path="TabMenu/Tab/HBoxContainer/placa"]
+[editable path="TabMenu/Tab/HBoxContainer/cilindroInfinito"]

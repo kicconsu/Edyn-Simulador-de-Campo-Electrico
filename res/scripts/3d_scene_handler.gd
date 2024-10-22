@@ -163,3 +163,18 @@ func _charges_uniform_update() -> RDUniform:
 	charUniform.binding = 2
 	charUniform.add_id(charBuffer)
 	return charUniform
+
+func _on_cargas_button_pressed():
+	print("cargas")
+
+func _on_varilla_button_pressed():
+	print("varilla")
+	
+func _on_esfera_button_pressed():
+	print("esfera")
+
+func _on_cilindro_button_pressed():
+	print("cilindro")
+
+func _on_placa_button_pressed():
+	print("placa")
