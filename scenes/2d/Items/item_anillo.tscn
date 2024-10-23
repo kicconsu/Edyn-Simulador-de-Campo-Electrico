@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bokvhbebkndh1"]
 
-[ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/Items/item_texture.tscn" id="1_wvd2g"]
+[ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/2d/Items/item_texture.tscn" id="1_wvd2g"]
 [ext_resource type="Texture2D" uid="uid://ddgmcaf5loj1" path="res://res/img/anillo.png" id="2_bwd7r"]
-[ext_resource type="PackedScene" uid="uid://cugq1hjveg3y7" path="res://scenes/Entity/anillo.tscn" id="3_t25ty"]
+[ext_resource type="PackedScene" uid="uid://cugq1hjveg3y7" path="res://scenes/2d/Entity/anillo.tscn" id="3_t25ty"]
 
 [node name="item_anillo" instance=ExtResource("1_wvd2g")]
 texture = ExtResource("2_bwd7r")

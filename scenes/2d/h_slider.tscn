@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy2nvtwdjx6lg"]
+
+[ext_resource type="Script" path="res://scenes/2d/h_slider.gd" id="1_73doi"]
+
+[node name="HSlider" type="HSlider"]
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = 0.031
+anchor_right = 0.148
+anchor_bottom = 0.056
+offset_left = -0.280001
+offset_top = -0.0880013
+offset_right = 0.503998
+offset_bottom = -0.288002
+script = ExtResource("1_73doi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.398
+anchor_top = -1.25
+anchor_right = 0.625
+anchor_bottom = 0.187
+offset_left = -0.0480042
+offset_bottom = 0.0079999
+text = "Text"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.818
+anchor_top = -0.531
+anchor_right = 0.818
+anchor_bottom = -0.531
+offset_left = -19.972
+offset_top = -11.504
+offset_right = 20.028
+offset_bottom = 11.496
+text = "value"

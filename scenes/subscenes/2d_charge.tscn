@@ -6,11 +6,11 @@
 size = Vector2(30, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cty72"]
-size = Vector2(302, 102)
+size = Vector2(259, 102)
 
 [node name="2dCharge" type="Area2D" groups=["2D_charges"]]
 script = ExtResource("1_exu8o")
-type = 1
+type = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_2tjkk")

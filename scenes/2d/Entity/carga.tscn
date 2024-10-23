@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy7tvbti6cjlw"]
+
+[ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_yqxih"]
+
+[node name="Carga" instance=ExtResource("1_yqxih")]
+type = 0

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Edyn"
-run/main_scene="res://scenes/2d_test.tscn"
+run/main_scene="res://scenes/2d/2d_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://res/img/icon.svg"
 

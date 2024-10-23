@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ne4ngef1ayk"]
+
+[ext_resource type="PackedScene" uid="uid://csfw2xqp1u66m" path="res://scenes/2d/2d_test.tscn" id="1_cll22"]
+[ext_resource type="Script" path="res://res/scripts/editor_object.gd" id="2_3anxy"]
+[ext_resource type="PackedScene" uid="uid://xejgaqbudtn1" path="res://scenes/2d/control.tscn" id="3_fbqbr"]
+
+[node name="main" type="Node2D"]
+
+[node name="2dTest" parent="." instance=ExtResource("1_cll22")]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Editor_Object" type="Node2D" parent="."]
+script = ExtResource("2_3anxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Editor_Object"]
+
+[node name="Item_Select" parent="." instance=ExtResource("3_fbqbr")]
+
+[node name="cam_container" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="cam_container"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2lhuajjcrpex"]
+
+[ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_ifk15"]
+
+[node name="Placa" instance=ExtResource("1_ifk15")]
+char = -0.001
+info = Vector4(300, 150, 8, 0)
