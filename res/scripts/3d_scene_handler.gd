@@ -1,6 +1,10 @@
 @tool
 extends Node3D
 
+#Raycast Variable
+@onready var interaction = $Free3dSpace/Camera3D/Interaction
+@onready var _3d_charge = $"3dCharge"
+
 #Script in charge of handling the 3D simulation.
 #Mainly, dispatches de 3d_vec_camp shader.
 
@@ -21,6 +25,8 @@ var ecamp:Image
 var img_width:int
 var img_height:int
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	posmat = $"3dContainer".pos_img
@@ -37,6 +43,16 @@ func _process(delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"3dContainer".offset_vectors(ecamp)
+	
+	if interaction.is_colliding():
+		
+		var collider = interaction.get_collider()
+		
+		print(collider.get_groups())
+				
+		if collider.is_in_group("3D_charges"):
+			
+			print("bingo")
 
 func setup_compute() -> void:
 	# Create shader from shadefile and create pipeline

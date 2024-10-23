@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fswgfltm8d4p"]
+[gd_scene load_steps=18 format=3 uid="uid://fswgfltm8d4p"]
 
 [ext_resource type="Script" path="res://res/scripts/free_3d_camera.gd" id="1_83ua7"]
 [ext_resource type="Script" path="res://res/scripts/camera_3d.gd" id="2_pf3u3"]
@@ -10,6 +10,90 @@
 [ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="8_lywrv"]
 [ext_resource type="Texture2D" uid="uid://qk2mhvupqdij" path="res://res/img/4.png" id="9_pm3uv"]
 [ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="10_bj1tg"]
+
+[sub_resource type="Animation" id="Animation_g6k08"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:projection")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="Animation" id="Animation_nhdkf"]
+resource_name = "changeProjection"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:projection")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jwke"]
+_data = {
+"RESET": SubResource("Animation_g6k08"),
+"changeProjection": SubResource("Animation_nhdkf")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xhna"]
 font = ExtResource("4_wns4b")
@@ -82,15 +166,20 @@ script = ExtResource("1_83ua7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39796, 0)
+size = 20.0
 script = ExtResource("2_pf3u3")
 
 [node name="Interaction" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -4)
+collision_mask = 2
 
-[node name="Hand" type="Marker3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.20193)
+[node name="Projection" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_1jwke")
+}
 
 [node name="TabMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5

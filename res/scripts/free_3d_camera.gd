@@ -2,27 +2,27 @@ extends Node3D
 
 @onready var camera_3d = $Camera3D
 @onready var animation = $TabMenu/Animation
-
-@onready var interaction = $Camera3D/Interaction
-@onready var hand = $Camera3D/Hand
+@onready var projection = $Camera3D/Projection
 
 var picked_object
 var pull_power = 4
 
 var toggle : bool
+var changeProjection = false
 
 func _ready():
 	camera_3d.set_current(true)
 	toggle = false
-
-func pick_object():
-	var collider = interaction.get_collider()
-	
-	if collider != null and collider.is_in_group("3D_charges"):
-		print("A")
-		
 	
 func _input(event):
+	
+	if Input.is_action_just_pressed("changeProjection"):
+		if changeProjection:
+			projection.play_backwards("changeProjection")
+			changeProjection = !changeProjection
+		else:
+			projection.play("changeProjection")
+			changeProjection = !changeProjection
 	
 	if Input.is_action_just_pressed("TAB"):
 		

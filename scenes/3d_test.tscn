@@ -12,6 +12,7 @@ ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
 reflected_light_source = 1
 
 [node name="3dTest" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383223)
 script = ExtResource("1_qepy6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -28,18 +29,10 @@ alpha_sensitivity = 13.0
 transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)
 
 [node name="Free3dSpace" parent="." instance=ExtResource("4_u331y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.4613, 1, 3)
 
 [node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.9999, 0, -0.0141716, 0, 1, 0, 0.0141716, 0, 0.9999, 0.382563, 3.3257, 4.37242)
-type = 1
-radius = 0.75
-
-[node name="3dCharge2" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34918, 0.734057, 0.682792)
-
-[node name="3dCharge3" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40396, 0, 0)
-type = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37951, 2.84526, 2.05129)
 
 [connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
 [connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
