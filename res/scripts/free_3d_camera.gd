@@ -28,14 +28,11 @@ func _input(event):
 		
 		if !toggle:
 			animation.play("upside")
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 			toggle = !toggle
 		else:
 			animation.play_backwards("upside")
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) 
 			toggle = !toggle
 
 func _on_button_pressed():
 	animation.play_backwards("upside")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) 
 	toggle = false

@@ -4,6 +4,7 @@ extends Node3D
 #Raycast Variable
 @onready var interaction = $Free3dSpace/Camera3D/Interaction
 @onready var _3d_charge = $"3dCharge"
+@onready var F3D = $Free3dSpace
 
 #Script in charge of handling the 3D simulation.
 #Mainly, dispatches de 3d_vec_camp shader.
@@ -181,16 +182,36 @@ func _charges_uniform_update() -> RDUniform:
 	return charUniform
 
 func _on_cargas_button_pressed():
-	print("cargas")
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
 
+		
 func _on_varilla_button_pressed():
-	print("varilla")
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 2
+	instance.radius = 1
 	
 func _on_esfera_button_pressed():
-	print("esfera")
-
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 1
+	instance.radius = 1
+	
 func _on_cilindro_button_pressed():
-	print("cilindro")
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 3
+	instance.radius = .3
 
 func _on_placa_button_pressed():
-	print("placa")
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,0,2.2)
+	instance.type = 4
+	instance.char = 0.05
+	

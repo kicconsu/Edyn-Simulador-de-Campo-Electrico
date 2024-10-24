@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 	elif(self.type == 4):
 		if(not is_instance_of(mesh.mesh, PlaneMesh)):
 			mesh.set_mesh(PlaneMesh.new())
-			mesh.mesh.size.x = 10
-			mesh.mesh.size.y = 10
+			mesh.mesh.size.x = 5
+			mesh.mesh.size.y = 5
 			mesh.material.set_cull_mode(2)
 		
