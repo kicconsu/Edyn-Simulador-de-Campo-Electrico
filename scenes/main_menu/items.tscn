@@ -45,5 +45,3 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

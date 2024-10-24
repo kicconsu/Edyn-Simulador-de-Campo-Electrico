@@ -1,0 +1,166 @@
+[gd_scene load_steps=13 format=3 uid="uid://xf56jn3v7guc"]
+
+[ext_resource type="Texture2D" uid="uid://bgtp1jp51qh0x" path="res://res/img/TAB.png" id="1_jlvum"]
+[ext_resource type="FontFile" uid="uid://cdrib51afqpq" path="res://res/fonts/ConcertOne-Regular.ttf" id="2_uiqd8"]
+[ext_resource type="PackedScene" uid="uid://behdmgx5a6ftv" path="res://scenes/main_menu/items.tscn" id="3_8olfs"]
+[ext_resource type="Texture2D" uid="uid://dfdm7rs265bfg" path="res://res/img/1.png" id="4_nvw7d"]
+[ext_resource type="Texture2D" uid="uid://brbe6yqwfu3xg" path="res://res/img/2.png" id="5_25ukb"]
+[ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="6_mr4tj"]
+[ext_resource type="Texture2D" uid="uid://qk2mhvupqdij" path="res://res/img/4.png" id="7_jqpob"]
+[ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="8_e6s83"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7xhna"]
+font = ExtResource("2_uiqd8")
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6udsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_66ys2"]
+resource_name = "upside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agarw"]
+_data = {
+"RESET": SubResource("Animation_6udsi"),
+"upside": SubResource("Animation_66ys2")
+}
+
+[node name="TabMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="Tab" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.74
+anchor_right = 0.5
+anchor_bottom = 0.26
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jlvum")
+
+[node name="Label" type="Label" parent="Tab"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.528
+anchor_right = 0.5
+anchor_bottom = 0.538
+offset_left = -39.5
+offset_top = -30.5
+offset_right = 39.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "TAB"
+label_settings = SubResource("LabelSettings_7xhna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Tab"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -544.0
+offset_top = 75.6
+offset_right = 546.0
+offset_bottom = 215.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 235
+
+[node name="cargas" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("4_nvw7d")
+
+[node name="varilla" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("5_25ukb")
+
+[node name="esfera" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("6_mr4tj")
+
+[node name="cilindro" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("7_jqpob")
+
+[node name="placa" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("8_e6s83")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_agarw")
+}
+
+[editable path="Tab/HBoxContainer/cargas"]
+[editable path="Tab/HBoxContainer/varilla"]
+[editable path="Tab/HBoxContainer/esfera"]
+[editable path="Tab/HBoxContainer/cilindro"]
+[editable path="Tab/HBoxContainer/placa"]
