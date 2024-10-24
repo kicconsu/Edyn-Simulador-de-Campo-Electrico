@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=6 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
-[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
 [ext_resource type="PackedScene" uid="uid://8d0vtt6vwv4p" path="res://scenes/camera_3d.tscn" id="4_lrwd0"]
 [ext_resource type="PackedScene" uid="uid://xf56jn3v7guc" path="res://scenes/tab_menu.tscn" id="5_lio4d"]
 
@@ -20,15 +19,10 @@ script = ExtResource("1_qepy6")
 environment = SubResource("Environment_0mu3j")
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0735449)
-resolution = 10
+resolution = 8
 box_color = Color(1, 0, 0.866667, 1)
 maxthick = 0.007
 alpha_sensitivity = 13.0
-
-[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78429, 2.40082, 7.98456)
-visible = false
 
 [node name="Camera3D" parent="." instance=ExtResource("4_lrwd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76628, 1.39796, 6.79339)
