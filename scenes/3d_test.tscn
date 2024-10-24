@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=7 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
 [ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
-[ext_resource type="PackedScene" uid="uid://fswgfltm8d4p" path="res://scenes/main_menu/Free 3D Camera.tscn" id="4_u331y"]
+[ext_resource type="PackedScene" uid="uid://8d0vtt6vwv4p" path="res://scenes/camera_3d.tscn" id="4_lrwd0"]
+[ext_resource type="PackedScene" uid="uid://xf56jn3v7guc" path="res://scenes/tab_menu.tscn" id="5_lio4d"]
 
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
@@ -35,15 +36,22 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.461
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78429, 2.40082, 7.98456)
 visible = false
 
-[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
-[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
-[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
-[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
-[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+[node name="Camera3D" parent="." instance=ExtResource("4_lrwd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76628, 1.39796, 6.79339)
+current = true
 
-[editable path="Free3dSpace"]
-[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/cargas"]
-[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/varilla"]
-[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/esfera"]
-[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/cilindro"]
-[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/placa"]
+[node name="TabMenu" parent="." instance=ExtResource("5_lio4d")]
+
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+
+[editable path="Camera3D"]
+[editable path="TabMenu"]
+[editable path="TabMenu/Tab/HBoxContainer/cargas"]
+[editable path="TabMenu/Tab/HBoxContainer/varilla"]
+[editable path="TabMenu/Tab/HBoxContainer/esfera"]
+[editable path="TabMenu/Tab/HBoxContainer/cilindro"]
+[editable path="TabMenu/Tab/HBoxContainer/placa"]
