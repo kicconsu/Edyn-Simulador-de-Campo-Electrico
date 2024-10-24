@@ -1,6 +1,15 @@
 @tool
 extends Node3D
 
+# Gui and Camera Variables
+@onready var _3d_charge = $"3dCharge"
+@onready var camera_3d = $Camera3D
+@onready var animation = $TabMenu/Animation
+@onready var projection = $Camera3D/Projection
+
+var toggle : bool
+var changeProjection = false
+
 #Script in charge of handling the 3D simulation.
 #Mainly, dispatches de 3d_vec_camp shader.
 
@@ -23,6 +32,10 @@ var img_height:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	camera_3d.set_current(true)
+	toggle = false
+	
 	posmat = $"3dContainer".pos_img
 	img_width = posmat.get_width()
 	img_height = posmat.get_height()
@@ -31,6 +44,25 @@ func _ready() -> void:
 	$"3dContainer".offset_vectors(ecamp)
 	#TODO: make it so offset_vectors just swaps out the offset_img in the container. let process() do the rest.
 
+
+func _input(event):
+	
+	if Input.is_action_just_pressed("changeProjection"):
+		if changeProjection:
+			projection.play_backwards("changeProjection")
+			changeProjection = !changeProjection
+		else:
+			projection.play("changeProjection")
+			changeProjection = !changeProjection
+	
+	if Input.is_action_just_pressed("TAB"):
+		
+		if !toggle:
+			animation.play("upside")
+			toggle = !toggle
+		else:
+			animation.play_backwards("upside")
+			toggle = !toggle
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -163,3 +195,48 @@ func _charges_uniform_update() -> RDUniform:
 	charUniform.binding = 2
 	charUniform.add_id(charBuffer)
 	return charUniform
+
+func _on_cargas_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+
+		
+func _on_varilla_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 2
+	instance.radius = 1
+	
+func _on_esfera_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 1
+	instance.radius = 1
+	
+func _on_cilindro_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 3
+	instance.radius = .3
+
+func _on_placa_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(0,0,0)
+	instance.type = 4
+	instance.char = 0.05
+	

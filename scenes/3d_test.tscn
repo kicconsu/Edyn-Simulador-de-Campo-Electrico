@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=7 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
 [ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
+[ext_resource type="PackedScene" uid="uid://8d0vtt6vwv4p" path="res://scenes/camera_3d.tscn" id="4_lrwd0"]
+[ext_resource type="PackedScene" uid="uid://xf56jn3v7guc" path="res://scenes/tab_menu.tscn" id="5_lio4d"]
 
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
@@ -11,43 +13,39 @@ ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
 reflected_light_source = 1
 
 [node name="3dTest" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383223)
 script = ExtResource("1_qepy6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0mu3j")
 
-[node name="3dCharge6" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.81187, -0.583839, 0, 0.583839, 0.81187, 0, 0, 0, 0.999999, 1.12411, 0.210501, 2.67793)
-type = 4
-char = 0.079
-radius = 1.0
-transparency = 70
-
-[node name="3dCharge7" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(0.978974, 0.203983, 0, -0.203983, 0.978974, 0, 0, 0, 0.999999, 0.3145, 4.15843, 2.67793)
-type = 4
-char = -0.134
-radius = 1.0
-transparency = 51
-
-[node name="3dCharge8" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.999999, 0, 0.999999, -4.37114e-08, 1.41047, 2.62043, 0.618198)
-type = 3
-char = -34.949
-radius = 0.075
-
-[node name="3dCharge9" parent="." instance=ExtResource("2_eln2w")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 3.03396, 2.62043, 3.83564)
-type = 3
-char = 22.209
-radius = 0.075
-
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275555, 0, -0.010993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0735449)
 resolution = 10
 box_color = Color(1, 0, 0.866667, 1)
 maxthick = 0.007
 alpha_sensitivity = 13.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)
+[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78429, 2.40082, 7.98456)
+visible = false
+
+[node name="Camera3D" parent="." instance=ExtResource("4_lrwd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76628, 1.39796, 6.79339)
+current = true
+
+[node name="TabMenu" parent="." instance=ExtResource("5_lio4d")]
+
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+
+[editable path="Camera3D"]
+[editable path="TabMenu"]
+[editable path="TabMenu/Tab/HBoxContainer/cargas"]
+[editable path="TabMenu/Tab/HBoxContainer/varilla"]
+[editable path="TabMenu/Tab/HBoxContainer/esfera"]
+[editable path="TabMenu/Tab/HBoxContainer/cilindro"]
+[editable path="TabMenu/Tab/HBoxContainer/placa"]

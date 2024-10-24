@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7bsaanulio6f"]
+
+[ext_resource type="Script" path="res://res/scripts/3d_edit.gd" id="1_63d3q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se85h"]
+bg_color = Color(0.529067, 0.529067, 0.529067, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_75dwe"]
+resource_name = "glow"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabContainer:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.589358, 0.47248, 0.688975, 1), Color(0.443506, 0.522885, 0.731296, 1), Color(0.378642, 0.572336, 0.552015, 1), Color(0.498181, 0.556227, 0.392591, 1), Color(0.68268, 0.471536, 0.387382, 1), Color(0.684461, 0.436602, 0.598068, 1), Color(0.728318, 0.429757, 0.468628, 1), Color(0.589358, 0.47248, 0.688975, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabContainer:theme_override_styles/panel:border_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.589358, 0.47248, 0.688975, 1), Color(0.443506, 0.522885, 0.731296, 1), Color(0.378642, 0.572336, 0.552015, 1), Color(0.498181, 0.556227, 0.392591, 1), Color(0.68268, 0.471536, 0.387382, 1), Color(0.684461, 0.436602, 0.598068, 1), Color(0.728318, 0.429757, 0.468628, 1), Color(0.589358, 0.47248, 0.688975, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_07u68"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TabContainer:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.529067, 0.529067, 0.529067, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TabContainer:theme_override_styles/panel:border_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6vtg"]
+_data = {
+"RESET": SubResource("Animation_07u68"),
+"glow": SubResource("Animation_75dwe")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_63d3q")
+metadata/_edit_horizontal_guides_ = [169.0]
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_right = 308.0
+offset_bottom = 176.0
+theme_override_constants/side_margin = 120
+theme_override_styles/panel = SubResource("StyleBoxFlat_se85h")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Edición" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+metadata/_tab_index = 0
+
+[node name="chargeContainer" type="HBoxContainer" parent="TabContainer/Edición"]
+layout_mode = 2
+
+[node name="charge" type="Label" parent="TabContainer/Edición/chargeContainer"]
+layout_mode = 2
+text = "Carga:
+"
+
+[node name="value" type="Label" parent="TabContainer/Edición/chargeContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="chargeSlider" type="HSlider" parent="TabContainer/Edición"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="radiusContainer" type="HBoxContainer" parent="TabContainer/Edición"]
+layout_mode = 2
+
+[node name="radius" type="Label" parent="TabContainer/Edición/radiusContainer"]
+layout_mode = 2
+text = "Radio:
+"
+
+[node name="value" type="Label" parent="TabContainer/Edición/radiusContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="radiusSlider" type="HSlider" parent="TabContainer/Edición"]
+layout_mode = 2
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p6vtg")
+}
+
+[connection signal="value_changed" from="TabContainer/Edición/chargeSlider" to="." method="_on_charge_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Edición/radiusSlider" to="." method="_on_radius_slider_value_changed"]
