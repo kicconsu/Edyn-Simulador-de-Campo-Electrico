@@ -26,8 +26,6 @@ var ecamp:Image
 var img_width:int
 var img_height:int
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	posmat = $"3dContainer".pos_img
@@ -38,22 +36,11 @@ func _ready() -> void:
 	$"3dContainer".offset_vectors(ecamp)
 	#TODO: make it so offset_vectors just swaps out the offset_img in the container. let process() do the rest.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"3dContainer".offset_vectors(ecamp)
-	
-	if interaction.is_colliding():
-		
-		var collider = interaction.get_collider()
-		
-		print(collider.get_groups())
-				
-		if collider.is_in_group("3D_charges"):
-			
-			print("bingo")
 
 func setup_compute() -> void:
 	# Create shader from shadefile and create pipeline
@@ -214,4 +201,3 @@ func _on_placa_button_pressed():
 	instance.global_position = Vector3(2.5,0,2.2)
 	instance.type = 4
 	instance.char = 0.05
-	

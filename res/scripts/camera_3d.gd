@@ -36,6 +36,29 @@ var _e = false
 var _shift = false
 var _alt = false
 
+var selected : CSGMesh3D
+const RAY_LENGTH = 1000
+func cam_raycast(towards:Vector2) -> CSGMesh3D:
+	var cam = get_viewport().get_camera_3d()
+	
+	var from = cam.project_ray_origin(towards)
+	var to = from + cam.project_ray_normal(towards)*RAY_LENGTH
+	
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_areas = true
+	
+	return get_world_3d().direct_space_state.intersect_ray(query).get("collider")
+
+func select_body(body: CSGMesh3D):
+	if selected != null and selected != body:
+		selected.material_overlay.grow_amount = 0
+	
+	selected = body
+	if selected == null:
+		return
+	
+	selected.material_overlay.grow_amount = 0.05
+
 func _input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
@@ -50,6 +73,13 @@ func _input(event):
 				_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, _vel_multiplier*20)
 			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
 				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, _vel_multiplier*20)
+		
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					if event.pressed:
+						var body = cam_raycast(get_viewport().get_mouse_position())
+						select_body(body)
 
 	# Receives key input
 	if event is InputEventKey:

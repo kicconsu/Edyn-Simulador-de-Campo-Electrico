@@ -179,7 +179,6 @@ libraries = {
 }
 
 [node name="TabMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5

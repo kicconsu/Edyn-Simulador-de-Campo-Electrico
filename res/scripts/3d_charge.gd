@@ -9,6 +9,7 @@ extends Node3D
 
 func _ready() -> void:
 	self.mesh.material = self.mesh.material.duplicate(true)
+	$CSGMesh3D.material_overlay = $CSGMesh3D.material_overlay.duplicate(true)
 
 func _process(_delta: float) -> void:
 	
