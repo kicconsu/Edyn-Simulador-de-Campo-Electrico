@@ -16,14 +16,31 @@ var angle = 0
 
 func _process(_delta):
 	match self.type:
+		0:
+			if self.char >=0:
+				$Sprite2D.texture = preload("res://res/img/carga1.png")
+			else:
+				$Sprite2D.texture = preload("res://res/img/carga2.png")
 		1:
-			$Sprite2D.texture = preload("res://res/img/varilla.png")
+			if self.char >=0:
+				$Sprite2D.texture = preload("res://res/img/varPos.png")
+			else:
+				$Sprite2D.texture = preload("res://res/img/varNeg.png")
 		2: 
-			$Sprite2D.texture = preload("res://res/img/disco.png")
+			if self.char >=0:
+				$Sprite2D.texture = preload("res://res/img/esfPos.png")
+			else:
+				$Sprite2D.texture = preload("res://res/img/esfNeg.png")
 		3: 
-			$Sprite2D.texture = preload("res://res/img/anillo.png")
+			if self.char >= 0:
+				$Sprite2D.texture = preload("res://res/img/anilPos.png")
+			else:
+				$Sprite2D.texture = preload("res://res/img/anisNeg.png")
 		4: 
-			$Sprite2D.texture = preload("res://res/img/placa.png")
+			if self.char >=0:
+				$Sprite2D.texture = preload("res://res/img/placaPos.png")
+			else:
+				$Sprite2D.texture = preload("res://res/img/placaNeg.png")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and hovered and Global.playing:

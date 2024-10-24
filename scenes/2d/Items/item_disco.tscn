@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3imda8g3dp16"]
 
 [ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/2d/Items/item_texture.tscn" id="1_2aq5y"]
-[ext_resource type="Texture2D" uid="uid://c4fmqgou47iuk" path="res://res/img/disco.png" id="2_ttyvw"]
+[ext_resource type="Texture2D" uid="uid://mjplur3ls0li" path="res://res/img/esfPos.png" id="2_rugq6"]
 
 [sub_resource type="Resource" id="Resource_258an"]
 metadata/__load_path__ = "res://scenes/Entity/entity.tscn"
@@ -24,9 +24,8 @@ _bundled = {
 }
 
 [node name="item_carga" instance=ExtResource("1_2aq5y")]
-offset_right = 332.0
-offset_bottom = 213.0
-texture = ExtResource("2_ttyvw")
-expand_mode = 3
-stretch_mode = 5
+offset_right = 82.0
+offset_bottom = 78.0
+texture = ExtResource("2_rugq6")
+expand_mode = 1
 this_scene = SubResource("PackedScene_bgbf2")

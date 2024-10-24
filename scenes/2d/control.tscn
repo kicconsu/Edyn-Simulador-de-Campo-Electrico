@@ -154,6 +154,7 @@ layout_mode = 2
 
 [node name="item_disco" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("1_piavd")]
 layout_mode = 2
+expand_mode = 2
 this_scene = ExtResource("6_7bkq6")
 
 [node name="item_placa" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("3_dexg2")]
@@ -163,9 +164,11 @@ stretch_mode = 3
 
 [node name="item_varilla" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("5_uehln")]
 layout_mode = 2
+expand_mode = 0
 
 [node name="item_anillo" parent="TabMenu/Tab/ScrollContainer/HBoxContainer" instance=ExtResource("6_aat22")]
 layout_mode = 2
+expand_mode = 2
 
 [node name="Animation" type="AnimationPlayer" parent="TabMenu"]
 libraries = {

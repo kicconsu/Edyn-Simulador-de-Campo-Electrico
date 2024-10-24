@@ -1,9 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://damct78o1ve6n"]
 
 [ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/2d/Items/item_texture.tscn" id="1_y5dp7"]
-[ext_resource type="Texture2D" uid="uid://ds2x1oki23xyb" path="res://res/img/varilla.png" id="2_xcvr8"]
+[ext_resource type="Texture2D" uid="uid://dvgtd2pftvyk0" path="res://res/img/varPos.png" id="2_36wjw"]
 [ext_resource type="PackedScene" uid="uid://rqqv5sk0ym6l" path="res://scenes/2d/Entity/varilla.tscn" id="3_73d7g"]
 
 [node name="item_varilla" instance=ExtResource("1_y5dp7")]
-texture = ExtResource("2_xcvr8")
+offset_right = 156.0
+offset_bottom = 21.0
+texture = ExtResource("2_36wjw")
+expand_mode = 1
 this_scene = ExtResource("3_73d7g")
