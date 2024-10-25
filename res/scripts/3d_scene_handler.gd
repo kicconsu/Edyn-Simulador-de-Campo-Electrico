@@ -4,7 +4,7 @@ extends Node3D
 # Gui and Camera Variables
 @onready var _3d_charge = $"3dCharge"
 @onready var camera_3d = $Camera3D
-@onready var animation = $TabMenu/Animation
+@onready var animation = $CanvasLayer/TabMenu/Animation
 @onready var projection = $Camera3D/Projection
 
 var toggle : bool
@@ -45,7 +45,7 @@ func _ready() -> void:
 	#TODO: make it so offset_vectors just swaps out the offset_img in the container. let process() do the rest.
 
 
-func _input(event):
+func _input(_event):
 	
 	if Input.is_action_just_pressed("changeProjection"):
 		if changeProjection:
@@ -65,7 +65,7 @@ func _input(event):
 			toggle = !toggle
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"3dContainer".offset_vectors(ecamp)

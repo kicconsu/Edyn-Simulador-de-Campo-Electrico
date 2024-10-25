@@ -1,16 +1,210 @@
-[gd_scene load_steps=7 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=21 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
 [ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
 [ext_resource type="PackedScene" uid="uid://8d0vtt6vwv4p" path="res://scenes/camera_3d.tscn" id="4_lrwd0"]
 [ext_resource type="PackedScene" uid="uid://xf56jn3v7guc" path="res://scenes/tab_menu.tscn" id="5_lio4d"]
+[ext_resource type="Script" path="res://scenes/ui_handler.gd" id="5_sau0j"]
+[ext_resource type="Texture2D" uid="uid://jmsmuhrn1i5n" path="res://res/img/edit_normal.png" id="6_cyife"]
+[ext_resource type="Texture2D" uid="uid://c2wulqqeey6yh" path="res://res/img/edit_pressed.png" id="7_hijdb"]
+[ext_resource type="Texture2D" uid="uid://dvj3e535vvas7" path="res://res/img/edit_hover.png" id="8_hrjq0"]
 
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
 reflected_light_source = 1
+
+[sub_resource type="Animation" id="Animation_3svlr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.12]
+}
+
+[sub_resource type="Animation" id="Animation_vvlx8"]
+resource_name = "enter_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [-0.12, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [-0.12, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p8tvl"]
+resource_name = "exit_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [0.0, -0.12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjjvi"]
+_data = {
+"RESET": SubResource("Animation_3svlr"),
+"enter_screen": SubResource("Animation_vvlx8"),
+"exit_screen": SubResource("Animation_p8tvl")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oscd2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_dqpkp"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vdaov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lbgow"]
+resource_name = "enter_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [-0.3, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [0.0, 0.3]
+}
+
+[sub_resource type="Animation" id="Animation_p4i37"]
+resource_name = "exit_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [0.0, -0.3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 0.8),
+"update": 0,
+"values": [0.3, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txoah"]
+_data = {
+"RESET": SubResource("Animation_vdaov"),
+"enter_screen": SubResource("Animation_lbgow"),
+"exit_screen": SubResource("Animation_p4i37")
+}
 
 [node name="3dTest" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383223)
@@ -34,18 +228,72 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76628, 1.39796, 6.79339)
 current = true
 
-[node name="TabMenu" parent="." instance=ExtResource("5_lio4d")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_sau0j")
 
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
-[connection signal="pressed" from="TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+[node name="TabMenu" parent="CanvasLayer" instance=ExtResource("5_lio4d")]
+
+[node name="ShowEditPanel" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.92
+anchor_top = -0.12
+anchor_right = 0.95
+anchor_bottom = -0.12
+texture_normal = ExtResource("6_cyife")
+texture_pressed = ExtResource("7_hijdb")
+texture_hover = ExtResource("8_hrjq0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ShowEditPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_yjjvi")
+}
+
+[node name="RemoveBody" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.84
+anchor_top = -0.12
+anchor_right = 0.84
+anchor_bottom = -0.12
+texture_normal = ExtResource("6_cyife")
+texture_pressed = ExtResource("7_hijdb")
+texture_hover = ExtResource("8_hrjq0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/RemoveBody"]
+libraries = {
+"": SubResource("AnimationLibrary_yjjvi")
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.3
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oscd2")
+
+[node name="Title" type="Label" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_dqpkp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_txoah")
+}
+
+[connection signal="ray_casted" from="Camera3D" to="CanvasLayer" method="_on_camera_3d_ray_casted"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShowEditPanel" to="CanvasLayer" method="_on_show_edit_panel_pressed"]
+[connection signal="pressed" from="CanvasLayer/RemoveBody" to="Camera3D" method="_on_remove_body_pressed"]
 
 [editable path="Camera3D"]
-[editable path="TabMenu"]
-[editable path="TabMenu/Tab/HBoxContainer/cargas"]
-[editable path="TabMenu/Tab/HBoxContainer/varilla"]
-[editable path="TabMenu/Tab/HBoxContainer/esfera"]
-[editable path="TabMenu/Tab/HBoxContainer/cilindro"]
-[editable path="TabMenu/Tab/HBoxContainer/placa"]
+[editable path="CanvasLayer/TabMenu"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/cargas"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/varilla"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/esfera"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/cilindro"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/placa"]
