@@ -25,6 +25,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 
 
+
 func _on_data_text_submitted(new_text: String) -> void:
 	var value = new_text.to_float()
 	

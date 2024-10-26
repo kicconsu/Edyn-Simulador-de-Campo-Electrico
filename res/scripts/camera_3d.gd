@@ -19,6 +19,8 @@ signal ray_casted(body)
 # Mouse state
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
+var dragging = false
+var rotating
 
 # Movement state
 var _direction = Vector3(0.0, 0.0, 0.0)
@@ -69,6 +71,27 @@ func _unhandled_input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
+		
+		
+		if dragging and selected:
+			var charge = selected.get_parent()
+			if rotating:
+				#Update rotation
+				const rotation_speed = 0.2
+				var mouse_delta = event.relative
+				charge.rotation_degrees.y -= mouse_delta.x * rotation_speed
+				charge.rotation_degrees.x -= mouse_delta.y * rotation_speed
+				$"../CanvasLayer".update_custom_array("rotation", charge.rotation_degrees)
+			else:
+				#Update position
+				var mousepos = get_viewport().get_mouse_position()
+				var  cam = get_viewport().get_camera_3d()
+				var origin = cam.project_ray_origin(mousepos)
+				var end = cam.project_ray_normal(mousepos)
+				var depth = origin.distance_to(charge.global_position)
+				var final_position = origin + end * depth
+				charge.global_position = final_position
+				$"../CanvasLayer".update_custom_array("position", charge.global_position)
 	
 	# Receives mouse button input
 	if event is InputEventMouseButton:
@@ -86,6 +109,9 @@ func _unhandled_input(event):
 					if event.pressed:
 						var body = cam_raycast(get_viewport().get_mouse_position())
 						select_body(body)
+						dragging = body != null
+					else:
+						dragging = false
 
 	# Receives key input
 	if event is InputEventKey:
@@ -106,6 +132,11 @@ func _unhandled_input(event):
 				_shift = event.pressed
 			KEY_ALT:
 				_alt = event.pressed
+			KEY_R:
+				if event.pressed and dragging:
+					rotating = true
+				else:
+					rotating = false
 
 # Updates mouselook and movement every frame
 func _process(delta):
@@ -116,7 +147,7 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
+		(_d as float) - (_a as float),
 		(_e as float) - (_q as float),
 		(_s as float) - (_w as float)
 	)

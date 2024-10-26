@@ -61,12 +61,27 @@ func _process(_delta: float) -> void:
 			mesh.mesh.size.y = 5
 			mesh.material.set_cull_mode(2)
 
-func set_property(tag: String, value: float):
+
+#Triggered when a custom_slider/custom_array value is correctly modified: updates the body's desired property
+func set_property(tag: String, value):
 	match tag:
 		"radius":
 			self.radius = value
 		"char":
 			self.char = value
+		"position":
+			#Not editable through direct user input: value's already passed correctly
+			self.global_position = value
+		"rotation":
+			#value's a Vector3 where only the rotated axis component is different than zero, so we need to find out which one it is 
+			#TODO: this and the custom sliders/arrays need to be done in a clearer way
+			if value is Vector3:
+				if value.x != 0:
+					self.rotation_degrees = Vector3(value.x, self.rotation.y, self.rotation.z)
+				if value.y != 0:
+					self.rotation_degrees = Vector3(self.rotation.x, value.y, self.rotation.z)
+				if value.z != 0:
+					self.rotation_degrees = Vector3(self.rotation.x, self.rotation.y, value.z)
 
 func get_config_seed() -> Dictionary:
 	
@@ -91,6 +106,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Posición",
 						"type": "array",
+						"tag": "position",
 						"editable": false,
 						"values": [
 							{
@@ -134,6 +150,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Posición",
 						"type": "array",
+						"tag": "position",
 						"editable": false,
 						"values": [
 							{
@@ -169,6 +186,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Posición",
 						"type": "array",
+						"tag": "position",
 						"editable": false,
 						"values": [
 							{
@@ -188,6 +206,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Rotación",
 						"type": "array",
+						"tag": "rotation",
 						"editable": true,
 						"values": [
 							{
@@ -230,13 +249,14 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "radius",
 						"value": self.radius,
-						"min": "100",
+						"min": -100,
 						"max": 100,
 						"units": DISTANCE_UNITS,
 					},
 					{
 						"name": "Posición",
 						"type": "array",
+						"tag": "position",
 						"editable": false,
 						"values": [
 							{
@@ -256,6 +276,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Rotación",
 						"type": "array",
+						"tag": "rotation",
 						"editable": true,
 						"values": [
 							{
@@ -296,6 +317,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Posición",
 						"type": "array",
+						"tag": "position",
 						"editable": false,
 						"values": [
 							{
@@ -315,6 +337,7 @@ func get_config_seed() -> Dictionary:
 					{
 						"name": "Rotación",
 						"type": "array",
+						"tag": "rotation",
 						"editable": true,
 						"values": [
 							{

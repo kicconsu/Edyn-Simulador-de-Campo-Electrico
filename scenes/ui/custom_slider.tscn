@@ -1,22 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://catvvoo7u2ovm"]
+[gd_scene load_steps=3 format=3 uid="uid://catvvoo7u2ovm"]
 
+[ext_resource type="Theme" uid="uid://cq2xr6x5t2cv0" path="res://res/textures/placeholder_theme.tres" id="1_7gk4d"]
 [ext_resource type="Script" path="res://scenes/ui/custom_slider.gd" id="1_muhfm"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_t60dj"]
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_uyci3"]
-font_color = Color(0, 0, 0, 1)
 
 [node name="CustomSlider" type="VBoxContainer"]
 offset_right = 105.0
 offset_bottom = 70.0
-size_flags_horizontal = 3
+theme = ExtResource("1_7gk4d")
 script = ExtResource("1_muhfm")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
-label_settings = SubResource("LabelSettings_t60dj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -32,7 +26,6 @@ size_flags_stretch_ratio = 4.0
 [node name="Units" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "C"
-label_settings = SubResource("LabelSettings_uyci3")
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)

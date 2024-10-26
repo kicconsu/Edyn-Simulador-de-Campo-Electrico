@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmro8to7utxru"]
+
+[ext_resource type="Theme" uid="uid://cq2xr6x5t2cv0" path="res://res/textures/placeholder_theme.tres" id="1_ccw5o"]
+[ext_resource type="Script" path="res://scenes/ui/custom_array.gd" id="1_hbjwc"]
+
+[node name="VBoxContainer" type="VBoxContainer" groups=["CustomArrays"]]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_ccw5o")
+script = ExtResource("1_hbjwc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Var1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Var1"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="HBoxContainer/Var1/HBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/Var1/HBoxContainer"]
+layout_mode = 2
+
+[node name="Units" type="Label" parent="HBoxContainer/Var1/HBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/Var1"]
+layout_mode = 2
+
+[node name="Var2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Var2"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="HBoxContainer/Var2/HBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/Var2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Units" type="Label" parent="HBoxContainer/Var2/HBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/Var2"]
+layout_mode = 2
+
+[node name="Var3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Var3"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="HBoxContainer/Var3/HBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/Var3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Units" type="Label" parent="HBoxContainer/Var3/HBoxContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/Var3"]
+layout_mode = 2
+
+[connection signal="text_submitted" from="HBoxContainer/Var1/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="value_changed" from="HBoxContainer/Var1/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="text_submitted" from="HBoxContainer/Var2/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_2"]
+[connection signal="value_changed" from="HBoxContainer/Var2/HSlider" to="." method="_on_h_slider_value_changed_2"]
+[connection signal="text_submitted" from="HBoxContainer/Var3/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted_3"]
+[connection signal="value_changed" from="HBoxContainer/Var3/HSlider" to="." method="_on_h_slider_value_changed_3"]
