@@ -3,6 +3,7 @@ extends Node2D
 @export var type:int = 0
 @export var char:float = 5
 @export var info:= Vector4(1, 1, 1, 1)
+@onready var sprite_2d = $Sprite2D
 
 @onready var sliders_scene = get_node("/root/2dTest/Node2D/Control")
 
@@ -22,6 +23,7 @@ func _process(_delta):
 			else:
 				$Sprite2D.texture = preload("res://res/img/carga2.png")
 		1:
+			$Sprite2D.position= Vector2(self.info[0]/2, 0)
 			if self.char >=0:
 				$Sprite2D.texture = preload("res://res/img/varPos.png")
 			else:

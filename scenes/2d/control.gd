@@ -119,7 +119,7 @@ func _on_y_value_changed(value):
 		y.label_2.text = str(value)
 		if object.type == 1:
 			object.info[1] = deg_to_rad(value)
-			object.rotation_degrees = deg_to_rad(value)
+			object.sprite_2d.rotation_degrees = value
 		else:
 			object.info[1] = value
 
@@ -133,6 +133,6 @@ func _on_w_value_changed(value):
 		w.label_2.text = str(value)
 		if object.type == 4:
 			object.info[3] = deg_to_rad(value)
-			object.rotation_degrees = deg_to_rad(value)
+			object.sprite_2d.rotation_degrees = value
 		else:
 			object.info[3] = value

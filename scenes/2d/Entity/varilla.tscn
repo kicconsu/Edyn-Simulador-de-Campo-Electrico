@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://rqqv5sk0ym6l"]
+[gd_scene load_steps=3 format=3 uid="uid://rqqv5sk0ym6l"]
 
 [ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_wtt8c"]
+[ext_resource type="Texture2D" uid="uid://dvgtd2pftvyk0" path="res://res/img/varPos.png" id="2_f6m3e"]
 
 [node name="Varilla" instance=ExtResource("1_wtt8c")]
 type = 1
@@ -10,4 +11,5 @@ info = Vector4(300, 0, 10, 1)
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-115, -8)
 scale = Vector2(116, 22)
+texture = ExtResource("2_f6m3e")
 region_enabled = true

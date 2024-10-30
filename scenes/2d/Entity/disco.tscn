@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://f1bvcthus8is"]
 
 [ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_sim7h"]
-[ext_resource type="Texture2D" uid="uid://c4fmqgou47iuk" path="res://res/img/disco.png" id="2_hgba2"]
+[ext_resource type="Texture2D" uid="uid://mjplur3ls0li" path="res://res/img/esfPos.png" id="2_n61dm"]
 
 [node name="Disco" instance=ExtResource("1_sim7h")]
 type = 2
@@ -9,9 +9,8 @@ char = 0.6
 info = Vector4(0, 3, 3, 1)
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(8, 12)
 scale = Vector2(0.3675, 0.396667)
-texture = ExtResource("2_hgba2")
+texture = ExtResource("2_n61dm")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-2.5, 0)
