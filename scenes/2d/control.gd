@@ -65,7 +65,7 @@ func set_parameters():
 					x.visible = true
 				carga.min_value = -10
 				carga.max_value = 10
-				carga.step = 1
+				carga.step = 0.1
 				x.min_value = 0
 				x.max_value = 10
 				x.step = 0.5
