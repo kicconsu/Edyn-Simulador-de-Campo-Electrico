@@ -12,6 +12,7 @@ offset_left = -0.280001
 offset_top = -0.0880013
 offset_right = 0.503998
 offset_bottom = -0.288002
+focus_mode = 1
 script = ExtResource("1_73doi")
 
 [node name="Label" type="Label" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xejgaqbudtn1"]
+[gd_scene load_steps=15 format=3 uid="uid://xejgaqbudtn1"]
 
 [ext_resource type="PackedScene" uid="uid://b3imda8g3dp16" path="res://scenes/2d/Items/item_disco.tscn" id="1_piavd"]
 [ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://damct78o1ve6n" path="res://scenes/2d/Items/item_varilla.tscn" id="5_uehln"]
 [ext_resource type="PackedScene" uid="uid://f1bvcthus8is" path="res://scenes/2d/Entity/disco.tscn" id="6_7bkq6"]
 [ext_resource type="PackedScene" uid="uid://bokvhbebkndh1" path="res://scenes/2d/Items/item_anillo.tscn" id="6_aat22"]
-[ext_resource type="PackedScene" uid="uid://cy2nvtwdjx6lg" path="res://scenes/2d/h_slider.tscn" id="10_b4jsl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xkgbn"]
 font = ExtResource("3_g404t")
@@ -175,58 +174,7 @@ libraries = {
 "": SubResource("AnimationLibrary_agarw")
 }
 
-[node name="Sliders" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="TabContainer" type="TabContainer" parent="Sliders"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 16.15
-anchor_top = 0.5
-anchor_right = 28.175
-anchor_bottom = 6.225
-offset_left = -6.10352e-05
-offset_top = 1.0
-offset_right = 4.0
-offset_bottom = -1.52588e-05
-grow_horizontal = 2
-grow_vertical = 2
-tab_alignment = 1
-current_tab = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Sliders/TabContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 1
-metadata/_tab_index = 0
-
-[node name="carga" parent="Sliders/TabContainer/VBoxContainer" instance=ExtResource("10_b4jsl")]
-layout_mode = 2
-
-[node name="X" parent="Sliders/TabContainer/VBoxContainer" instance=ExtResource("10_b4jsl")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Y" parent="Sliders/TabContainer/VBoxContainer" instance=ExtResource("10_b4jsl")]
-layout_mode = 2
-
-[node name="Z" parent="Sliders/TabContainer/VBoxContainer" instance=ExtResource("10_b4jsl")]
-layout_mode = 2
-
-[node name="W" parent="Sliders/TabContainer/VBoxContainer" instance=ExtResource("10_b4jsl")]
-layout_mode = 2
-
 [connection signal="mouse_entered" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_entered"]
 [connection signal="mouse_exited" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_exited"]
 [connection signal="mouse_entered" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
 [connection signal="mouse_exited" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
-[connection signal="value_changed" from="Sliders/TabContainer/VBoxContainer/carga" to="." method="_on_carga_value_changed"]
-[connection signal="value_changed" from="Sliders/TabContainer/VBoxContainer/X" to="." method="_on_x_value_changed"]
-[connection signal="value_changed" from="Sliders/TabContainer/VBoxContainer/Y" to="." method="_on_y_value_changed"]
-[connection signal="value_changed" from="Sliders/TabContainer/VBoxContainer/Z" to="." method="_on_z_value_changed"]
-[connection signal="value_changed" from="Sliders/TabContainer/VBoxContainer/W" to="." method="_on_w_value_changed"]

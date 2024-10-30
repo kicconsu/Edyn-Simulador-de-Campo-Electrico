@@ -1,8 +1,7 @@
 extends TextureRect
 
 @export var this_scene: PackedScene
-
-@onready var object_cursor = get_node("/root/main/Editor_Object")
+@onready var object_cursor = get_node("/root/2dTest/Node2D/Editor_Object")
 @onready var cursor_sprite = object_cursor.get_node("Sprite2D")
 
 func _ready():
