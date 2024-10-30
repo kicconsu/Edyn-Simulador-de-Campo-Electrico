@@ -39,6 +39,8 @@ script = ExtResource("6_82ypf")
 [node name="cam_container" type="Node2D" parent="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D/cam_container"]
+position = Vector2(293, 23)
+zoom = Vector2(0.65, 0.65)
 
 [node name="Control" type="Control" parent="Node2D"]
 layout_mode = 3

@@ -45,7 +45,7 @@ func _unhandled_input(event):
 		if(event.is_pressed()):
 			if(event.button_index == MOUSE_BUTTON_WHEEL_UP):
 				editor_cam.zoom += Vector2(0.1,0.1)
-			if(event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
+			if(event.button_index == MOUSE_BUTTON_WHEEL_DOWN) and editor_cam.zoom != Vector2(0,0):
 				editor_cam.zoom -= Vector2(0.1,0.1)
 	if(event is InputEventMouseMotion):
 		if(is_panning):
