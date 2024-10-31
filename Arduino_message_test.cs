@@ -5,12 +5,13 @@ using System.IO.Ports;
 public partial class Arduino_message_test : Node2D
 {
 	SerialPort serialPort;
-	public string SerialMessage { get; private set; } = ""; // Propiedad accesible globalmente
-
+	public static Arduino_message_test Instance { get; private set; }
+	public String SerialMessage { get; set;} ="0";
+	
 	public override void _Ready()
 	{
+		Instance =this;
 		
-
 		serialPort = new SerialPort();
 		serialPort.PortName = "COM9"; // ajustar al puerto necesario
 		serialPort.BaudRate = 9600;

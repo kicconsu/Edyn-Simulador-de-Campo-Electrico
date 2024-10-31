@@ -20,11 +20,11 @@ res = 100
 size = Vector2(1000, 500)
 
 [node name="Carga2" parent="." instance=ExtResource("4_c3isu")]
-position = Vector2(-179, 0)
+position = Vector2(-454, 0)
 script = ExtResource("5_35b30")
 
 [node name="Carga" parent="." instance=ExtResource("4_c3isu")]
-position = Vector2(269, 0)
+position = Vector2(453, 0)
 script = ExtResource("5_35b30")
 
 [node name="Node2D" type="Node2D" parent="."]
