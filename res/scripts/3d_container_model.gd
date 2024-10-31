@@ -39,7 +39,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var conf:DebugDraw3DScopeConfig = DebugDraw3D.new_scoped_config().set_thickness(0.05)
 	DebugDraw3D.draw_box(self.global_position, Quaternion.IDENTITY, self.size, self.box_color, false)
-	var _interval := Vector3(self.size.x/resolution, self.size.y/resolution, self.size.z/resolution)
+	#var interval := Vector3(self.size.x/resolution, self.size.y/resolution, self.size.z/resolution)
 	for z in range(resolution):
 		for y in range(resolution):
 			for x in range(resolution):
@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 				var col := self.offset_img.get_pixel(x + (z*resolution), y)
 				var offset := Vector3(col.r, col.g, col.b)
 				var length:float = offset.length_squared()
-				var length_scale:float = lerp(1.0, 0.0, length*2)
+				var length_scale:float = lerp(1.0, 0.0, length*10)
 				#print(offset)
 				conf.set_thickness(clamp(lerp(self.maxthick, self.minthick,length/self.alpha_sensitivity), self.minthick, self.maxthick))
 				DebugDraw3D.draw_line(origin, origin+offset, Color(length_scale, 1/length_scale, 0))
@@ -67,7 +67,7 @@ func mat_to_img(matrix:Array) -> Image:
 			var r = coord.x  # Use the raw x coordinate in the red channel
 			var g = coord.y  # Use the raw y coordinate in the green channel
 			var b = coord.z      # Optionally, you can store extra data in blue channel
-			var _a = 1.0      # Alpha channel is fully opaque
+			#var a = 1.0      # Alpha channel is fully opaque
 			var color = Color(r, g, b)
 			image.set_pixel(x, y, color)
 			#print("input img color: ", image.get_pixel(x, y))

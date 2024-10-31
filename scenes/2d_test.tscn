@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://csfw2xqp1u66m"]
+[gd_scene load_steps=4 format=3 uid="uid://csfw2xqp1u66m"]
 
 [ext_resource type="Script" path="res://res/scripts/2d_scene_handler.gd" id="1_erwtw"]
 [ext_resource type="Script" path="res://res/scripts/2d_cam_control.gd" id="1_qj7e4"]
 [ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d_container.tscn" id="2_g718h"]
-[ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="4_m5ufp"]
 
 [node name="2dTest" type="Node2D"]
 script = ExtResource("1_erwtw")
@@ -13,24 +12,3 @@ script = ExtResource("1_qj7e4")
 
 [node name="2dContainer" parent="." instance=ExtResource("2_g718h")]
 res = 100
-
-[node name="2dCharge2" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-248, -198)
-char = 50.0
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge6" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(255, -79)
-type = 4
-char = -0.001
-info = Vector4(200, 500, 90, 5.055)
-
-[node name="2dCharge10" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(-330, 59)
-char = 20.0
-info = Vector4(1, 2, -45, 8)
-
-[node name="2dCharge4" parent="." instance=ExtResource("4_m5ufp")]
-position = Vector2(33, 158)
-char = -20.0
-info = Vector4(-3, 1, 4, 7)
