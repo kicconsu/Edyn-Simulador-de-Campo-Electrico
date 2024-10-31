@@ -201,6 +201,7 @@ func _on_cargas_button_pressed():
 	toggle = false
 	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
 	add_child(instance)
+	instance.type = 0
 	instance.global_position = Vector3(2.5,2.5,2.5)
 
 		
@@ -236,7 +237,7 @@ func _on_placa_button_pressed():
 	toggle = false
 	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
 	add_child(instance)
-	instance.global_position = Vector3(0,0,0)
+	instance.global_position = Vector3(2.5,2.5,2.15)
 	instance.type = 4
 	instance.char = 0.05
 	

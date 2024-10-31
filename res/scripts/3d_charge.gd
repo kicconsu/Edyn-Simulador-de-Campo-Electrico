@@ -8,7 +8,7 @@ extends Node3D
 @onready var mesh:CSGMesh3D = $CSGMesh3D
 
 func _ready() -> void:
-	self.mesh.material = self.mesh.material.duplicate(true)
+	self.mesh.mesh = self.mesh.mesh.duplicate(true)
 	$CSGMesh3D.material_overlay = $CSGMesh3D.material_overlay.duplicate(true)
 
 func _process(_delta: float) -> void:
@@ -99,8 +99,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "char",
 						"value": self.char,
-						"min": -100,
-						"max": 100,
+						"min": -50,
+						"max": 50,
 						"units": CHARGE_UNITS
 					},
 					{
@@ -135,7 +135,7 @@ func get_config_seed() -> Dictionary:
 						"tag": "radius",
 						"value": self.radius,
 						"min": 0,
-						"max": 100,
+						"max": 5,
 						"units": DISTANCE_UNITS
 					},
 					{
@@ -143,8 +143,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "char",
 						"value": self.char,
-						"min": -100,
-						"max": 100,
+						"min": -50,
+						"max": 50,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS+"^3",
 					},
 					{
@@ -179,8 +179,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "char",
 						"value": self.char,
-						"min": -100,
-						"max": 100,
+						"min": -50,
+						"max": 50,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
 					},
 					{
@@ -240,8 +240,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "char",
 						"value": self.char,
-						"min": -100,
-						"max": 100,
+						"min": -50,
+						"max": 50,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
 					},
 					{
@@ -249,8 +249,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "radius",
 						"value": self.radius,
-						"min": -100,
-						"max": 100,
+						"min": 0,
+						"max": 1,
 						"units": DISTANCE_UNITS,
 					},
 					{
@@ -310,8 +310,8 @@ func get_config_seed() -> Dictionary:
 						"type": "slider",
 						"tag": "char",
 						"value": self.char,
-						"min": -100,
-						"max": 100,
+						"min": -50,
+						"max": 50,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
 					},
 					{

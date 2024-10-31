@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=24 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://jmsmuhrn1i5n" path="res://res/img/edit_normal.png" id="6_cyife"]
 [ext_resource type="Texture2D" uid="uid://c2wulqqeey6yh" path="res://res/img/edit_pressed.png" id="7_hijdb"]
 [ext_resource type="Texture2D" uid="uid://dvj3e535vvas7" path="res://res/img/edit_hover.png" id="8_hrjq0"]
+[ext_resource type="Texture2D" uid="uid://bujkbquihri2o" path="res://res/img/delete_normal.png" id="10_1i6u0"]
+[ext_resource type="Texture2D" uid="uid://dpdefmcm8m64r" path="res://res/img/delete_pressed.png" id="11_1mady"]
+[ext_resource type="Texture2D" uid="uid://c1iydtd7a04is" path="res://res/img/delete_hover.png" id="12_lvnxo"]
 
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
@@ -255,9 +258,9 @@ anchor_left = 0.84
 anchor_top = -0.12
 anchor_right = 0.84
 anchor_bottom = -0.12
-texture_normal = ExtResource("6_cyife")
-texture_pressed = ExtResource("7_hijdb")
-texture_hover = ExtResource("8_hrjq0")
+texture_normal = ExtResource("10_1i6u0")
+texture_pressed = ExtResource("11_1mady")
+texture_hover = ExtResource("12_lvnxo")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -269,15 +272,19 @@ libraries = {
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = -0.3
-anchor_bottom = 1.0
+anchor_top = 0.2
+anchor_bottom = 0.8
 theme_override_styles/panel = SubResource("StyleBoxFlat_oscd2")
 
 [node name="Title" type="Label" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 label_settings = SubResource("LabelSettings_dqpkp")
+vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PanelContainer"]
 libraries = {

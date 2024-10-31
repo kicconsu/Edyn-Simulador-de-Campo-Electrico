@@ -27,3 +27,7 @@ func _on_exit_pressed():
 func _on_animation_player_animation_finished(intro):
 	if exit:
 		queue_free()
+
+func _on_button_2d_car_pressed():
+	anim.play_backwards("intro")
+	exit = true
