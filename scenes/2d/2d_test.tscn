@@ -21,6 +21,7 @@ res = 100
 
 [node name="Varilla" parent="." instance=ExtResource("4_i673p")]
 position = Vector2(379, -90)
+info = Vector4(300, 90, 10, 1)
 
 [node name="Disco" parent="." instance=ExtResource("5_e5jhu")]
 position = Vector2(-303, -119)

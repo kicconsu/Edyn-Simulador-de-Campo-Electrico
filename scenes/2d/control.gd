@@ -101,6 +101,8 @@ func set_parameters():
 		y.set_value(object.info[1])
 		z.set_value(object.info[2])
 		w.set_value(object.info[3])
+		
+		
 					
 
 func _on_carga_value_changed(value):
@@ -121,8 +123,8 @@ func _on_y_value_changed(value):
 	if object != null:
 		y.label_2.text = str(value)
 		if object.type == 1:
+			print("rotating to: ", value)
 			object.info[1] = deg_to_rad(value)
-			object.rotation = deg_to_rad(value)
 		else:
 			object.info[1] = value
 		if object.type == 4:
@@ -140,6 +142,6 @@ func _on_w_value_changed(value):
 		w.label_2.text = str(value)
 		if object.type == 4:
 			object.info[3] = deg_to_rad(value)
-			object.rotation = deg_to_rad(value)
+			object.rotate(deg_to_rad(value))
 		else:
 			object.info[3] = value

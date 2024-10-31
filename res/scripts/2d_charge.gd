@@ -18,7 +18,7 @@ func _ready():
 		remove_child(collision_shape)
 		collision_shape.queue_free()
 	collision_shape = CollisionShape2D.new()
-	add_child(collision_shape)
+	self.add_child(collision_shape)
 	
 	match self.type:
 		0:
@@ -48,6 +48,7 @@ func _process(_delta):
 			else:
 				$Sprite2D.texture = preload("res://res/img/carga2.png")
 		1:
+			self.set_rotation(self.info[1])
 			$Sprite2D.position= Vector2(self.info[0]/2, 0)
 			if self.char >=0:
 				$Sprite2D.texture = preload("res://res/img/varPos.png")
@@ -76,7 +77,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mb_left") and picked:
 		sliders_scene.object = self
 		sliders_scene.set_parameters()
-		
+		print("Objeto: ",self.rotation)
+		print("Collision shape: ",collision_shape.rotation)
 	if event is InputEventMouseMotion and picked:
 			self.position = get_global_mouse_position()
 
