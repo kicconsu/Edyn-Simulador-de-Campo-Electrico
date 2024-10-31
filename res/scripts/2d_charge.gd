@@ -10,10 +10,33 @@ extends Node2D
 var hovered:bool = false
 var picked:bool = false
 var relative:Vector2 = Vector2(0,0)
-var angle = 0
-var once = true
+var collision_shape
 
-
+func _ready():
+	collision_shape = get_node("CollisionShape2D")
+	if collision_shape:
+		remove_child(collision_shape)
+		collision_shape.queue_free()
+	collision_shape = CollisionShape2D.new()
+	add_child(collision_shape)
+	
+	match self.type:
+		0:
+			collision_shape.shape = CircleShape2D.new()
+			collision_shape.shape.radius = 50
+		1:
+			collision_shape.shape = RectangleShape2D.new()
+			collision_shape.shape.extents = Vector2(self.info[0],10)
+		2:
+			collision_shape.shape = CircleShape2D.new()
+			collision_shape.shape.radius = self.info[1] + 30
+		3:
+			collision_shape.shape = CircleShape2D.new()
+			collision_shape.shape.radius = self.info[1] + 30
+		4:
+			collision_shape.shape = RectangleShape2D.new()
+			collision_shape.shape.extents = Vector2(self.info[0] /2, self.info[1] /2)
+	print(collision_shape.get_path())
 func _process(_delta):
 	
 	match self.type:
@@ -51,7 +74,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mb_left") and picked:
 		sliders_scene.object = self
 		sliders_scene.set_parameters()
-			
 	if event is InputEventMouseMotion and picked:
 			self.position = get_global_mouse_position()
 

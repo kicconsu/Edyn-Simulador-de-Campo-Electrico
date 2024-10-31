@@ -7,7 +7,6 @@ extends Control
 @onready var w = $TabContainer/ScrollContainer/VBoxContainer/W
 
 var object
-var do_not: bool
 
 func set_parameters():
 	if object !=null:
@@ -113,6 +112,10 @@ func _on_x_value_changed(value):
 	if object != null:
 		x.label_2.text = str(value)
 		object.info[0] = value
+		if object.type ==1:
+			object.collision_shape.shape.extents = Vector2(value, 10)
+		if object.type == 4:
+			object.collision_shape.shape.extents = Vector2(value /2, object.info[1] /2)
 
 func _on_y_value_changed(value):
 	if object != null:
@@ -122,6 +125,11 @@ func _on_y_value_changed(value):
 			object.sprite_2d.rotation_degrees = value
 		else:
 			object.info[1] = value
+		if object.type == 4:
+			object.collision_shape.shape.extents = Vector2(object.info[0] /2, value/2)
+		if object.type == 2 or object.type == 3:
+			object.collision_shape.shape.radius = value + 30
+			pass
 
 func _on_z_value_changed(value):
 	if object != null:
