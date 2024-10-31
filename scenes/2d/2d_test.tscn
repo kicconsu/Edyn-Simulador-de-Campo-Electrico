@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://csfw2xqp1u66m"]
+[gd_scene load_steps=10 format=3 uid="uid://csfw2xqp1u66m"]
 
 [ext_resource type="Script" path="res://res/scripts/2d_scene_handler.gd" id="1_erwtw"]
 [ext_resource type="Script" path="res://res/scripts/2d_cam_control.gd" id="1_qj7e4"]
 [ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d_container.tscn" id="2_g718h"]
 [ext_resource type="PackedScene" uid="uid://rqqv5sk0ym6l" path="res://scenes/2d/Entity/varilla.tscn" id="4_i673p"]
-[ext_resource type="Script" path="res://2d_charge_father.gd" id="5_3mgod"]
 [ext_resource type="PackedScene" uid="uid://f1bvcthus8is" path="res://scenes/2d/Entity/disco.tscn" id="5_e5jhu"]
 [ext_resource type="Script" path="res://scenes/2d/editor_object.gd" id="6_82ypf"]
 [ext_resource type="PackedScene" uid="uid://xejgaqbudtn1" path="res://scenes/2d/control.tscn" id="7_awmrc"]
@@ -23,11 +22,9 @@ size = Vector2(1000, 500)
 
 [node name="Varilla" parent="." instance=ExtResource("4_i673p")]
 position = Vector2(379, -90)
-script = ExtResource("5_3mgod")
 
 [node name="Disco" parent="." instance=ExtResource("5_e5jhu")]
 position = Vector2(-303, -119)
-script = ExtResource("5_3mgod")
 
 [node name="Node2D" type="Node2D" parent="."]
 

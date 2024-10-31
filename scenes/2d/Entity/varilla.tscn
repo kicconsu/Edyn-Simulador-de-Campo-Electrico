@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://rqqv5sk0ym6l"]
+[gd_scene load_steps=4 format=3 uid="uid://rqqv5sk0ym6l"]
 
 [ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_wtt8c"]
 [ext_resource type="Texture2D" uid="uid://dvgtd2pftvyk0" path="res://res/img/varPos.png" id="2_f6m3e"]
+[ext_resource type="Script" path="res://2d_charge_father.gd" id="2_jcmft"]
 
 [node name="Varilla" instance=ExtResource("1_wtt8c")]
+script = ExtResource("2_jcmft")
 type = 1
 char = 0.6
 info = Vector4(300, 0, 10, 1)

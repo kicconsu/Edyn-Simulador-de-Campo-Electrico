@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cugq1hjveg3y7"]
+[gd_scene load_steps=4 format=3 uid="uid://cugq1hjveg3y7"]
 
 [ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_kenow"]
+[ext_resource type="Script" path="res://2d_charge_father.gd" id="2_qt5ak"]
 [ext_resource type="Texture2D" uid="uid://7ts3f2kfijkh" path="res://res/img/anilPos.png" id="2_qx44v"]
 
 [node name="Anillo" instance=ExtResource("1_kenow")]
+script = ExtResource("2_qt5ak")
 type = 3
 char = 1.0
 info = Vector4(1.5, 2, 9, 1)

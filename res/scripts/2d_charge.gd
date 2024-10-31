@@ -9,5 +9,5 @@ func _input(event: InputEvent) -> void:
 		sliders_scene.object = self
 		sliders_scene.set_parameters()
 	
-
+	self.position.x = 150
 	

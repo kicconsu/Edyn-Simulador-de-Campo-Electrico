@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://f1bvcthus8is"]
+[gd_scene load_steps=4 format=3 uid="uid://f1bvcthus8is"]
 
 [ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_sim7h"]
 [ext_resource type="Texture2D" uid="uid://mjplur3ls0li" path="res://res/img/esfPos.png" id="2_n61dm"]
+[ext_resource type="Script" path="res://2d_charge_father.gd" id="2_r1snq"]
 
 [node name="Disco" instance=ExtResource("1_sim7h")]
+script = ExtResource("2_r1snq")
 type = 2
 char = 0.6
 info = Vector4(0, 3, 3, 1)

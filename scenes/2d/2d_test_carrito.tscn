@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwkcmytdv540i"]
+[gd_scene load_steps=9 format=3 uid="uid://cwkcmytdv540i"]
 
 [ext_resource type="Script" path="res://res/scripts/2d_scene_handler.gd" id="1_1u3dr"]
 [ext_resource type="Script" path="res://res/scripts/2d_cam_control.gd" id="2_id77w"]
 [ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d_container.tscn" id="3_mbie2"]
 [ext_resource type="PackedScene" uid="uid://dy7tvbti6cjlw" path="res://scenes/2d/Entity/carga.tscn" id="4_c3isu"]
+[ext_resource type="Script" path="res://res/scripts/2d_charge.gd" id="5_35b30"]
 [ext_resource type="Script" path="res://scenes/2d/editor_object.gd" id="6_joy7v"]
 [ext_resource type="Script" path="res://scenes/2d/control.gd" id="8_r3f8o"]
 [ext_resource type="PackedScene" uid="uid://cy2nvtwdjx6lg" path="res://scenes/2d/h_slider.tscn" id="9_k856w"]
@@ -20,9 +21,11 @@ size = Vector2(1000, 500)
 
 [node name="Carga2" parent="." instance=ExtResource("4_c3isu")]
 position = Vector2(-179, 0)
+script = ExtResource("5_35b30")
 
 [node name="Carga" parent="." instance=ExtResource("4_c3isu")]
 position = Vector2(269, 0)
+script = ExtResource("5_35b30")
 
 [node name="Node2D" type="Node2D" parent="."]
 
