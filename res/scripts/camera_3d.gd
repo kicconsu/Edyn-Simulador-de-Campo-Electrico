@@ -12,12 +12,15 @@ class_name FreeLookCamera extends Camera3D
 const SHIFT_MULTIPLIER = 2.5
 const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
+signal ray_casted(body)
 
 @export_range(0.0, 1.0) var sensitivity: float = 0.25
 
 # Mouse state
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
+var dragging = false
+var rotating
 
 # Movement state
 var _direction = Vector3(0.0, 0.0, 0.0)
@@ -36,10 +39,59 @@ var _e = false
 var _shift = false
 var _alt = false
 
-func _input(event):
+var selected : CSGMesh3D
+const RAY_LENGTH = 1000
+func cam_raycast(towards:Vector2) -> CSGMesh3D:
+	var cam = get_viewport().get_camera_3d()
+	
+	var from = cam.project_ray_origin(towards)
+	var to = from + cam.project_ray_normal(towards)*RAY_LENGTH
+	
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_areas = true
+	
+	return get_world_3d().direct_space_state.intersect_ray(query).get("collider")
+
+func select_body(body: CSGMesh3D):
+	if selected != body:
+		if selected != null:
+			selected.material_overlay.grow_amount = 0
+			if body == null:
+				ray_casted.emit(false)
+		else:
+			ray_casted.emit(true)
+	
+	selected = body
+	if selected == null:
+		return
+	
+	selected.material_overlay.grow_amount = 0.05
+
+func _unhandled_input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
+		
+		
+		if dragging and selected:
+			var charge = selected.get_parent()
+			if rotating:
+				#Update rotation
+				const rotation_speed = 0.2
+				var mouse_delta = event.relative
+				charge.rotation_degrees.y -= mouse_delta.x * rotation_speed
+				charge.rotation_degrees.x -= mouse_delta.y * rotation_speed
+				$"../CanvasLayer".update_custom_array("rotation", charge.rotation_degrees)
+			else:
+				#Update position
+				var mousepos = get_viewport().get_mouse_position()
+				var  cam = get_viewport().get_camera_3d()
+				var origin = cam.project_ray_origin(mousepos)
+				var end = cam.project_ray_normal(mousepos)
+				var depth = origin.distance_to(charge.global_position)
+				var final_position = origin + end * depth
+				charge.global_position = final_position
+				$"../CanvasLayer".update_custom_array("position", charge.global_position)
 	
 	# Receives mouse button input
 	if event is InputEventMouseButton:
@@ -50,6 +102,16 @@ func _input(event):
 				_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, _vel_multiplier*20)
 			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
 				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, _vel_multiplier*20)
+		
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					if event.pressed:
+						var body = cam_raycast(get_viewport().get_mouse_position())
+						select_body(body)
+						dragging = body != null
+					else:
+						dragging = false
 
 	# Receives key input
 	if event is InputEventKey:
@@ -70,6 +132,11 @@ func _input(event):
 				_shift = event.pressed
 			KEY_ALT:
 				_alt = event.pressed
+			KEY_R:
+				if event.pressed and dragging:
+					rotating = true
+				else:
+					rotating = false
 
 # Updates mouselook and movement every frame
 func _process(delta):
@@ -80,7 +147,7 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
+		(_d as float) - (_a as float),
 		(_e as float) - (_q as float),
 		(_s as float) - (_w as float)
 	)
@@ -122,3 +189,8 @@ func _update_mouselook():
 	
 		rotate_y(deg_to_rad(-yaw))
 		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+
+
+func _on_remove_body_pressed() -> void:
+	selected.get_parent().queue_free()
+	select_body(null)

@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var camera_3d = $Camera3D
-@onready var animation = $TabMenu/Animation
+@onready var animation = $CanvasLayer/TabMenu/Animation
 @onready var projection = $Camera3D/Projection
 
 var picked_object
