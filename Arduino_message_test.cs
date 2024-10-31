@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.IO.Ports;
 
-public partial class Arduino : Node2D
+public partial class Arduino_message_test : Node2D
 {
 	SerialPort serialPort;
 	public string SerialMessage { get; private set; } = ""; // Propiedad accesible globalmente
