@@ -2,7 +2,6 @@
 extends Node3D
 
 # Gui and Camera Variables
-@onready var _3d_charge = $"3dCharge"
 @onready var camera_3d = $Camera3D
 @onready var animation = $CanvasLayer/TabMenu/Animation
 @onready var projection = $Camera3D/Projection

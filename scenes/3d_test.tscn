@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=23 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
@@ -16,6 +16,7 @@
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
+ambient_light_energy = 2.0
 reflected_light_source = 1
 
 [sub_resource type="Animation" id="Animation_3svlr"]

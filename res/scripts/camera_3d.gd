@@ -56,6 +56,7 @@ func select_body(body: CSGMesh3D):
 	if selected != body:
 		if selected != null:
 			selected.material_overlay.grow_amount = 0
+			selected.material_overlay.albedo_color = 'ffffff00'
 			if body == null:
 				ray_casted.emit(false)
 		else:
@@ -66,6 +67,7 @@ func select_body(body: CSGMesh3D):
 		return
 	
 	selected.material_overlay.grow_amount = 0.05
+	selected.material_overlay.albedo_color = 'ffffff'
 
 func _unhandled_input(event):
 	# Receives mouse motion

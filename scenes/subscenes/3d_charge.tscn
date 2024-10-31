@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://res/scripts/3d_charge.gd" id="1_1me85"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om83v"]
-blend_mode = 4
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yerax"]
+transparency = 1
 cull_mode = 1
 shading_mode = 0
 grow = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_q1bsm"]
-radius = 0.54
-height = 1.08
+[sub_resource type="SphereMesh" id="SphereMesh_a2ifb"]
+radius = 0.3
+height = 0.6
 radial_segments = 10
 rings = 5
 
@@ -23,9 +23,10 @@ albedo_color = Color(1, 0.129412, 0.396078, 1)
 script = ExtResource("1_1me85")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-material_overlay = SubResource("StandardMaterial3D_om83v")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0324306, 0, -0.0127079)
+material_overlay = SubResource("StandardMaterial3D_yerax")
 calculate_tangents = false
 use_collision = true
 collision_layer = 2
-mesh = SubResource("SphereMesh_q1bsm")
+mesh = SubResource("SphereMesh_a2ifb")
 material = SubResource("StandardMaterial3D_vac3h")

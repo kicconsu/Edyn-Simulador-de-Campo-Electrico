@@ -13,7 +13,7 @@ config_version=5
 config/name="Edyn"
 run/main_scene="res://scenes/main_menu/Free 3D Camera.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://res/img/icon.svg"
+config/icon="res://res/img/edynlogo.png"
 
 [display]
 

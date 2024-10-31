@@ -9,6 +9,7 @@ extends Node3D
 
 func _ready() -> void:
 	self.mesh.mesh = self.mesh.mesh.duplicate(true)
+	self.mesh.material = self.mesh.material.duplicate(true)
 	$CSGMesh3D.material_overlay = $CSGMesh3D.material_overlay.duplicate(true)
 
 func _process(_delta: float) -> void:
@@ -52,8 +53,8 @@ func _process(_delta: float) -> void:
 			mesh.mesh.cap_bottom = false
 			mesh.mesh.radial_segments = 5
 			mesh.material.set_cull_mode(0)
-		mesh.mesh.top_radius = self.radius*3
-		mesh.mesh.bottom_radius = self.radius*3
+		mesh.mesh.top_radius = self.radius
+		mesh.mesh.bottom_radius = self.radius
 	elif(self.type == 4):
 		if(not is_instance_of(mesh.mesh, PlaneMesh)):
 			mesh.set_mesh(PlaneMesh.new())
@@ -67,6 +68,8 @@ func set_property(tag: String, value):
 	match tag:
 		"radius":
 			self.radius = value
+		"transp":
+			self.transparency = value
 		"char":
 			self.char = value
 		"position":
@@ -101,7 +104,18 @@ func get_config_seed() -> Dictionary:
 						"value": self.char,
 						"min": -50,
 						"max": 50,
+						"step": 0.1,
 						"units": CHARGE_UNITS
+					},
+					{
+						"name": "Transparencia",
+						"type": "slider",
+						"tag": "transp",
+						"value": self.transparency,
+						"min": 16,
+						"max": 255,
+						"step": 0.1,
+						"units": "",
 					},
 					{
 						"name": "Posición",
@@ -136,7 +150,18 @@ func get_config_seed() -> Dictionary:
 						"value": self.radius,
 						"min": 0,
 						"max": 5,
+						"step": 0.1,
 						"units": DISTANCE_UNITS
+					},
+					{
+						"name": "Transparencia",
+						"type": "slider",
+						"tag": "transp",
+						"value": self.transparency,
+						"min": 16,
+						"max": 255,
+						"step": 0.1,
+						"units": "",
 					},
 					{
 						"name": "Densidad de Carga (ρ)",
@@ -145,6 +170,7 @@ func get_config_seed() -> Dictionary:
 						"value": self.char,
 						"min": -50,
 						"max": 50,
+						"step": 0.01,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS+"^3",
 					},
 					{
@@ -181,7 +207,18 @@ func get_config_seed() -> Dictionary:
 						"value": self.char,
 						"min": -50,
 						"max": 50,
+						"step": 0.01,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
+					},
+					{
+						"name": "Transparencia",
+						"type": "slider",
+						"tag": "transp",
+						"value": self.transparency,
+						"min": 16,
+						"max": 255,
+						"step": 0.1,
+						"units": "",
 					},
 					{
 						"name": "Posición",
@@ -242,7 +279,18 @@ func get_config_seed() -> Dictionary:
 						"value": self.char,
 						"min": -50,
 						"max": 50,
+						"step": 0.01,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
+					},
+					{
+						"name": "Transparencia",
+						"type": "slider",
+						"tag": "transp",
+						"value": self.transparency,
+						"min": 16,
+						"max": 255,
+						"step": 0.1,
+						"units": "",
 					},
 					{
 						"name": "Radio (R)",
@@ -251,6 +299,7 @@ func get_config_seed() -> Dictionary:
 						"value": self.radius,
 						"min": 0,
 						"max": 1,
+						"step": 0.1,
 						"units": DISTANCE_UNITS,
 					},
 					{
@@ -312,7 +361,18 @@ func get_config_seed() -> Dictionary:
 						"value": self.char,
 						"min": -50,
 						"max": 50,
+						"step": 0.01,
 						"units": CHARGE_UNITS+"/"+DISTANCE_UNITS,
+					},
+					{
+						"name": "Transparencia",
+						"type": "slider",
+						"tag": "transp",
+						"value": self.transparency,
+						"min": 16,
+						"max": 255,
+						"step": 0.1,
+						"units": "",
 					},
 					{
 						"name": "Posición",

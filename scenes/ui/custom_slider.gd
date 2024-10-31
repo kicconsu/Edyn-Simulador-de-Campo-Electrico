@@ -11,6 +11,7 @@ func initialize(config: Dictionary):
 	
 	$VBoxContainer/HSlider.min_value = config["min"]
 	$VBoxContainer/HSlider.max_value = config["max"]
+	$VBoxContainer/HSlider.step = config["step"]
 	
 	$VBoxContainer/HSlider.set_value_no_signal(config["value"])
 	$VBoxContainer/HBoxContainer/Data.text = str(config["value"])
