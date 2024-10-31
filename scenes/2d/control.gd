@@ -122,14 +122,13 @@ func _on_y_value_changed(value):
 		y.label_2.text = str(value)
 		if object.type == 1:
 			object.info[1] = deg_to_rad(value)
-			object.sprite_2d.rotation_degrees = value
+			object.rotation = deg_to_rad(value)
 		else:
 			object.info[1] = value
 		if object.type == 4:
 			object.collision_shape.shape.extents = Vector2(object.info[0] /2, value/2)
 		if object.type == 2 or object.type == 3:
 			object.collision_shape.shape.radius = value + 30
-			pass
 
 func _on_z_value_changed(value):
 	if object != null:
@@ -141,6 +140,6 @@ func _on_w_value_changed(value):
 		w.label_2.text = str(value)
 		if object.type == 4:
 			object.info[3] = deg_to_rad(value)
-			object.sprite_2d.rotation_degrees = value
+			object.rotation = deg_to_rad(value)
 		else:
 			object.info[3] = value

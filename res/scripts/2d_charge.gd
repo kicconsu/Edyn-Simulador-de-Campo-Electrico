@@ -26,7 +26,8 @@ func _ready():
 			collision_shape.shape.radius = 50
 		1:
 			collision_shape.shape = RectangleShape2D.new()
-			collision_shape.shape.extents = Vector2(self.info[0],10)
+			collision_shape.shape.extents = Vector2(self.info[0]/2,10)
+			collision_shape.position = Vector2(-self.info[0]/2, 0)
 		2:
 			collision_shape.shape = CircleShape2D.new()
 			collision_shape.shape.radius = self.info[1] + 30
@@ -36,7 +37,8 @@ func _ready():
 		4:
 			collision_shape.shape = RectangleShape2D.new()
 			collision_shape.shape.extents = Vector2(self.info[0] /2, self.info[1] /2)
-	print(collision_shape.get_path())
+
+
 func _process(_delta):
 	
 	match self.type:
@@ -74,6 +76,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mb_left") and picked:
 		sliders_scene.object = self
 		sliders_scene.set_parameters()
+		
 	if event is InputEventMouseMotion and picked:
 			self.position = get_global_mouse_position()
 
