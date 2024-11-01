@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 
 #Script in charge of handling the 2D simulation.
@@ -48,21 +48,16 @@ func _process(delta: float) -> void:
 	
 	
 	#carritos
-	print(ArduinoMessageTest)  
-	print(ArduinoMessageTest.SerialMessage)
+	
 	
 	
 	var serial_distance = float(ArduinoMessageTest.SerialMessage)
 	
 	
-	##print(min_distance_screen)
-	##print(serial_distance)
-	##print(max_distance_screen)
-	##print(min_distance_screen)
 	
 	var screen_distance = min_distance_screen + (serial_distance / max_distance_serial) * (max_distance_screen - min_distance_screen)
 	
-	print(screen_distance)
+	
 	carga1.position = Vector2(-screen_distance, 0)
 	carga2.position = Vector2(screen_distance, 0)
 	
