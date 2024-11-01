@@ -109,6 +109,7 @@ func _on_carga_value_changed(value):
 	if object != null:
 		carga.label_2.text = str(value)
 		object.char = value
+		object.change_sprite(value)
 
 func _on_x_value_changed(value):
 	if object != null:
@@ -117,20 +118,26 @@ func _on_x_value_changed(value):
 		if object.type ==1:
 			object.collision_shape.shape.extents = Vector2(value, 10)
 		if object.type == 4:
-			object.collision_shape.shape.extents = Vector2(value /2, object.info[1] /2)
+			object.sprite_2d.scale = Vector2(x.value*0.0045, y.value*0.02)
+			object.collision_shape.shape.extents = Vector2(x.value/2, y.value/4)
 
 func _on_y_value_changed(value):
 	if object != null:
 		y.label_2.text = str(value)
-		if object.type == 1:
-			print("rotating to: ", value)
-			object.info[1] = deg_to_rad(value)
-		else:
-			object.info[1] = value
-		if object.type == 4:
-			object.collision_shape.shape.extents = Vector2(object.info[0] /2, value/2)
-		if object.type == 2 or object.type == 3:
-			object.collision_shape.shape.radius = value + 30
+		match object.type:
+			1:
+				print("rotating to: ", value)
+				object.info[1] = deg_to_rad(value)
+			2:
+				object.collision_shape.shape.radius = value*8
+				object.sprite_2d.scale = Vector2(value*0.1, value*0.1)
+			3:
+				object.collision_shape.shape.radius = value*10
+				object.sprite_2d.scale = Vector2(value*0.14, value*0.14)
+			4:
+				object.sprite_2d.scale = Vector2(x.value*0.0045, y.value*0.02)
+				object.collision_shape.shape.extents = Vector2(x.value/2, y.value/4)
+				object.info[1] = value
 
 func _on_z_value_changed(value):
 	if object != null:
@@ -142,6 +149,6 @@ func _on_w_value_changed(value):
 		w.label_2.text = str(value)
 		if object.type == 4:
 			object.info[3] = deg_to_rad(value)
-			object.rotate(deg_to_rad(value))
+			object.rotation = deg_to_rad(value)
 		else:
 			object.info[3] = value

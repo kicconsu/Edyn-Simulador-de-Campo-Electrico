@@ -24,32 +24,57 @@ func _ready():
 		0:
 			collision_shape.shape = CircleShape2D.new()
 			collision_shape.shape.radius = 50
+			$Sprite2D.texture = preload("res://res/img/carga1.png")
 		1:
 			collision_shape.shape = RectangleShape2D.new()
 			collision_shape.shape.extents = Vector2(self.info[0]/2,10)
 			collision_shape.position = Vector2(-self.info[0]/2, 0)
+			$Sprite2D.texture = preload("res://res/img/varPos.png")
 		2:
 			collision_shape.shape = CircleShape2D.new()
-			collision_shape.shape.radius = self.info[1] + 30
+			collision_shape.shape.radius = self.info[1]*8
+			sprite_2d.scale = Vector2(self.info[1]*0.1, self.info[1]*0.1)
+			$Sprite2D.texture = preload("res://res/img/esfPos.png")
 		3:
 			collision_shape.shape = CircleShape2D.new()
-			collision_shape.shape.radius = self.info[1] + 30
+			collision_shape.shape.radius = self.info[1]*10
+			sprite_2d.scale = Vector2(self.info[1]*0.14, self.info[1]*0.14)
+			$Sprite2D.texture = preload("res://res/img/anilPos.png")
 		4:
 			collision_shape.shape = RectangleShape2D.new()
 			collision_shape.shape.extents = Vector2(self.info[0] /2, self.info[1] /2)
+			sprite_2d.scale = Vector2(self.info[0]*0.0045, self.info[1]*0.02)
+			collision_shape.shape.extents = Vector2(self.info[0]/2, self.info[1]/4)
+			$Sprite2D.texture = preload("res://res/img/placaNeg.png")
 
 
 func _process(_delta):
 	
 	match self.type:
+		1:
+			self.set_rotation(self.info[1])
+			$Sprite2D.position= Vector2(self.info[0]/2, 0)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and hovered and Global.playing:
+		self.picked = !self.picked
+	
+	if event.is_action_pressed("mb_left") and picked:
+		sliders_scene.object = self
+		sliders_scene.set_parameters()
+		print("Objeto: ",self.rotation)
+		print("Collision shape: ",collision_shape.rotation)
+	if event is InputEventMouseMotion and picked:
+			self.position = get_global_mouse_position()
+
+func change_sprite(char):
+	match self.type:
 		0:
-			if self.char >=0:
+			if char >= 0:
 				$Sprite2D.texture = preload("res://res/img/carga1.png")
 			else:
 				$Sprite2D.texture = preload("res://res/img/carga2.png")
 		1:
-			self.set_rotation(self.info[1])
-			$Sprite2D.position= Vector2(self.info[0]/2, 0)
 			if self.char >=0:
 				$Sprite2D.texture = preload("res://res/img/varPos.png")
 			else:
@@ -69,18 +94,6 @@ func _process(_delta):
 				$Sprite2D.texture = preload("res://res/img/placaPos.png")
 			else:
 				$Sprite2D.texture = preload("res://res/img/placaNeg.png")
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and hovered and Global.playing:
-		self.picked = !self.picked
-	
-	if event.is_action_pressed("mb_left") and picked:
-		sliders_scene.object = self
-		sliders_scene.set_parameters()
-		print("Objeto: ",self.rotation)
-		print("Collision shape: ",collision_shape.rotation)
-	if event is InputEventMouseMotion and picked:
-			self.position = get_global_mouse_position()
 
 
 func _on_mouse_entered() -> void:
