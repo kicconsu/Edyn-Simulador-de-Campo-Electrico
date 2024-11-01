@@ -8,10 +8,8 @@ func _ready():
 func mouse_enter():
 	object_cursor.can_place = false
 	object_cursor.hide()
-	pass
 
 func mouse_leave():
 	object_cursor.can_place = true
 	object_cursor.show()
 	
-	pass

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://csfw2xqp1u66m"]
+
+[ext_resource type="Script" path="res://res/scripts/2d_scene_handler.gd" id="1_m8qap"]
+[ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d/2d_container.tscn" id="2_y6vwc"]
+[ext_resource type="Script" path="res://res/scripts/editor_object.gd" id="3_cptwd"]
+[ext_resource type="PackedScene" uid="uid://xejgaqbudtn1" path="res://scenes/subscenes/2d/control.tscn" id="4_taqkw"]
+
+[node name="2dTest" type="Node2D"]
+script = ExtResource("1_m8qap")
+
+[node name="2dContainer" parent="." instance=ExtResource("2_y6vwc")]
+res = 100
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Editor_Object" type="Node2D" parent="Node2D"]
+script = ExtResource("3_cptwd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Editor_Object"]
+visible = false
+
+[node name="cam_container" type="Node2D" parent="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/cam_container"]
+
+[node name="Control" type="Control" parent="Node2D/cam_container"]
+z_index = -10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/cam_container/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4500.0
+offset_top = -4500.0
+offset_right = 4500.0
+offset_bottom = 4500.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Item_Select" parent="." instance=ExtResource("4_taqkw")]
+
+[editable path="Item_Select"]

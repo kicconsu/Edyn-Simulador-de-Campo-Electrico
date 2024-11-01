@@ -170,9 +170,9 @@ vec2 chargedLine(float lambda, float L, int n_segments, float theta, vec2 positi
 
     //Borde inicial de la varilla: posición del centro menos las proyecciones de L/2 en cada eje
     vec2 ri = position - 0.5*L*vec2(cos(theta), sin(theta));
-    int lim = n_segments/2;
+    int lim = n_segments;///2;
     vec2 field = vec2(0,0); 
-    for(int i = -lim; i <= lim; i++){
+    for(int i = 0; i <= lim; i++){
 
         //Posición del segmento
         float l = (float(i) / float(n_segments)) * L;

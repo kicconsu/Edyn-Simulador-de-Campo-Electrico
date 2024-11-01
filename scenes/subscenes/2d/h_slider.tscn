@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cy2nvtwdjx6lg"]
 
-[ext_resource type="Script" path="res://scenes/2d/h_slider.gd" id="1_73doi"]
+[ext_resource type="Script" path="res://res/scripts/h_slider.gd" id="1_73doi"]
 
 [node name="HSlider" type="HSlider"]
 anchors_preset = -1

@@ -9,7 +9,6 @@ func _ready():
 
 #Se envia la escena del item selecionado
 func _item_clicked(event):
-	if event is InputEvent:
-		if event.is_action_pressed("mb_left"):
-			object_cursor.current_item = this_scene
+	if event.is_action_pressed("mb_left"):
+		object_cursor.current_item = this_scene
 	

@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node2D
 
 #Simple script that renders lines based on initial vec positions & vec displacements
