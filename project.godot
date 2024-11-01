@@ -24,6 +24,10 @@ Global="*res://Global.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
+[dotnet]
+
+project/assembly_name="Edyn"
+
 [file_customization]
 
 folder_colors={
