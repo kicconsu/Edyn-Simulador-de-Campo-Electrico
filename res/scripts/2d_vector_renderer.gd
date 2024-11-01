@@ -16,7 +16,6 @@ func set_disp_matrix(mat:Image) -> void:
 	self.disp_matrix = mat
 	queue_redraw()
 
-
 func _draw() -> void:
 	for y in self.vec_matrix.size():
 		for x in self.vec_matrix[0].size():
@@ -29,4 +28,4 @@ func _draw() -> void:
 			var length_scale:float = lerp(0.0, 1.0, length/100)
 			var vec_color := Color(length_scale, 1/length_scale, 0, lerp(1.0, 0.0, length/100000)) #Vector color
 			
-			draw_line(vecpos, dest, vec_color, 1.5)
+			draw_line(vecpos, dest, vec_color, 1)

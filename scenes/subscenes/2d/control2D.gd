@@ -1,14 +1,14 @@
 extends Control
-@onready var carga = $TabContainer/VBoxContainer/Carga
-@onready var x = $TabContainer/VBoxContainer/X
-@onready var y = $TabContainer/VBoxContainer/Y
-@onready var z = $TabContainer/VBoxContainer/Z
-@onready var w = $TabContainer/VBoxContainer/W
+@onready var carga = $TabContainer/Charge_Editor/Carga
+@onready var x = $TabContainer/Charge_Editor/X
+@onready var y = $TabContainer/Charge_Editor/Y
+@onready var z = $TabContainer/Charge_Editor/Z
+@onready var w = $TabContainer/Charge_Editor/W
 
 var object
 
 func _process(delta):
-	if Input.is_action_just_pressed("mb_left"):
+	if Input.is_action_just_pressed("mb_right"):
 		var charges = get_tree().get_nodes_in_group("2D_charges")
 		object = null
 		for c in charges:
@@ -29,77 +29,63 @@ func set_parameters():
 		match object.type:
 			#Carga puntual
 			0:
+				carga.visible = true
 				x.visible = false
 				y.visible = false
 				z.visible = false
 				w.visible = false
-				carga.min_value = -10
-				carga.max_value = 10
-				carga.step = 1
+				carga.min_value = -100
+				carga.max_value = 100
+				carga.step = 0.5
 			#Varilla
 			1:
+				carga.visible = true
 				if !x.visible or !y.visible or !z.visible:
 					x.visible = true
 					y.visible = true
 					z.visible = true
 				w.visible = false
-				carga.min_value = 0
+				carga.min_value = -10
 				carga.max_value = 10
 				carga.step = 0.1
 				x.min_value = 100
 				x.max_value = 800
-				y.min_value =0
+				y.min_value = 0
 				y.max_value = 360
 				w.set_value_no_signal(1)
 				
 			#Disco
 			2:
+				carga.visible = true
 				x.visible = false
 				z.visible = false
 				w.visible = false
 				if !y.visible:
 					y.visible = true
-				carga.min_value = -10
-				carga.max_value = 10
-				carga.step = 0.1
+				carga.min_value = -0.5
+				carga.max_value = 0.5
+				carga.step = 0.00001
 				y.min_value = 1
-				y.max_value = 10
+				y.max_value = 200
+				y.step = 0.1
 				x.set_value_no_signal(0) 
-				
-			#Anillo
-			3:
-				z.visible = false
-				w.visible = false
-				if !y.visible or !x.visible:
-					y.visible = true
-					x.visible = true
-				carga.min_value = -10
-				carga.max_value = 10
-				carga.step = 0.1
-				x.min_value = 0
-				x.max_value = 10
-				x.step = 0.5
-				y.min_value = 1
-				y.max_value = 10
-				x.step = 0.5
-				z.set_value_no_signal(9)
-				w.set_value_no_signal(1)
 				
 				
 			#Placa
 			4:
-				z.visible = false
+				carga.visible = true
 				if !x.visible or !y.visible or !w.visible:
 					x.visible = true
 					y.visible = true
+					z.visible = true
 					w.visible = true
-				carga.min_value = -0.001
-				carga.max_value = 1
-				carga.step = 0.001
-				x.min_value = 200
-				x.max_value =600
-				y.min_value = 1
-				y.max_value =300
+				carga.min_value = -0.05
+				carga.max_value = 0.05
+				carga.step = 0.00001
+				x.min_value = 50
+				x.max_value = 1000
+				y.min_value = 50
+				y.max_value = 1000
 				w.min_value = 0
 				w.max_value = 360
 		carga.connect("value_changed",_on_carga_value_changed)
@@ -107,11 +93,17 @@ func set_parameters():
 		y.connect("value_changed",_on_y_value_changed)
 		z.connect("value_changed",_on_z_value_changed)
 		w.connect("value_changed",_on_w_value_changed)
-		carga.set_value(object.char)
-		x.set_value(object.info[0])
-		y.set_value(object.info[1])
-		z.set_value(object.info[2])
-		w.set_value(object.info[3])
+		carga.set_value_no_signal(object.char)
+		x.set_value_no_signal(object.info[0])
+		y.set_value_no_signal(object.info[1])
+		z.set_value_no_signal(object.info[2])
+		w.set_value_no_signal(object.info[3])
+	else:
+		carga.visible = false
+		x.visible = false
+		y.visible = false
+		z.visible = false
+		w.visible = false
 
 
 func _on_carga_value_changed(value):
