@@ -36,6 +36,8 @@ func _process(delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"2dContainer".offset_vectors(ecamp)
+	
+	
 
 func setup_compute() -> void:
 	# Create shader from shadefile and create pipeline
@@ -94,7 +96,7 @@ func render_ecamp() -> Image:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGF, outputBytes)
-	#self._check_pixels(ecamp)
+	self._check_pixels(ecamp)
 	return ecamp
 
 func refresh_uniforms() -> void:

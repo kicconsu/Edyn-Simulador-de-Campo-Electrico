@@ -73,3 +73,12 @@ func _on_plane_pressed() -> void:
 	chargeNode.info = Vector4(150, 100, 5, 0)
 	chargeNode.picked = true
 	self.get_parent().add_child(chargeNode)
+
+
+func _on_lupa_pressed():
+	var charg:PackedScene = load("res://scenes/subscenes/2d/2d_charge.tscn")
+	var chargeNode:Node = charg.instantiate()
+	chargeNode.type = 5
+	chargeNode.char = 0
+	chargeNode.picked = true
+	self.get_parent().add_child(chargeNode)

@@ -5,7 +5,7 @@ extends Node2D
 @export var char:float = 5
 @export var info:= Vector4(1, 1, 1, 1)
 const k: float = 9*pow(10,9)
-
+var field = Vector2.ZERO
 @onready var mesh:MeshInstance2D = $MeshInstance2D
 @onready var collision_shape:CollisionShape2D = $CollisionShape2D
 #@onready var sliders_scene = get_node("/root/2dTest/Node2D/Control")
@@ -21,10 +21,13 @@ func _ready():
 
 func _process(_delta):
 	#Modulate Color 
-	if (self.char > 0):
-		self.mesh.set_self_modulate(Color('#ff2165'))
-	else:
-		self.mesh.set_self_modulate(Color('#5087ff'))
+	if self.type < 5:
+		if (self.char > 0):
+			self.mesh.set_self_modulate(Color('#ff2165'))
+		else:
+			self.mesh.set_self_modulate(Color('#5087ff'))
+	else: 
+		self.mesh.set_self_modulate(Color(0,255,0))
 	
 	match self.type:
 		0: #Carga puntual
@@ -56,6 +59,14 @@ func _process(_delta):
 				mesh.set_mesh(BoxMesh.new())
 			mesh.mesh.size = Vector3(self.info[0], self.info[1], 1)
 			collision_shape.shape.size = Vector2(self.info[0], self.info[1])
+		5:
+			mesh.mesh.radius = 5
+			mesh.mesh.height = 15
+			var charges = get_tree().get_nodes_in_group("2D_charges")
+			field = Vector2.ZERO
+			for c in charges:
+				field += c.calculateElectricField(self.global_position)
+			print("Campo electrico de la carga de prueba: ",field)
 			
 
 func _input(event: InputEvent) -> void:
@@ -100,11 +111,11 @@ func calculateElectricField(pos):
 			return chargedLine(pos)
 		2: # Disco cargado
 			return chargedDisk(pos)
-		3: # Cilindro infinito
+		3: # Anillo
 			return Vector2.ZERO
 		4: # Rectangulo cargado
 			return chargedRectangle(pos)
-		5: 
+		5: # Medicion
 			return Vector2.ZERO
 			
 func pointCharge(pos):
@@ -177,20 +188,20 @@ func chargedDisk(pos):
 		
 func chargedLine(pos):
 	var charge = self.char*pow(10,-6)
-	var ri = self.global_position - 0.5 * self.info[0] * Vector2(cos(self.info[1]), sin(self.info[1]))
-	var lim = self.info[2] / 2
+	var ri: Vector2 = self.global_position - 0.5 * self.info[0] * Vector2(cos(self.info[1]), sin(self.info[1]))
+	var lim: int = self.info[2]
 	var field = Vector2.ZERO
 	
-	for i in range(-lim, lim +1):
-		var l = (float(i) / float(self.info[2])) * self.info[0]
-		var l_vec = ri + l * Vector2(cos(self.info[1]),sin(self.info[1]))
+	for i in range(0, lim):
+		var l: float = (float(i) / float(self.info[2])) * self.info[0]
+		var l_vec: Vector2 = ri + l * Vector2(cos(self.info[1]),sin(self.info[1]))
 		
-		var dist = pos - l_vec
-		var r = dist.length()
+		var dist: Vector2 = pos - l_vec
+		var r: float = dist.length()
 	
 		if r > 0:
 			var dir = dist.normalized()
-			var dE = k * charge / (r*r)
+			var dE: float = k * charge / (r*r)
 			field += dE * dir
 	
 	return field

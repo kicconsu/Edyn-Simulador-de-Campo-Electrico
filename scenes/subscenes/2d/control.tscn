@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xejgaqbudtn1"]
+[gd_scene load_steps=13 format=3 uid="uid://xejgaqbudtn1"]
 
 [ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
 [ext_resource type="Texture2D" uid="uid://bgtp1jp51qh0x" path="res://res/img/TAB.png" id="2_b7ruj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://brbe6yqwfu3xg" path="res://res/img/2.png" id="6_71j7u"]
 [ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="7_2x31v"]
 [ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="8_g77ia"]
+[ext_resource type="Texture2D" uid="uid://bib8tdpynunkr" path="res://res/img/6.png" id="8_ygtvk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xkgbn"]
 font = ExtResource("3_g404t")
@@ -129,7 +130,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 mouse_filter = 0
-theme_override_constants/separation = 235
+theme_override_constants/separation = 110
 
 [node name="puntual" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
 layout_mode = 2
@@ -167,6 +168,15 @@ icon = ExtResource("8_g77ia")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
+[node name="lupa" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Lupa"
+icon = ExtResource("8_ygtvk")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
 [node name="Animation" type="AnimationPlayer" parent="TabMenu"]
 libraries = {
 "": SubResource("AnimationLibrary_agarw")
@@ -180,3 +190,4 @@ libraries = {
 [connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/line" to="." method="_on_line_pressed"]
 [connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/disk" to="." method="_on_disk_pressed"]
 [connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/plane" to="." method="_on_plane_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/lupa" to="." method="_on_lupa_pressed"]
