@@ -18,16 +18,6 @@ func _ready():
 	
 func _process(_delta):
 	
-	self.global_position = get_global_mouse_position()
-	
-	#Al existir un current item en mano, instanciarlo inmediatamente
-	if current_item != null:
-		pass
-		var new_item = current_item.instantiate()
-		#level.add_child(new_item)
-		self.get_parent().get_parent().add_child(new_item)
-		new_item.picked = true
-	
 	move_editor()
 	is_panning = Input.is_action_pressed("mb_middle")
 	
