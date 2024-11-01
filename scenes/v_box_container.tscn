@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dpxk6ctu8s7ap"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "texto"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2

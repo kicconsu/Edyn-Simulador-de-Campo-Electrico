@@ -1,6 +1,14 @@
 @tool
 extends Node3D
 
+# Gui and Camera Variables
+@onready var camera_3d = $Camera3D
+@onready var animation = $CanvasLayer/TabMenu/Animation
+@onready var projection = $Camera3D/Projection
+
+var toggle : bool
+var changeProjection = false
+
 #Script in charge of handling the 3D simulation.
 #Mainly, dispatches de 3d_vec_camp shader.
 
@@ -23,6 +31,10 @@ var img_height:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	camera_3d.set_current(true)
+	toggle = false
+	
 	posmat = $"3dContainer".pos_img
 	img_width = posmat.get_width()
 	img_height = posmat.get_height()
@@ -32,8 +44,27 @@ func _ready() -> void:
 	#TODO: make it so offset_vectors just swaps out the offset_img in the container. let process() do the rest.
 
 
+func _input(_event):
+	
+	if Input.is_action_just_pressed("changeProjection"):
+		if changeProjection:
+			projection.play_backwards("changeProjection")
+			changeProjection = !changeProjection
+		else:
+			projection.play("changeProjection")
+			changeProjection = !changeProjection
+	
+	if Input.is_action_just_pressed("TAB"):
+		
+		if !toggle:
+			animation.play("upside")
+			toggle = !toggle
+		else:
+			animation.play_backwards("upside")
+			toggle = !toggle
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"3dContainer".offset_vectors(ecamp)
@@ -144,18 +175,21 @@ func _charges_uniform_update() -> RDUniform:
 	var chargeBytes := PackedByteArray()
 	#add each charge's data to the array
 	var c:int = 0
-	for charge in charges:
-		var chargeTransform:Transform3D = charge.get_global_transform()
-		# 12 bytes + 4 packing = 16 - at 0
-		chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y, chargeTransform.origin.z, -1]).to_byte_array())
-		# 16 bytes - at 16
-		chargeBytes.append_array(PackedFloat32Array([chargeTransform.basis.z.x, chargeTransform.basis.z.y, chargeTransform.basis.z.z, charge.radius]).to_byte_array())
-		# 4 bytes - at 32
-		chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
-		# 4 bytes - at 36 -> add 4*2 padding to end with a size of 48
-		chargeBytes.append_array(PackedInt32Array([charge.type, -1, -1]).to_byte_array())
-		#print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
-		c += 1
+	if charges.is_empty():
+		chargeBytes.append_array(PackedFloat32Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]).to_byte_array())
+	else:
+		for charge in charges:
+			var chargeTransform:Transform3D = charge.get_global_transform()
+			# 12 bytes + 4 packing = 16 - at 0
+			chargeBytes.append_array(PackedFloat32Array([chargeTransform.origin.x, chargeTransform.origin.y, chargeTransform.origin.z, -1]).to_byte_array())
+			# 16 bytes - at 16
+			chargeBytes.append_array(PackedFloat32Array([chargeTransform.basis.y.x, chargeTransform.basis.y.y, chargeTransform.basis.y.z, charge.radius]).to_byte_array())
+			# 4 bytes - at 32
+			chargeBytes.append_array(PackedFloat32Array([charge.char]).to_byte_array())
+			# 4 bytes - at 36 -> add 4*2 padding to end with a size of 48
+			chargeBytes.append_array(PackedInt32Array([charge.type, -1, -1]).to_byte_array())
+			#print("charge, ", c, " charge: ", charge.char, " type: ", charge.type)
+			c += 1
 	#Uniform setup
 	var charBuffer := rd.storage_buffer_create(chargeBytes.size(), chargeBytes)
 	var charUniform := RDUniform.new()
@@ -163,3 +197,49 @@ func _charges_uniform_update() -> RDUniform:
 	charUniform.binding = 2
 	charUniform.add_id(charBuffer)
 	return charUniform
+
+func _on_cargas_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.type = 0
+	instance.global_position = Vector3(2.5,2.5,2.5)
+
+		
+func _on_varilla_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 2
+	instance.radius = 1
+	
+func _on_esfera_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 1
+	instance.radius = 1
+	
+func _on_cilindro_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 3
+	instance.radius = .3
+
+func _on_placa_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.15)
+	instance.type = 4
+	instance.char = 0.05
+	

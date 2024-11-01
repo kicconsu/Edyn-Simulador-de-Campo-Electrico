@@ -104,7 +104,7 @@ vec3 infinitePlane(float sigma, vec3 n, vec3 ri, vec3 p){
 vec3 infiniteCilinder(float rho, float R, vec3 ri, vec3 d, vec3 p){
     vec3 v = p - ri;
 
-    vec3 proj =dot(v, d)*d;
+    vec3 proj = dot(v, d)*d;
 
     //Distancia radial
     vec3 dist = v - proj;
