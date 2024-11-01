@@ -200,7 +200,7 @@ func chargedSphere(pos):
 func get_config_seed() -> Dictionary:
 	
 	const DISTANCE_UNITS = "m"
-	const CHARGE_UNITS = "C"
+	const CHARGE_UNITS = "*0.1 nC"
 	
 	var config: Dictionary = {}
 	match self.type:

@@ -274,7 +274,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_oscd2")
 
 [node name="Title" type="Label" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 0
 label_settings = SubResource("LabelSettings_dqpkp")
 vertical_alignment = 2
 

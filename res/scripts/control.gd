@@ -51,7 +51,6 @@ func _on_line_pressed() -> void:
 	var chargeNode:Node = charg.instantiate()
 	chargeNode.type = 1
 	chargeNode.info = Vector4(300, 0, 7, -1)
-	chargeNode.picked = true
 	self.get_parent().add_child(chargeNode)
 
 
@@ -61,7 +60,6 @@ func _on_disk_pressed() -> void:
 	chargeNode.type = 2
 	chargeNode.char = 0.005
 	chargeNode.info = Vector4(0, 20, 5, 5)
-	chargeNode.picked = true
 	self.get_parent().add_child(chargeNode)
 
 
@@ -71,7 +69,6 @@ func _on_plane_pressed() -> void:
 	chargeNode.type = 4
 	chargeNode.char = 0.0005
 	chargeNode.info = Vector4(150, 100, 5, 0)
-	chargeNode.picked = true
 	self.get_parent().add_child(chargeNode)
 
 
@@ -80,5 +77,4 @@ func _on_lupa_pressed():
 	var chargeNode:Node = charg.instantiate()
 	chargeNode.type = 5
 	chargeNode.char = 0
-	chargeNode.picked = true
 	self.get_parent().add_child(chargeNode)

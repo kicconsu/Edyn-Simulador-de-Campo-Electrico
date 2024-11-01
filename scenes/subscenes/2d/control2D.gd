@@ -30,6 +30,7 @@ func set_parameters():
 			#Carga puntual
 			0:
 				carga.visible = true
+				#carga.label_2.set_value(carga.)
 				x.visible = false
 				y.visible = false
 				z.visible = false
