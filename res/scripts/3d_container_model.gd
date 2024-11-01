@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node3D
 
 @export var size := Vector3(5, 5, 5)

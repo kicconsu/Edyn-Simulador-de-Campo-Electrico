@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daosd7lwlijyq"]
+[gd_scene load_steps=24 format=3 uid="uid://daosd7lwlijyq"]
 
 [ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
 [ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bujkbquihri2o" path="res://res/img/delete_normal.png" id="10_1i6u0"]
 [ext_resource type="Texture2D" uid="uid://dpdefmcm8m64r" path="res://res/img/delete_pressed.png" id="11_1mady"]
 [ext_resource type="Texture2D" uid="uid://c1iydtd7a04is" path="res://res/img/delete_hover.png" id="12_lvnxo"]
+[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="12_yrp8p"]
 
 [sub_resource type="Environment" id="Environment_0mu3j"]
 background_mode = 1
@@ -217,13 +218,13 @@ script = ExtResource("1_qepy6")
 environment = SubResource("Environment_0mu3j")
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
-resolution = 8
+resolution = 1
 box_color = Color(1, 0, 0.866667, 1)
 maxthick = 0.007
 alpha_sensitivity = 13.0
 
 [node name="Camera3D" parent="." instance=ExtResource("4_lrwd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76628, 1.39796, 6.79339)
+transform = Transform3D(-0.99999, 0, 0.00455536, 0, 1, 0, -0.00455536, 0, -0.99999, 1.76628, 1.39796, -2.53907)
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -286,12 +287,21 @@ libraries = {
 "": SubResource("AnimationLibrary_txoah")
 }
 
+[node name="3dCharge" parent="." instance=ExtResource("12_yrp8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21255, 2.84637)
+char = 1.315
+
+[node name="3dCharge3" parent="." instance=ExtResource("12_yrp8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4224, 0.869176, 1.40829)
+type = 5
+
 [connection signal="ray_casted" from="Camera3D" to="CanvasLayer" method="_on_camera_3d_ray_casted"]
 [connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TabMenu/Tab/HBoxContainer/lupa/Button" to="." method="_on_lupa_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ShowEditPanel" to="CanvasLayer" method="_on_show_edit_panel_pressed"]
 [connection signal="pressed" from="CanvasLayer/RemoveBody" to="Camera3D" method="_on_remove_body_pressed"]
 
@@ -302,3 +312,4 @@ libraries = {
 [editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/esfera"]
 [editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/cilindro"]
 [editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/placa"]
+[editable path="CanvasLayer/TabMenu/Tab/HBoxContainer/lupa"]

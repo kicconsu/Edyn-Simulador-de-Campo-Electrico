@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xf56jn3v7guc"]
+[gd_scene load_steps=14 format=3 uid="uid://xf56jn3v7guc"]
 
 [ext_resource type="Texture2D" uid="uid://bgtp1jp51qh0x" path="res://res/img/TAB.png" id="1_jlvum"]
 [ext_resource type="FontFile" uid="uid://cdrib51afqpq" path="res://res/fonts/ConcertOne-Regular.ttf" id="2_uiqd8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="6_mr4tj"]
 [ext_resource type="Texture2D" uid="uid://qk2mhvupqdij" path="res://res/img/4.png" id="7_jqpob"]
 [ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="8_e6s83"]
+[ext_resource type="Texture2D" uid="uid://bib8tdpynunkr" path="res://res/img/6.png" id="9_x1eef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xhna"]
 font = ExtResource("2_uiqd8")
@@ -113,13 +114,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -544.0
-offset_top = -64.5
-offset_right = 546.0
-offset_bottom = 75.5
+offset_left = -554.0
+offset_top = -67.5
+offset_right = 554.0
+offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 235
+theme_override_constants/separation = 195
 
 [node name="cargas" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
 layout_mode = 2
@@ -141,6 +142,10 @@ placeholder = ExtResource("7_jqpob")
 layout_mode = 2
 placeholder = ExtResource("8_e6s83")
 
+[node name="lupa" parent="Tab/HBoxContainer" instance=ExtResource("3_8olfs")]
+layout_mode = 2
+placeholder = ExtResource("9_x1eef")
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_agarw")
@@ -151,3 +156,4 @@ libraries = {
 [editable path="Tab/HBoxContainer/esfera"]
 [editable path="Tab/HBoxContainer/cilindro"]
 [editable path="Tab/HBoxContainer/placa"]
+[editable path="Tab/HBoxContainer/lupa"]

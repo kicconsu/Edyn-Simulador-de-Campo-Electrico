@@ -1,45 +1,45 @@
-#[compute]
-#version 450
+    #[compute]
+    #version 450
 
-//Work group dimensions
-layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+    //Work group dimensions
+    layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
 
-//Charge struct that stores the data of a single charged object
-struct Charge{
+    //Charge struct that stores the data of a single charged object
+    struct Charge{
 
-    vec3 pos; // 12 bytes + 4 padding = 16 bytes at 0
-    vec4 direc; // 16 bytes + 0 at 16
-    float char; //4 bytes + 0 at 32
-    int type; //4 bytes + 0 at 36
-    //Size: 40, add 4*2 padding at the end
+        vec3 pos; // 12 bytes + 4 padding = 16 bytes at 0
+        vec4 direc; // 16 bytes + 0 at 16
+        float char; //4 bytes + 0 at 32
+        int type; //4 bytes + 0 at 36
+        //Size: 40, add 4*2 padding at the end
 
-    /*
+        /*
 
-    chargedSphere:
-    char = charge Q
-    direc[0] = radius R
-    direc[1] = space filler (0)
-    direc[2] = space filler (0)
-    direc[3] = space filler (0)
+        chargedSphere:
+        char = charge Q
+        direc[0] = radius R
+        direc[1] = space filler (0)
+        direc[2] = space filler (0)
+        direc[3] = space filler (0)
 
-    infiniteLine:
-    char: lambda
-    direc[0] = x component of the axis's direction
-    direc[1] = y component of the axis's direction
-    direc[2] = z component of the axis's direction
-    direc[3] = space filler (0)
+        infiniteLine:
+        char: lambda
+        direc[0] = x component of the axis's direction
+        direc[1] = y component of the axis's direction
+        direc[2] = z component of the axis's direction
+        direc[3] = space filler (0)
 
-    infiniteCilinder:
-    char: rho
-    direc[0] = x component of the axis's direction
-    direc[1] = y component of the axis's direction
-    direc[2] = z component of the axis's direction
-    direc[3] = radius R
+        infiniteCilinder:
+        char: rho
+        direc[0] = x component of the axis's direction
+        direc[1] = y component of the axis's direction
+        direc[2] = z component of the axis's direction
+        direc[3] = radius R
 
-    infinitePlane:
-    char: sigma
-    direc[0] = x component of the plane's normal vector
-    direc[1] = y component of the plane's normal vector
+        infinitePlane:
+        char: sigma
+        direc[0] = x component of the plane's normal vector
+        direc[1] = y component of the plane's normal vector
     direc[2] = z component of the plane's normal vector
     direc[3] = space filler (0)
     */

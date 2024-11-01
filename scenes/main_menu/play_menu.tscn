@@ -397,7 +397,7 @@ libraries = {
 
 [connection signal="pressed" from="HBoxContainer/button_2d" to="." method="_on_button2d_pressed"]
 [connection signal="pressed" from="HBoxContainer/button_3d" to="." method="_on_button3d_pressed"]
-[connection signal="pressed" from="HBoxContainer/button_2dCar" to="." method="_on_button_2d_car_pressed"]
 [connection signal="pressed" from="HBoxContainer/button_2dCar" to="." method="_on_button3d_pressed"]
+[connection signal="pressed" from="HBoxContainer/button_2dCar" to="." method="_on_button_2d_car_pressed"]
 [connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

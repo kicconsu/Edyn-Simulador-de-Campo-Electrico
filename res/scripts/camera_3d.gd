@@ -93,7 +93,9 @@ func _unhandled_input(event):
 				var depth = origin.distance_to(charge.global_position)
 				var final_position = origin + end * depth
 				charge.global_position = final_position
+				
 				$"../CanvasLayer".update_custom_array("position", charge.global_position)
+				$"../CanvasLayer".update_custom_array("field", charge.global_position)
 	
 	# Receives mouse button input
 	if event is InputEventMouseButton:

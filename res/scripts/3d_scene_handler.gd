@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node3D
 
 # Gui and Camera Variables
@@ -126,7 +126,7 @@ func render_ecamp() -> Image:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGBAF, outputBytes)
-	#_check_pixels(ecamp)
+	_check_pixels(ecamp)
 	return ecamp
 
 func refresh_uniforms() -> void:
@@ -242,4 +242,11 @@ func _on_placa_button_pressed():
 	instance.global_position = Vector3(2.5,2.5,2.15)
 	instance.type = 4
 	instance.char = 0.05
-	
+
+func _on_lupa_button_pressed():
+	animation.play_backwards("upside")
+	toggle = false
+	var instance = load("res://scenes/subscenes/3d_charge.tscn").instantiate()	
+	add_child(instance)
+	instance.global_position = Vector3(2.5,2.5,2.5)
+	instance.type = 5
