@@ -1,9 +1,0 @@
-[gd_scene load_steps=4 format=3 uid="uid://cteks2ctra67u"]
-
-[ext_resource type="PackedScene" uid="uid://dvqcygnjfk2do" path="res://scenes/2d/Items/item_texture.tscn" id="1_diabu"]
-[ext_resource type="Texture2D" uid="uid://dfdm7rs265bfg" path="res://res/img/1.png" id="2_bnksy"]
-[ext_resource type="PackedScene" uid="uid://dy7tvbti6cjlw" path="res://scenes/2d/Entity/carga.tscn" id="3_osviv"]
-
-[node name="item_carga" instance=ExtResource("1_diabu")]
-texture = ExtResource("2_bnksy")
-this_scene = ExtResource("3_osviv")

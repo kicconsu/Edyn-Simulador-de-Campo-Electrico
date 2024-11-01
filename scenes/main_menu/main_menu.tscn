@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dguwoswcdg1gs"]
+[gd_scene load_steps=15 format=3 uid="uid://dguwoswcdg1gs"]
 
 [ext_resource type="Texture2D" uid="uid://brcxswkgc3amd" path="res://res/img/Pn.png" id="1_05l3k"]
 [ext_resource type="Script" path="res://res/scripts/main_menu.gd" id="1_bwca7"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cl3ey8e8o4dsc" path="res://res/img/Ec.png" id="5_xm7ge"]
 [ext_resource type="Texture2D" uid="uid://ctokvp1kernhq" path="res://res/img/Eh.png" id="6_orrln"]
 [ext_resource type="Texture2D" uid="uid://2yhrx08hr0fi" path="res://res/img/glow.png" id="7_io5h1"]
-[ext_resource type="FontFile" uid="uid://cdrib51afqpq" path="res://res/fonts/ConcertOne-Regular.ttf" id="8_1y3sb"]
+[ext_resource type="FontFile" uid="uid://dx01stnf7saoy" path="res://res/fonts/Lovelo Black.otf" id="9_0n2lx"]
 
 [sub_resource type="Animation" id="Animation_qt50v"]
 length = 0.001
@@ -39,14 +39,74 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:rotation")
+tracks/2/path = NodePath("Label2:label_settings:shadow_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.349066]
+"values": [Color(0, 0, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:label_settings:font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 288)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(52, 174)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:label_settings:shadow_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label:label_settings:font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ocmcl"]
@@ -63,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 2.03333, 4, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 1, 1, 0.501961), Color(0, 0.788235, 0.521569, 0.443137), Color(0.309804, 0.972549, 0.607843, 0.568627), Color(0, 1, 1, 0.501961)]
+"values": [Color(0, 0, 0, 0.654902), Color(0, 0.788235, 0.521569, 0.443137), Color(0.142626, 0.448689, 0.897561, 0.568627), Color(0.858824, 0.862745, 1, 0.654902)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,19 +135,79 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.96667, 6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1.56425e-07, 0.169217, 0.244219, 1), Color(0, 0.179773, 0.185104, 1), Color(1.56425e-07, 0.169217, 0.244219, 1)]
+"values": [Color(2.31028e-06, 0.36726, 0.508508, 1), Color(0, 0.179773, 0.185104, 1), Color(1.56425e-07, 0.169217, 0.244219, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Label:rotation")
-tracks/2/interp = 2
+tracks/2/path = NodePath("Label2:label_settings:shadow_color")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.96667, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2.03333, 4.03333, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.261799, -0.261799, 0.261799]
+"values": [Color(0.379009, 0.572699, 1, 1), Color(0.907227, 0.000605677, 0.896008, 1), Color(0.823919, 0.334136, 0.405371, 1), Color(0.379009, 0.572699, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label2:label_settings:font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.13333, 5.93333),
+"transitions": PackedFloat32Array(0.34151, 1.23114, 2.82843),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.13333, 5.93333),
+"transitions": PackedFloat32Array(0.241484, 1.51572, 1),
+"update": 0,
+"values": [Vector2(45, 288), Vector2(45, 360), Vector2(45, 288)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.16667, 5.93333),
+"transitions": PackedFloat32Array(0.450625, 1.7411, 1),
+"update": 0,
+"values": [Vector2(52, 174), Vector2(54, 97), Vector2(52, 174)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:label_settings:shadow_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0333333, 3.16667, 5.93333),
+"transitions": PackedFloat32Array(0.34151, 1.23, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label:label_settings:font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0333333, 3.16667, 5.93333),
+"transitions": PackedFloat32Array(0.34151, 1.23, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bvkko"]
@@ -96,12 +216,19 @@ _data = {
 "glow": SubResource("Animation_ocmcl")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_xm8iq"]
-font = ExtResource("8_1y3sb")
-font_size = 131
-font_color = Color(0.955963, 0.955963, 0.955963, 1)
-outline_size = 65
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_0skx5"]
+font = ExtResource("9_0n2lx")
+font_size = 121
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, -12.845)
+
+[sub_resource type="LabelSettings" id="LabelSettings_twygu"]
+font = ExtResource("9_0n2lx")
+font_size = 176
+shadow_size = 10
+shadow_color = Color(0, 0, 1, 1)
+shadow_offset = Vector2(0, 19)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -130,16 +257,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_io5h1")
 
-[node name="Control" type="HBoxContainer" parent="."]
+[node name="Control" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.867
-anchor_right = 0.5
-anchor_bottom = 0.867
-offset_left = -199.832
-offset_top = -160.0
-offset_right = 278.168
+anchor_left = 0.397
+anchor_top = 0.885
+anchor_right = 0.397
+anchor_bottom = 0.885
+offset_left = 438.656
+offset_top = -410.48
+offset_right = 632.656
+offset_bottom = -0.480042
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.835, 0.835)
@@ -163,22 +291,21 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.367
-anchor_right = 0.5
-anchor_bottom = 0.367
-offset_left = -238.345
-offset_top = -78.0
-offset_right = 238.655
-offset_bottom = 78.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.349066
-scale = Vector2(1.22553, 1.17771)
-pivot_offset = Vector2(238.345, 78.184)
-text = "Sparkies"
-label_settings = SubResource("LabelSettings_xm8iq")
+layout_mode = 0
+offset_left = 52.0
+offset_top = 174.0
+offset_right = 673.0
+offset_bottom = 326.0
+text = "Electro"
+label_settings = SubResource("LabelSettings_0skx5")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 288.0
+offset_right = 872.0
+offset_bottom = 464.0
+text = "DynamiX"
+label_settings = SubResource("LabelSettings_twygu")
 
 [connection signal="pressed" from="Control/Play" to="." method="_on_play_pressed"]

@@ -24,8 +24,8 @@ script = ExtResource("1_3xp20")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 152.0
-offset_bottom = 147.0
+offset_right = 130.0
+offset_bottom = 120.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hgxve")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_vnw5o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7wep2")

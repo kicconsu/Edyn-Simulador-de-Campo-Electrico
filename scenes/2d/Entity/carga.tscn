@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy7tvbti6cjlw"]
-
-[ext_resource type="PackedScene" uid="uid://cprdh6ll3hp4p" path="res://scenes/subscenes/2d_charge.tscn" id="1_yqxih"]
-[ext_resource type="Script" path="res://2d_charge_father.gd" id="2_qlq84"]
-
-[node name="Carga" instance=ExtResource("1_yqxih")]
-script = ExtResource("2_qlq84")
-type = 0
