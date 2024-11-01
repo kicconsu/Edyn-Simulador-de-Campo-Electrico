@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 	
 	#carritos
 	var serial_distance = float(ArduinoMessageTest.SerialMessage)
+	print(ArduinoMessageTest.SerialMessage)
 	
 	var screen_distance = min_distance_screen + (serial_distance / max_distance_serial) * (max_distance_screen - min_distance_screen)
 

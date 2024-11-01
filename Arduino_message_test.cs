@@ -6,14 +6,14 @@ public partial class Arduino_message_test : Node2D
 {
 	SerialPort serialPort;
 	public static Arduino_message_test Instance { get; private set; }
-	public String SerialMessage { get; set;} ="10";
+	public String SerialMessage { get; set;} = "10";
 	
 	public override void _Ready()
 	{
 		Instance =this;
 		
 		serialPort = new SerialPort();
-		serialPort.PortName = "COM9"; // ajustar al puerto necesario
+		serialPort.PortName = "COM8"; // ajustar al puerto necesario
 		serialPort.BaudRate = 9600;
 
 		try
@@ -35,7 +35,7 @@ public partial class Arduino_message_test : Node2D
 		try
 		{
 			SerialMessage = serialPort.ReadLine();
-			//GD.Print("read line: " + SerialMessage);
+			GD.Print("read line: " + SerialMessage);
 			//GD.Print("Distancia recibida: " + SerialMessage);
 			
 		}
