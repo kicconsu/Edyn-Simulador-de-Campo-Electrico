@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://res/scripts/2d_charge.gd" id="1_wuvgj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ah6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pi0b"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_5b0py"]
+[sub_resource type="SphereMesh" id="SphereMesh_t6jhc"]
 radius = 10.0
 height = 20.0
 radial_segments = 4
@@ -20,11 +20,11 @@ type = 2
 info = Vector4(1, 10, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h1ah6")
+shape = SubResource("RectangleShape2D_4pi0b")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 self_modulate = Color(1, 0.129412, 0.396078, 1)
-mesh = SubResource("SphereMesh_5b0py")
+mesh = SubResource("SphereMesh_t6jhc")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

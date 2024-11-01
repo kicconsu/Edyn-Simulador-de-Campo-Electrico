@@ -59,23 +59,23 @@ func _process(_delta):
 
 func _input(event: InputEvent) -> void:
 	
-	if event is InputEventMouseButton:
-		print("mouse button event")
-		print("hovered? ", hovered)
-		print("picked? ", picked)
-		print(event.button_index == 1, event is InputEventMouseButton, hovered)
+	#if event is InputEventMouseButton:
+		#print("mouse button event")
+		#print("hovered? ", hovered)
+		#print("picked? ", picked)
+		#print(event.button_index == 1, event is InputEventMouseButton, hovered)
 	
 	if event is InputEventMouseButton and hovered:
-		print("clicked and hovered")
+		#print("clicked and hovered")
 		if picked:
 			self.hovered = !self.hovered #Make the mouse re-enter charge area if it just dropped it
 		self.picked = !self.picked
-		print("picked? ", picked)
+		#print("picked? ", picked)
 		
 	if event is InputEventMouseButton and picked and not hovered:
-		print("clicked and picked but not hovered")
+		#print("clicked and picked but not hovered")
 		self.picked = false
-		print("picked? ", picked)
+		#print("picked? ", picked)
 	
 	if event is InputEventMouseMotion and picked:
 			self.position = get_global_mouse_position()
@@ -83,9 +83,9 @@ func _input(event: InputEvent) -> void:
 	
 
 func _on_mouse_entered() -> void:
-	print("Mouse entered")
+	#print("Mouse entered")
 	self.hovered = true
 	
 func _on_mouse_exited() -> void:
-	print("Mouse exited")
+	#print("Mouse exited")
 	self.hovered = false
