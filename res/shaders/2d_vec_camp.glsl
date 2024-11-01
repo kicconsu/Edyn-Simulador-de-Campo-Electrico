@@ -210,7 +210,7 @@ vec2 calculateField(vec2 point){
     vec2 field = vec2(0,0);
     for(int i = 0; i < charges.chargeList.length(); i++){
         Charge body = charges.chargeList[i];
-        body.char /= pow(10, 6);
+        body.char /= pow(10, 7);
         if(body.type == 0){
 
             //pointCharge(float charge, vec2 position, vec2 point)

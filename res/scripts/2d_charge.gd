@@ -38,12 +38,13 @@ func _process(_delta):
 			mesh.mesh.radius = 7
 			mesh.mesh.height = 14
 			collision_shape.shape.size = Vector2(14, 14)
-			
+			self.set_rotation(0)
 		1: #Cable
 			if(not is_instance_of(mesh.mesh, BoxMesh)):
 				mesh.set_mesh(BoxMesh.new())
 			mesh.mesh.size = Vector3(self.info[0], 20, 1)
 			collision_shape.shape.size = Vector2(self.info[0], 15)
+			self.set_rotation(self.info[1])
 		2: #Disco
 			if(not is_instance_of(mesh.mesh, SphereMesh)):
 				mesh.set_mesh(SphereMesh.new())
@@ -52,6 +53,7 @@ func _process(_delta):
 			mesh.mesh.radius = self.info[1]
 			mesh.mesh.height = self.info[1]*2
 			collision_shape.shape.size = Vector2(self.info[1]*2, self.info[1]*2)
+			self.set_rotation(0)
 		3: #Anillo
 			pass
 		4: #Rect
@@ -59,6 +61,7 @@ func _process(_delta):
 				mesh.set_mesh(BoxMesh.new())
 			mesh.mesh.size = Vector3(self.info[0], self.info[1], 1)
 			collision_shape.shape.size = Vector2(self.info[0], self.info[1])
+			self.set_rotation(self.info[3])
 		5:
 			mesh.mesh.radius = 5
 			mesh.mesh.height = 15
@@ -67,6 +70,7 @@ func _process(_delta):
 			for c in charges:
 				field += c.calculateElectricField(self.global_position)
 			print("Campo electrico de la carga de prueba: ",field)
+			
 			
 
 func _input(event: InputEvent) -> void:

@@ -71,30 +71,30 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control2D/TabContainer"]
+[node name="Charge_Editor" type="VBoxContainer" parent="Control2D/TabContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 metadata/_tab_index = 0
 
-[node name="Carga" parent="Control2D/TabContainer/VBoxContainer" instance=ExtResource("6_1j4wd")]
+[node name="Carga" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("6_1j4wd")]
 layout_mode = 2
 
-[node name="X" parent="Control2D/TabContainer/VBoxContainer" instance=ExtResource("6_1j4wd")]
+[node name="X" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("6_1j4wd")]
 layout_mode = 2
 
-[node name="Y" parent="Control2D/TabContainer/VBoxContainer" instance=ExtResource("6_1j4wd")]
+[node name="Y" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("6_1j4wd")]
 layout_mode = 2
 
-[node name="Z" parent="Control2D/TabContainer/VBoxContainer" instance=ExtResource("6_1j4wd")]
+[node name="Z" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("6_1j4wd")]
 layout_mode = 2
 
-[node name="W" parent="Control2D/TabContainer/VBoxContainer" instance=ExtResource("6_1j4wd")]
+[node name="W" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("6_1j4wd")]
 layout_mode = 2
 
-[connection signal="value_changed" from="Control2D/TabContainer/VBoxContainer/Carga" to="Control2D" method="_on_carga_value_changed"]
-[connection signal="value_changed" from="Control2D/TabContainer/VBoxContainer/X" to="Control2D" method="_on_x_value_changed"]
-[connection signal="value_changed" from="Control2D/TabContainer/VBoxContainer/Y" to="Control2D" method="_on_y_value_changed"]
-[connection signal="value_changed" from="Control2D/TabContainer/VBoxContainer/Z" to="Control2D" method="_on_z_value_changed"]
-[connection signal="value_changed" from="Control2D/TabContainer/VBoxContainer/W" to="Control2D" method="_on_w_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Carga" to="Control2D" method="_on_carga_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/X" to="Control2D" method="_on_x_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Y" to="Control2D" method="_on_y_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Z" to="Control2D" method="_on_z_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/W" to="Control2D" method="_on_w_value_changed"]
 
 [editable path="Item_Select"]
