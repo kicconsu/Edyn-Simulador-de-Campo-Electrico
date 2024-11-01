@@ -6,7 +6,7 @@ public partial class Arduino_message_test : Node2D
 {
 	SerialPort serialPort;
 	public static Arduino_message_test Instance { get; private set; }
-	public String SerialMessage { get; set;} ="39";
+	public String SerialMessage { get; set;} ="10";
 	
 	public override void _Ready()
 	{

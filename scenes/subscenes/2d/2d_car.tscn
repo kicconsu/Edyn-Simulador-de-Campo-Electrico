@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cprdh6ll3hp4p"]
+[gd_scene load_steps=4 format=3 uid="uid://bpcgw1edsxwg7"]
 
-[ext_resource type="Script" path="res://res/scripts/2d_charge_father.gd" id="1_pvew1"]
+[ext_resource type="Script" path="res://res/scripts/2d_charge.gd" id="1_8506i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcvbm"]
 size = Vector2(14, 14)
@@ -16,7 +16,7 @@ visibility_layer = 2
 z_index = 5
 monitorable = false
 priority = 1
-script = ExtResource("1_pvew1")
+script = ExtResource("1_8506i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lcvbm")

@@ -25,6 +25,10 @@ ArduinoMessageTest="*res://Arduino_message_test.cs"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="Edyn"
+
 [file_customization]
 
 folder_colors={

@@ -27,6 +27,9 @@ var img_height:int
 @export var  max_distance_serial: int = 40
 @export var max_distance_screen: float = 454.0
 @export var min_distance_screen: float = 38.0
+@export var CsharpCode : Node2D
+@onready var carga1 = $Carga
+@onready var carga2 = $Carga2
 
 func _ready() -> void:
 	posmat = $"2dContainer".posImg
@@ -42,6 +45,14 @@ func _process(delta: float) -> void:
 	self.refresh_uniforms()
 	ecamp = render_ecamp()
 	$"2dContainer".offset_vectors(ecamp)
+	
+	#carritos
+	var serial_distance = float(ArduinoMessageTest.SerialMessage)
+	
+	var screen_distance = min_distance_screen + (serial_distance / max_distance_serial) * (max_distance_screen - min_distance_screen)
+
+	carga1.position = Vector2(-screen_distance, 0)
+	carga2.position = Vector2(screen_distance, 0)
 	
 	
 
