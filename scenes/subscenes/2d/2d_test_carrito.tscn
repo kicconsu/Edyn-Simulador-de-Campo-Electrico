@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwkcmytdv540i"]
+[gd_scene load_steps=8 format=3 uid="uid://cwkcmytdv540i"]
 
 [ext_resource type="Script" path="res://res/scripts/2d_car_handler.gd" id="1_lij8c"]
+[ext_resource type="PackedScene" uid="uid://bpcgw1edsxwg7" path="res://scenes/subscenes/2d/2d_car.tscn" id="2_kbt58"]
 [ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d/2d_container.tscn" id="3_mbie2"]
 [ext_resource type="PackedScene" uid="uid://xejgaqbudtn1" path="res://scenes/subscenes/2d/control.tscn" id="5_627ct"]
 [ext_resource type="Script" path="res://res/scripts/editor_object.gd" id="6_joy7v"]
@@ -12,9 +13,12 @@ script = ExtResource("1_lij8c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Carga" parent="." instance=ExtResource("2_kbt58")]
+
+[node name="Carga2" parent="." instance=ExtResource("2_kbt58")]
+
 [node name="2dContainer" parent="." instance=ExtResource("3_mbie2")]
 res = 100
-size = Vector2(1000, 500)
 
 [node name="Node2D" type="Node2D" parent="."]
 

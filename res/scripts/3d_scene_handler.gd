@@ -126,7 +126,7 @@ func render_ecamp() -> Image:
 	# Receive output bytes
 	var outputBytes : PackedByteArray = rd.texture_get_data(ecamp_rid, 0)
 	ecamp = Image.create_from_data(img_width, img_height, false, Image.FORMAT_RGBAF, outputBytes)
-	_check_pixels(ecamp)
+	#_check_pixels(ecamp)
 	return ecamp
 
 func refresh_uniforms() -> void:

@@ -13,7 +13,7 @@ public partial class Arduino_message_test : Node2D
 		Instance =this;
 		
 		serialPort = new SerialPort();
-		serialPort.PortName = "COM9"; // ajustar al puerto necesario
+		serialPort.PortName = "COM3"; // ajustar al puerto necesario
 		serialPort.BaudRate = 9600;
 
 		try
@@ -35,7 +35,8 @@ public partial class Arduino_message_test : Node2D
 		try
 		{
 			SerialMessage = serialPort.ReadLine();
-			GD.Print("Distancia recibida: " + SerialMessage);
+			//GD.Print("read line: " + SerialMessage);
+			//GD.Print("Distancia recibida: " + SerialMessage);
 			
 		}
 		catch (TimeoutException)

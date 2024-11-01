@@ -218,7 +218,7 @@ script = ExtResource("1_qepy6")
 environment = SubResource("Environment_0mu3j")
 
 [node name="3dContainer" parent="." instance=ExtResource("1_eried")]
-resolution = 1
+resolution = 8
 box_color = Color(1, 0, 0.866667, 1)
 maxthick = 0.007
 alpha_sensitivity = 13.0
