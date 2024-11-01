@@ -26,64 +26,64 @@ func _process(_delta: float) -> void:
 	else:
 		self.mesh.material.albedo_color = Color(0,255,0)
 		
-	if(self.type == 0):
-		if(not is_instance_of(mesh.mesh, SphereMesh)):
-			mesh.set_mesh(SphereMesh.new())
-			mesh.mesh.radial_segments = 10
-			mesh.mesh.rings = 5
-			mesh.material.set_cull_mode(0)
-		mesh.mesh.radius = 0.3
-		mesh.mesh.height = 0.3*2
-	elif(self.type == 1):
-		if(not is_instance_of(mesh.mesh, SphereMesh)):
-			mesh.set_mesh(SphereMesh.new())
-			mesh.mesh.radial_segments = 10
-			mesh.mesh.rings = 5
-			mesh.material.set_cull_mode(0)
-		mesh.mesh.radius = self.radius
-		mesh.mesh.height = mesh.mesh.radius*2
-	elif(self.type == 2):
-		if(not is_instance_of(mesh.mesh, CylinderMesh)):
-			mesh.set_mesh(CylinderMesh.new())
-			mesh.mesh.height = 1000
-			mesh.mesh.cap_top = false
-			mesh.mesh.cap_bottom = false
-			mesh.mesh.radial_segments = 5
-			mesh.material.set_cull_mode(0)
-		mesh.mesh.top_radius = 0.1
-		mesh.mesh.bottom_radius = 0.1
-	elif(self.type == 3):
-		if(not is_instance_of(mesh.mesh, CylinderMesh)):
-			mesh.set_mesh(CylinderMesh.new())
-			mesh.mesh.height = 1000
-			mesh.mesh.cap_top = false
-			mesh.mesh.cap_bottom = false
-			mesh.mesh.radial_segments = 5
-			mesh.material.set_cull_mode(0)
-		mesh.mesh.top_radius = self.radius
-		mesh.mesh.bottom_radius = self.radius
-	elif(self.type == 4):
-		if(not is_instance_of(mesh.mesh, PlaneMesh)):
-			mesh.set_mesh(PlaneMesh.new())
-			mesh.mesh.size.x = 5
-			mesh.mesh.size.y = 5
-			mesh.material.set_cull_mode(2)
-	elif(self.type == 5):
-		if(not is_instance_of(mesh.mesh, SphereMesh)):
-			mesh.set_mesh(SphereMesh.new())
-			mesh.mesh.radial_segments = 10
-			mesh.mesh.rings = 5
-			mesh.material.set_cull_mode(0)
-		mesh.mesh.radius = 0.05
-		mesh.mesh.height = 0.05*2
-		
-	if self.type == 5:
-						
-		var charges = get_tree().get_nodes_in_group("3D_charges")
-		field = Vector3.ZERO
-		for c in charges:
-			field += c.calculateElectricField(self.global_position)
-		print("Campo electrico de la carga de prueba: ",field)		
+	match self.type:
+		0:
+			if(not is_instance_of(mesh.mesh, SphereMesh)):
+				mesh.set_mesh(SphereMesh.new())
+				mesh.mesh.radial_segments = 10
+				mesh.mesh.rings = 5
+				mesh.material.set_cull_mode(0)
+			mesh.mesh.radius = 0.3
+			mesh.mesh.height = 0.3*2
+		1:
+			if(not is_instance_of(mesh.mesh, SphereMesh)):
+				mesh.set_mesh(SphereMesh.new())
+				mesh.mesh.radial_segments = 10
+				mesh.mesh.rings = 5
+				mesh.material.set_cull_mode(0)
+			mesh.mesh.radius = self.radius
+			mesh.mesh.height = mesh.mesh.radius*2
+		2:
+			if(not is_instance_of(mesh.mesh, CylinderMesh)):
+				mesh.set_mesh(CylinderMesh.new())
+				mesh.mesh.height = 1000
+				mesh.mesh.cap_top = false
+				mesh.mesh.cap_bottom = false
+				mesh.mesh.radial_segments = 5
+				mesh.material.set_cull_mode(0)
+			mesh.mesh.top_radius = 0.1
+			mesh.mesh.bottom_radius = 0.1
+		3:
+			if(not is_instance_of(mesh.mesh, CylinderMesh)):
+				mesh.set_mesh(CylinderMesh.new())
+				mesh.mesh.height = 1000
+				mesh.mesh.cap_top = false
+				mesh.mesh.cap_bottom = false
+				mesh.mesh.radial_segments = 5
+				mesh.material.set_cull_mode(0)
+			mesh.mesh.top_radius = self.radius
+			mesh.mesh.bottom_radius = self.radius
+		4:
+			if(not is_instance_of(mesh.mesh, PlaneMesh)):
+				mesh.set_mesh(PlaneMesh.new())
+				mesh.mesh.size.x = 5
+				mesh.mesh.size.y = 5
+				mesh.material.set_cull_mode(2)
+		5:
+			if(not is_instance_of(mesh.mesh, SphereMesh)):
+				mesh.set_mesh(SphereMesh.new())
+				mesh.mesh.radial_segments = 10
+				mesh.mesh.rings = 5
+				mesh.material.set_cull_mode(0)
+			mesh.mesh.radius = 0.05
+			mesh.mesh.height = 0.05*2
+			#Calculate veccamp at current pos
+			var charges = get_tree().get_nodes_in_group("3D_charges")
+			field = Vector3.ZERO
+			for c in charges:
+				field += c.calculateElectricField(self.global_position)
+			print("Campo electrico de la carga de prueba: ",field)
+			
 
 #Triggered when a custom_slider/custom_array value is correctly modified: updates the body's desired property
 func set_property(tag: String, value):

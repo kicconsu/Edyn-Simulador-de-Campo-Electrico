@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=3 uid="uid://xejgaqbudtn1"]
+
+[ext_resource type="Script" path="res://res/scripts/control.gd" id="1_qaeus"]
+[ext_resource type="Texture2D" uid="uid://bgtp1jp51qh0x" path="res://res/img/TAB.png" id="2_b7ruj"]
+[ext_resource type="FontFile" uid="uid://cdrib51afqpq" path="res://res/fonts/ConcertOne-Regular.ttf" id="3_g404t"]
+[ext_resource type="Texture2D" uid="uid://dfdm7rs265bfg" path="res://res/img/1.png" id="5_xbmli"]
+[ext_resource type="Texture2D" uid="uid://brbe6yqwfu3xg" path="res://res/img/2.png" id="6_71j7u"]
+[ext_resource type="Texture2D" uid="uid://d5ry3b4de6su" path="res://res/img/3.png" id="7_2x31v"]
+[ext_resource type="Texture2D" uid="uid://bc3n41fw0dkev" path="res://res/img/5.png" id="8_g77ia"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkgbn"]
+font = ExtResource("3_g404t")
+font_size = 51
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6udsi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_66ys2"]
+resource_name = "upside"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [1.0, 0.7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agarw"]
+_data = {
+"RESET": SubResource("Animation_6udsi"),
+"upside": SubResource("Animation_66ys2")
+}
+
+[node name="Item_Select" type="CanvasLayer"]
+script = ExtResource("1_qaeus")
+
+[node name="TabMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="Tab" type="TextureRect" parent="TabMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -71.0
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_b7ruj")
+
+[node name="Label" type="Label" parent="TabMenu/Tab"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 71.0
+grow_horizontal = 2
+text = "TAB"
+label_settings = SubResource("LabelSettings_xkgbn")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabMenu/Tab"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -71.5
+offset_right = -33.0
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabMenu/Tab/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 0
+theme_override_constants/separation = 235
+
+[node name="puntual" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Carga Puntual"
+icon = ExtResource("5_xbmli")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="line" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Varilla Cargada"
+icon = ExtResource("6_71j7u")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="disk" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Disco Cargado"
+icon = ExtResource("7_2x31v")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="plane" type="Button" parent="TabMenu/Tab/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Plano Cargado"
+icon = ExtResource("8_g77ia")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Animation" type="AnimationPlayer" parent="TabMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_agarw")
+}
+
+[connection signal="mouse_entered" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_exited" from="TabMenu/Tab/Label" to="." method="_on_label_mouse_exited"]
+[connection signal="mouse_entered" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_entered"]
+[connection signal="mouse_exited" from="TabMenu/Tab/ScrollContainer/HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
+[connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/puntual" to="." method="_on_puntual_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/line" to="." method="_on_line_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/disk" to="." method="_on_disk_pressed"]
+[connection signal="pressed" from="TabMenu/Tab/ScrollContainer/HBoxContainer/plane" to="." method="_on_plane_pressed"]
