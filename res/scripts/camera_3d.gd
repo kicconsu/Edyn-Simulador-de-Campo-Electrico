@@ -11,6 +11,7 @@ class_name FreeLookCamera extends Camera3D
 # Modifier keys' speed multiplier
 const SHIFT_MULTIPLIER = 2.5
 const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
+@onready var canvas_layer: CanvasLayer = $"../CanvasLayer"
 
 signal ray_casted(body)
 
@@ -95,7 +96,6 @@ func _unhandled_input(event):
 				charge.global_position = final_position
 				
 				$"../CanvasLayer".update_custom_array("position", charge.global_position)
-				$"../CanvasLayer".update_custom_array("field", charge.global_position)
 	
 	# Receives mouse button input
 	if event is InputEventMouseButton:
@@ -148,6 +148,11 @@ func _unhandled_input(event):
 func _process(delta):
 	_update_mouselook()
 	_update_movement(delta)
+	if selected:
+		var charge = selected.get_parent()
+		if charge.type == 5 and canvas_layer.state == canvas_layer.State.EDIT_PANEL:
+			canvas_layer.update_custom_array("field", charge.field)
+			
 
 # Updates camera movement
 func _update_movement(delta):

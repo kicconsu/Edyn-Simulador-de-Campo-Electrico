@@ -39,6 +39,8 @@ func config_edit_panel(charge: Node3D):
 						array.initialize(adjustment, [charge.global_position.x, charge.global_position.y, charge.global_position.z])
 					"rotation":
 						array.initialize(adjustment, [charge.rotation.x, charge.rotation.y, charge.rotation.z])
+					"field":
+						array.initialize(adjustment, [0,0,0])
 				array.edited.connect(charge.set_property)
 				$PanelContainer/VBoxContainer.add_child(array)
 	

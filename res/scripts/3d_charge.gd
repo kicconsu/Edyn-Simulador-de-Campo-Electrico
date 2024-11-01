@@ -82,7 +82,7 @@ func _process(_delta: float) -> void:
 			field = Vector3.ZERO
 			for c in charges:
 				field += c.calculateElectricField(self.global_position)
-			#print("Campo electrico de la carga de prueba: ",field)
+			print("Campo electrico de la carga de prueba: ",field)
 			
 
 #Triggered when a custom_slider/custom_array value is correctly modified: updates the body's desired property
@@ -200,7 +200,7 @@ func chargedSphere(pos):
 func get_config_seed() -> Dictionary:
 	
 	const DISTANCE_UNITS = "m"
-	const CHARGE_UNITS = "*0.1 nC"
+	const CHARGE_UNITS = "*0.1nC"
 	
 	var config: Dictionary = {}
 	match self.type:
