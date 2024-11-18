@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://drg0kfweoshdj"
+path="res://.godot/imported/3d_vec_camp.glsl-6a7beaca44f61bbba8ac7acd6c147ce6.res"
+
+[deps]
+
+source_file="res://res/shaders/3d_vec_camp.glsl"
+dest_files=["res://.godot/imported/3d_vec_camp.glsl-6a7beaca44f61bbba8ac7acd6c147ce6.res"]
+
+[params]
+

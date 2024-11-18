@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwkcmytdv540i"]
+
+[ext_resource type="Script" path="res://res/scripts/2d_car_handler.gd" id="1_lij8c"]
+[ext_resource type="PackedScene" uid="uid://bpcgw1edsxwg7" path="res://scenes/subscenes/2d/2d_car.tscn" id="2_kbt58"]
+[ext_resource type="PackedScene" uid="uid://d3aowb23p7ba1" path="res://scenes/subscenes/2d/2d_container.tscn" id="3_mbie2"]
+[ext_resource type="PackedScene" uid="uid://xejgaqbudtn1" path="res://scenes/subscenes/2d/control.tscn" id="5_627ct"]
+[ext_resource type="Script" path="res://res/scripts/editor_object.gd" id="6_joy7v"]
+[ext_resource type="Script" path="res://scenes/subscenes/2d/control2D.gd" id="6_ql7mr"]
+[ext_resource type="PackedScene" uid="uid://cy2nvtwdjx6lg" path="res://scenes/subscenes/2d/h_slider.tscn" id="9_k856w"]
+
+[node name="2dTest" type="Node2D"]
+script = ExtResource("1_lij8c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Carga" parent="." instance=ExtResource("2_kbt58")]
+
+[node name="Carga2" parent="." instance=ExtResource("2_kbt58")]
+
+[node name="2dContainer" parent="." instance=ExtResource("3_mbie2")]
+res = 100
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Editor_Object" type="Node2D" parent="Node2D"]
+script = ExtResource("6_joy7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Editor_Object"]
+visible = false
+
+[node name="cam_container" type="Node2D" parent="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/cam_container"]
+
+[node name="Control" type="Control" parent="Node2D/cam_container"]
+z_index = -10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Node2D/cam_container/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4500.0
+offset_top = -4500.0
+offset_right = 4500.0
+offset_bottom = 4500.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Item_Select" parent="." instance=ExtResource("5_627ct")]
+visible = false
+
+[node name="Control2D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 627.0
+offset_top = 4.0
+offset_right = 1141.0
+offset_bottom = 318.0
+script = ExtResource("6_ql7mr")
+
+[node name="TabContainer" type="TabContainer" parent="Control2D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Charge_Editor" type="VBoxContainer" parent="Control2D/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+metadata/_tab_index = 0
+
+[node name="Carga" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("9_k856w")]
+layout_mode = 2
+
+[node name="X" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("9_k856w")]
+layout_mode = 2
+
+[node name="Y" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("9_k856w")]
+layout_mode = 2
+
+[node name="Z" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("9_k856w")]
+layout_mode = 2
+
+[node name="W" parent="Control2D/TabContainer/Charge_Editor" instance=ExtResource("9_k856w")]
+layout_mode = 2
+
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Carga" to="Control2D" method="_on_carga_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/X" to="Control2D" method="_on_x_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Y" to="Control2D" method="_on_y_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/Z" to="Control2D" method="_on_z_value_changed"]
+[connection signal="value_changed" from="Control2D/TabContainer/Charge_Editor/W" to="Control2D" method="_on_w_value_changed"]
+
+[editable path="Item_Select"]

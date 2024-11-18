@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://x4t8qhmqu10e"]
+
+[ext_resource type="Script" path="res://res/scripts/3d_charge.gd" id="1_1me85"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tupw7"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+grow = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_wvp15"]
+radius = 0.3
+height = 0.6
+radial_segments = 10
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emoc6"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.129412, 0.396078, 1)
+
+[node name="3dCharge" type="Node3D" groups=["3D_charges"]]
+script = ExtResource("1_1me85")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0324306, 0, -0.0127079)
+material_overlay = SubResource("StandardMaterial3D_tupw7")
+calculate_tangents = false
+use_collision = true
+collision_layer = 2
+mesh = SubResource("SphereMesh_wvp15")
+material = SubResource("StandardMaterial3D_emoc6")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://fswgfltm8d4p"]
+
+[ext_resource type="Script" path="res://res/scripts/free_3d_camera.gd" id="1_83ua7"]
+[ext_resource type="PackedScene" uid="uid://8d0vtt6vwv4p" path="res://scenes/camera_3d.tscn" id="2_uq2jl"]
+
+[node name="Free3dSpace" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_83ua7")
+
+[node name="Camera3D" parent="." instance=ExtResource("2_uq2jl")]

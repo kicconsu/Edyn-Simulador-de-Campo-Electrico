@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3aowb23p7ba1"]
+
+[ext_resource type="Script" path="res://res/scripts/2d_container_model.gd" id="1_lo17x"]
+[ext_resource type="Script" path="res://res/scripts/2d_vector_renderer.gd" id="2_u0kb0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4lfdy"]
+size = Vector2(1000, 500)
+
+[node name="2dContainer" type="Node2D"]
+script = ExtResource("1_lo17x")
+
+[node name="boundary" type="Line2D" parent="."]
+position = Vector2(-500, -250)
+points = PackedVector2Array(0, 0, 1000, 0, 1000, 500, 0, 500)
+closed = true
+
+[node name="bg" type="Node2D" parent="."]
+script = ExtResource("2_u0kb0")
+
+[node name="spirte" type="Sprite2D" parent="bg"]
+modulate = Color(0.088, 0.1628, 0.22, 1)
+z_index = -1
+texture = SubResource("PlaceholderTexture2D_4lfdy")

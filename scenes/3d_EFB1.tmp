@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://daosd7lwlijyq"]
+
+[ext_resource type="PackedScene" uid="uid://182pf6mbx5mw" path="res://scenes/subscenes/3d_container.tscn" id="1_eried"]
+[ext_resource type="Script" path="res://res/scripts/3d_scene_handler.gd" id="1_qepy6"]
+[ext_resource type="PackedScene" uid="uid://x4t8qhmqu10e" path="res://scenes/subscenes/3d_charge.tscn" id="2_eln2w"]
+[ext_resource type="PackedScene" uid="uid://fswgfltm8d4p" path="res://scenes/main_menu/Free 3D Camera.tscn" id="4_u331y"]
+
+[sub_resource type="Environment" id="Environment_0mu3j"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.506721, 0.31532, 0.548958, 1)
+reflected_light_source = 1
+
+[node name="3dTest" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383223)
+script = ExtResource("1_qepy6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0mu3j")
+
+[node name="3dContainer" parent="." instance=ExtResource("1_eried")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0735449)
+resolution = 10
+box_color = Color(1, 0, 0.866667, 1)
+maxthick = 0.007
+alpha_sensitivity = 13.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.850716, -0.466241, 0.242698, 0.0969147, 0.592947, 0.799388, -0.516614, -0.656531, 0.549615, 4.73587, 6.32097, 5.40781)
+
+[node name="Free3dSpace" parent="." instance=ExtResource("4_u331y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.4613, 1, 3)
+
+[node name="TabMenu" parent="Free3dSpace" index="1"]
+visible = true
+
+[node name="3dCharge" parent="." instance=ExtResource("2_eln2w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78429, 2.40082, 7.98456)
+visible = false
+
+[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/cargas/Button" to="." method="_on_cargas_button_pressed"]
+[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/varilla/Button" to="." method="_on_varilla_button_pressed"]
+[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/esfera/Button" to="." method="_on_esfera_button_pressed"]
+[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/cilindro/Button" to="." method="_on_cilindro_button_pressed"]
+[connection signal="pressed" from="Free3dSpace/TabMenu/Tab/HBoxContainer/placa/Button" to="." method="_on_placa_button_pressed"]
+
+[editable path="Free3dSpace"]
+[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/cargas"]
+[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/varilla"]
+[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/esfera"]
+[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/cilindro"]
+[editable path="Free3dSpace/TabMenu/Tab/HBoxContainer/placa"]
